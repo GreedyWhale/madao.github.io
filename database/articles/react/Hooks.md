@@ -272,7 +272,7 @@ Redux 中有三个基本的概念：
 
   效果：
 
-  ![](/caisr.github.io/database/images/articles/react/reactHooks/image.png)
+  ![](/madao.github.io/database/images/articles/react/reactHooks/image.png)
 
 1. 将数据存放至 store
 
@@ -509,7 +509,7 @@ export default Parent;
 
 效果：
 
-![](/caisr.github.io/database/images/articles/react/reactHooks/image1.png)
+![](/madao.github.io/database/images/articles/react/reactHooks/image1.png)
 
 ### 三. useContext
 
@@ -604,7 +604,7 @@ ReactDom.render(<App />, document.querySelector('#app'))
 ```
 
 结果：
-![](/caisr.github.io/database/images/articles/react/reactHooks/image2.png)
+![](/madao.github.io/database/images/articles/react/reactHooks/image2.png)
 
 组件 Child 只依赖 m，但是 n 更新的时候，它也重新执行了，使用 React.memo 就可以避免这种情况，现在将 Child 用 React.memo 包起来
 
@@ -618,7 +618,7 @@ const Child = React.memo((props: { m: number; }) => {
 ```
 
 结果：
-![](/caisr.github.io/database/images/articles/react/reactHooks/image3.png)
+![](/madao.github.io/database/images/articles/react/reactHooks/image3.png)
 
 但是 React.memo 有一个问题，当如果 Child 组件的 props 中有一个函数，那么 React.memo 就失效了：
 
@@ -648,7 +648,7 @@ const App = () => {
 }
 ```
 
-![](/caisr.github.io/database/images/articles/react/reactHooks/image4.png)
+![](/madao.github.io/database/images/articles/react/reactHooks/image4.png)
 
 原因是，App 重新执行的时候，`const sayM = () => console.log(m)`这句代码也会重新执行，那么会生成一个新的 sayM，新的 sayM 和旧 sayM 功能一样，但是引用却不一样，所以 React 会认为 Child 组件的 props 变了，所以 Child 也重新执行了。
 
@@ -753,7 +753,7 @@ const App = () => {
 }
 ```
 
-![](/caisr.github.io/database/images/articles/react/reactHooks/image5.png)
+![](/madao.github.io/database/images/articles/react/reactHooks/image5.png)
 
 这样得到的 ref 对象的 current 属性就是 Child 组件的 DOM 对象的引用，假如不想返回 Child 组件的 DOM 对象的引用，那么就可以使用 useImperativeHandle，很奇怪吧，不知道这个 hook 为什么叫这个名字：
 
@@ -780,7 +780,7 @@ const App = () => {
 }
 ```
 
-![](/caisr.github.io/database/images/articles/react/reactHooks/image6.png)
+![](/madao.github.io/database/images/articles/react/reactHooks/image6.png)
 
 ### 十. 自定义 hook
 

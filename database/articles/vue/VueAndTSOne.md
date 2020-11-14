@@ -24,7 +24,7 @@ export default class Home extends Vue {}
 
   在[vue 的官网](https://cn.vuejs.org/v2/guide/typescript.html#ad)中有提到：
 
-  ![](/caisr.github.io/database/images/articles/vue/vue_and_ts_one/image.png)
+  ![](/madao.github.io/database/images/articles/vue/vue_and_ts_one/image.png)
 
   我看了一些其他人写的文章，简单的说就是用 typescript 写 vue 每次都需要写一些额外形式的代码，vue-class-component 通过装饰器来减少这些重复的代码，vue-property-decorator 则是在 vue-class-component 的基础上增加了一些装饰器。
 

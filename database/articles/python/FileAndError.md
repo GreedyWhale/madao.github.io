@@ -26,7 +26,7 @@
 
       结果：
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image.png)
 
   5.  如果读取的文件是二进制文件，比如图片，视频则需要用`rb`模式：
       ```
@@ -81,7 +81,7 @@
     ```
     test.txt 文件内容就被覆盖了
 
-    ![](/caisr.github.io/database/images/articles/python/file_and_error/image1.png)
+    ![](/madao.github.io/database/images/articles/python/file_and_error/image1.png)
 
   - a
 
@@ -92,7 +92,7 @@
 
     新添加的内容就会放在 test.txt 原有内容的后面：
 
-    ![](/caisr.github.io/database/images/articles/python/file_and_error/image2.png)
+    ![](/madao.github.io/database/images/articles/python/file_and_error/image2.png)
 
   既读文件又写文件 `r+`
 
@@ -122,11 +122,11 @@
 
       运行结果：
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image3.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image3.png)
 
       test.txt 文件：
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image4.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image4.png)
 
       先读后写，写入的内容会放在原有内容的末尾，读到的内容为文件原始内容。
 
@@ -154,11 +154,11 @@
 
       运行结果：
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image5.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image5.png)
 
       test.txt 文件：
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image6.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image6.png)
 
       可以看到之前的这一行被覆盖了。而且打印出读取到的文件内容是空。
 
@@ -196,11 +196,11 @@
 
       结果：
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image7.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image7.png)
 
       test.txt 文件
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image8.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image8.png)
 
       看到没有，打印出来的结果中被 a 的那一行少 3 个，正是被 write 中的三个 xxx 覆盖了。打印出来的内容也是从覆盖完后的指针位置一直到结尾
 
@@ -222,7 +222,7 @@
 
       结果
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image9.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image9.png)
 
   - writelines
 
@@ -235,7 +235,7 @@
 
       结果：
 
-      ![](/caisr.github.io/database/images/articles/python/file_and_error/image10.png)
+      ![](/madao.github.io/database/images/articles/python/file_and_error/image10.png)
 
 ### 2. 异常
 
@@ -277,11 +277,11 @@ while True:
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/file_and_error/image11.png)
+![](/madao.github.io/database/images/articles/python/file_and_error/image11.png)
 
 正常是没问题的，但是一旦用户输入第二个数字为 0 的时候，就会异常：
 
-![](/caisr.github.io/database/images/articles/python/file_and_error/image12.png)
+![](/madao.github.io/database/images/articles/python/file_and_error/image12.png)
 
 这时候我们就可以使用 try-except 代码块处理：
 
@@ -321,7 +321,7 @@ while True:
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/file_and_error/image13.png)
+![](/madao.github.io/database/images/articles/python/file_and_error/image13.png)
 
 程序没有将 traceback 展示给用户，而是一句友好的提示。
 
@@ -337,7 +337,7 @@ if age < 1:
    raise Exception('Invalid age', age)
 ```
 
-![](/caisr.github.io/database/images/articles/python/file_and_error/image14.png)
+![](/madao.github.io/database/images/articles/python/file_and_error/image14.png)
 
 - pass 语句
 

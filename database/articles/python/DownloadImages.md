@@ -21,7 +21,7 @@ print(zhihu_sign_in.request.headers)
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/download_images/image.png)
+![](/madao.github.io/database/images/articles/python/download_images/image.png)
 
 用了 Session 就会自动带上 cookie 了。
 
@@ -261,6 +261,6 @@ print(zhihu_sign_in.request.headers)
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/download_images/image1.png)
+  ![](/madao.github.io/database/images/articles/python/download_images/image1.png)
 
-  ![](/caisr.github.io/database/images/articles/python/download_images/image2.png)
+  ![](/madao.github.io/database/images/articles/python/download_images/image2.png)

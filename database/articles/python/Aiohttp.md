@@ -124,7 +124,7 @@
 
    - 结果：
 
-     ![](/caisr.github.io/database/images/articles/python/aiohttp/image.png)
+     ![](/madao.github.io/database/images/articles/python/aiohttp/image.png)
 
      26 张图片用时 1.476328s
 
@@ -227,6 +227,6 @@
 
    结果
 
-   ![](/caisr.github.io/database/images/articles/python/aiohttp/image1.png)
+   ![](/madao.github.io/database/images/articles/python/aiohttp/image1.png)
 
 两种我都执行了多次，差不多都在 1.4~2.7s 之间，可以看到协程还是很强大的，仅仅用单线程就做到了类似多进程的效果。

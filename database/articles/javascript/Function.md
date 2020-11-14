@@ -35,7 +35,7 @@ typeof str1 // 'object'
 
 ```
 
-![](/caisr.github.io/database/images/articles/javascript/function/image.png)
+![](/madao.github.io/database/images/articles/javascript/function/image.png)
 
 通过 new String('xxx')创建的是字符串'xxx'的“封装对象”，而不是基本类型值'xxx'。
 
@@ -43,7 +43,7 @@ typeof str1 // 'object'
 
   typeof 返回的值为'object'的对象，都有一个内部属性[[class]]，这个属性可以通过 Object.prototype.toString()获得：
 
-![](/caisr.github.io/database/images/articles/javascript/function/image1.png)
+![](/madao.github.io/database/images/articles/javascript/function/image1.png)
 
 前面说到 typeof 返回的值为'object'的对象内部才有[[class]]属性，那么这些基本类型的[[class]]属性是哪里来的呢？
 

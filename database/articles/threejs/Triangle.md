@@ -5,17 +5,17 @@ three.js 是一个可以使用 javascript 绘制 3d 图形的库，它对 WebGL 
 
 下载微信官方的[开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，然后新建项目
 
-![](/caisr.github.io/database/images/articles/threejs/triangle/image.png)
+![](/madao.github.io/database/images/articles/threejs/triangle/image.png)
 
 appid 选择测试号即可，项目路径自行指定
 
 用编辑器打开项目，得到如下目录：
 
-![](/caisr.github.io/database/images/articles/threejs/triangle/image1.png)
+![](/madao.github.io/database/images/articles/threejs/triangle/image1.png)
 
 然后除了 game.js，game.json, project.config.json 全部删除，并把 game.js 中的内容清空。
 
-![](/caisr.github.io/database/images/articles/threejs/triangle/image2.png)
+![](/madao.github.io/database/images/articles/threejs/triangle/image2.png)
 
 game.js 是整个小游戏的入口，game.json 是小游戏配置。具体参考[文档](https://developers.weixin.qq.com/minigame/dev/guide/framework/config.html)。
 
@@ -31,13 +31,13 @@ game.js 是整个小游戏的入口，game.json 是小游戏配置。具体参�
 
   [gitHub 地址](https://github.com/mrdoob/three.js)
 
-  ![](/caisr.github.io/database/images/articles/threejs/triangle/image3.png)
+  ![](/madao.github.io/database/images/articles/threejs/triangle/image3.png)
 
   复制 three.min.js 中的内容
 
 新建目录 libs，将 three.js 和 Adapter 的源码放在该目录下
 
-![](/caisr.github.io/database/images/articles/threejs/triangle/image4.png)
+![](/madao.github.io/database/images/articles/threejs/triangle/image4.png)
 
 在 game.js 中添加：
 
@@ -106,7 +106,7 @@ triangleShape.lineTo(0, 100)
 
 这里说一下 three.js 的坐标系
 
-![](/caisr.github.io/database/images/articles/threejs/triangle/image5.png)
+![](/madao.github.io/database/images/articles/threejs/triangle/image5.png)
 
 有了三角形的基本形状，通过 three.js 中提供的 api，将这个三角形变成几何体
 
@@ -157,7 +157,7 @@ renderer.render(scene, camera)
 
 这时候去在开发者工具中就可以看到一个三角形了：
 
-![](/caisr.github.io/database/images/articles/threejs/triangle/image6.png)
+![](/madao.github.io/database/images/articles/threejs/triangle/image6.png)
 
 ### 四. 让三角形动起来
 

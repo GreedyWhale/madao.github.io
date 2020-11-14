@@ -39,7 +39,7 @@ console.log(foo.count)
 
 上面代码的运行结果是这样的
 
-![image.png](/caisr.github.io/database/images/articles/javascript/this/image.png)
+![image.png](/madao.github.io/database/images/articles/javascript/this/image.png)
 
 可以看出，foo 被调用了 5 次，但最后打印出的 foo.count 却是 0，这就证明函数 foo 中的 this.count 并不指向它自己的 count。
 

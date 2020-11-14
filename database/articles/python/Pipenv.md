@@ -16,7 +16,7 @@ brew install pipenv
 
 ### 2. 检查安装是否成功
 
-![](/caisr.github.io/database/images/articles/python/pipenv/image.png)
+![](/madao.github.io/database/images/articles/python/pipenv/image.png)
 
 ### 3. 使用
 
@@ -35,7 +35,7 @@ pipenv install requests
 
 安装完成之后会自动的有两个文件
 
-![](/caisr.github.io/database/images/articles/python/pipenv/image1.png)
+![](/madao.github.io/database/images/articles/python/pipenv/image1.png)
 
 Pipfile 这个文件记录了包的信息：
 
@@ -78,7 +78,7 @@ Pipfile 这个文件记录了包的信息：
 
   激活虚拟环境，激活了之后，就可以在当前的环境中使用项目中安装的包了，例子：
 
-  ![](/caisr.github.io/database/images/articles/python/pipenv/image2.png)
+  ![](/madao.github.io/database/images/articles/python/pipenv/image2.png)
 
   上图中的(my_project) 就代表你当前所在项目的虚拟环境。要退出当前虚拟环境只要输入
   exit 即可

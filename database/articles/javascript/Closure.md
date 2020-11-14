@@ -18,7 +18,7 @@
 
 了解了垃圾回收机制后，我们就知道在全局变量是不会被回收的（只有页面关闭全局变量才会被回收）。因为在全局作用域中声明一个函数或者变量，相当于给全局对象 window 添加一个属性，例子：
 
-![image.png](/caisr.github.io/database/images/articles/javascript/closure/image.png)
+![image.png](/madao.github.io/database/images/articles/javascript/closure/image.png)
 
 现在，来说说闭包。
 

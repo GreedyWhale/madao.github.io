@@ -14,41 +14,41 @@
 
    这里用 chrome 举例，随便打开一个页面，
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image.png)
 
    也可以直接双击页面，点击检查
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image1.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image1.png)
 
    然后会得到这样一个界面，点击 NetWork 这个选项，刷新页面
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image2.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image2.png)
 
    然后就可以看到各种请求
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image3.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image3.png)
 
    这里可以根据请求的类型查看，一般通过 ajax 请求接口的数据都在 XHR 中，页面上的数据，也就是直接返回一个渲染好的页面在 Doc 中。
 
    现在先看第一种数据，通过接口获取的数据：
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image4.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image4.png)
 
    上图中，左边部分就是请求列表，右边就是接口返回的数据，一个一个看找到页面上对应的内容就行。
 
    还有一种是直接返回渲染好的页面或者是直接返回一段 html，还是一样的也是这样找。例子：
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image5.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image5.png)
 
    像豆瓣这种，它会直接返回渲染好的 html。这时候找就要在 Doc 选项下面找
 
    还有一种像携程评论的这种，
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image6.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image6.png)
 
    点击左边的 response 选项，可以看到它也是一段 html
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image7.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image7.png)
 
    幸运的是，Python 都有对应的模块，来处理这些情况。
 
@@ -65,15 +65,15 @@
 
    1. 接口一般都有请求参数，请求参数在这里看：
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image8.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image8.png)
 
    参数的类型也有不同的，比如 json 格式的，form-data 等等格式，上图中参数是通过路由带的就是域名问号后面的这些：
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image9.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image9.png)
 
    这个页面是一个搜索电影资源的页面，通过路由上 keyword 可以猜出这个一般都是电影的名字，只不过被编码了，这时候就要判断这个页面用的编码格式是哪一种了，因为是中文网站，所以一般都是 utf-8 或者 gbk 的。直接在终端里试一下，例子中我搜的电影是千与千寻，那么在终端里将千与千寻分别编码试下：
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image10.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image10.png)
 
    可以看到使用 gbk 编码的结果只要将\x 全部换为%那么就和网址中的 keyword 一样了，如何将正常人能看懂的字符串变为网址中的那样呢，这里需要用到 Python 中内置的一个函数 quote。例子：
 
@@ -86,7 +86,7 @@
 
    结果：
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image11.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image11.png)
 
    这样就保持一致了。
 
@@ -98,7 +98,7 @@
 
    一般都是 get 或者 post。请求方法在这里看：
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image12.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image12.png)
 
 5. 反爬虫策略
 
@@ -107,7 +107,7 @@
 
    1. 如果可以拿到 cookie 那么请求的时候就带上，cookie 在这里看
 
-   ![](/caisr.github.io/database/images/articles/python/crawler/image13.png)
+   ![](/madao.github.io/database/images/articles/python/crawler/image13.png)
 
    在请求头中设置 User-Agent 字段，这个字段的值可以在上图中看到。
 
@@ -291,7 +291,7 @@ with open('douban_movie.json', 'w') as file:
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/crawler/image14.png)
+![](/madao.github.io/database/images/articles/python/crawler/image14.png)
 
 douban_movie.json
-![](/caisr.github.io/database/images/articles/python/crawler/image15.png)
+![](/madao.github.io/database/images/articles/python/crawler/image15.png)

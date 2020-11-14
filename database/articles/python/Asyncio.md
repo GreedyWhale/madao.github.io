@@ -81,7 +81,7 @@
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/asyncio/image.png)
+  ![](/madao.github.io/database/images/articles/python/asyncio/image.png)
 
   可以看到协程是最慢的
 
@@ -138,7 +138,7 @@
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/asyncio/image1.png)
+  ![](/madao.github.io/database/images/articles/python/asyncio/image1.png)
 
   协程是和多线程的速度差不多的，但是协程是在一个线程里实现的，没有线程切换的开销，所以线程越多，协程的性能优势就越明显。
 
@@ -168,7 +168,7 @@
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/asyncio/image2.png)
+  ![](/madao.github.io/database/images/articles/python/asyncio/image2.png)
 
   可以看到第一次使用 next 获取迭代器 g 的值得时候，是到了 yield 前然后返回，就停了，第二次则是从上次停止的地方继续执行下面的代码，碰到 yield 返回，函数暂停。
 
@@ -176,7 +176,7 @@
 
   生成器有几种状态，可以通过 getgeneratorstate 方法看到：
 
-  ![](/caisr.github.io/database/images/articles/python/asyncio/image3.png)
+  ![](/madao.github.io/database/images/articles/python/asyncio/image3.png)
 
   ```
   GEN_CREATED # 等待执行

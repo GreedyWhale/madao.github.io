@@ -61,7 +61,7 @@ unittest.main()
 
 结果是
 
-![](/caisr.github.io/database/images/articles/python/test_code/image.png)
+![](/madao.github.io/database/images/articles/python/test_code/image.png)
 
 测试通过了，看下代码：
 
@@ -89,7 +89,7 @@ unittest 模块中常用的断言方法：
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/test_code/image1.png)
+![](/madao.github.io/database/images/articles/python/test_code/image1.png)
 
 如果测试失败，Python 会告诉你原因，上图中 Python 说断言错误，Allen Walker != Allen balke。这时候我们就可以根据测试结果检查函数写错了还是测试用例写错了。
 
@@ -229,7 +229,7 @@ while True:
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/test_code/image2.png)
+![](/madao.github.io/database/images/articles/python/test_code/image2.png)
 
 测试 survey 类
 
@@ -257,7 +257,7 @@ unittest.main()
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/test_code/image3.png)
+![](/madao.github.io/database/images/articles/python/test_code/image3.png)
 
 再添加一个测试多个答案的方法
 
@@ -307,7 +307,7 @@ unittest.main()
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/test_code/image4.png)
+![](/madao.github.io/database/images/articles/python/test_code/image4.png)
 
 可以看到测试通过了，但是代码有重复的地方，可以看到测试 survey 类的时候，每新增一个单元测试，都要创建一个 survey 的实例。这一部分可以简化。
 
@@ -358,8 +358,8 @@ unittest.main()
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/test_code/image5.png)
+![](/madao.github.io/database/images/articles/python/test_code/image5.png)
 
 Python 运行测试用例的时候，每完成一个单元测试，就会打印一个字符，通过打印一个`.`，引发错误打印一个`E`，断言失败打印一个`F`。
 
-![](/caisr.github.io/database/images/articles/python/test_code/image6.png)
+![](/madao.github.io/database/images/articles/python/test_code/image6.png)

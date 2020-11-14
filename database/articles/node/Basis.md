@@ -4,7 +4,7 @@ Node.js 不是编程语言，不是一个Web框架，Node.js是一个平台，�
 
 Node.js 技术架构图：
 
-![](/caisr.github.io/database/images/articles/node/basis/image.png)
+![](/madao.github.io/database/images/articles/node/basis/image.png)
 
 - Node.js API: Node.js内置的标准库
 - Node.js bindings: js代码和c/c++代码沟通的桥梁，比如在Node.js 中可以读写文件，比如：

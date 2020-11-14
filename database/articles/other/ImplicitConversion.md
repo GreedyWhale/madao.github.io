@@ -4,7 +4,7 @@
 
 先算`+[]`，在控制台中直接输入，得到结果：
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image.png)
 
 +[]等于 0，原因是：
 
@@ -25,7 +25,7 @@
 
 按照上面的步骤来看：
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image1.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image1.png)
 
 空数组 valueOf 得到的仍然是一个空数组，不是基本类型的值，所以使用的是 toString 返回的空字符串。
 
@@ -33,7 +33,7 @@
 
 根据 mdn 的介绍：
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image2.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image2.png)
 
 空字符串转成数字就是 0
 
@@ -45,11 +45,11 @@
 
 由于++的优先级比+高，所以先算左边的`++[[]][0]`，仔细观察这个表达式`[[]][0]`这一块的结果其实就是`[]`，那么`++[[]][0]`就等于`++[]`，可是当你在控制台中输入`++[]`却会报错：
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image3.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image3.png)
 
 和这个是一样的
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image4.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image4.png)
 
 详细原因看这里[从++[[]][+[]]+[+[]]==10?深入浅出弱类型 JS 的隐式转换](https://github.com/jawil/blog/issues/5)
 
@@ -68,23 +68,23 @@ let result = []
 
 `1 + [0]`，还是这样的套路，将[0]用 ToNumber 规则转换：
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image5.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image5.png)
 
 `1 + [0]` 就等于 `1 + '0'`
 
 在 js 中一个数字加一个字符串，最后的结果就是将这两个值拼接成一个字符串。
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image6.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image6.png)
 
 可是有这么一种情况：
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image7.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image7.png)
 
 为什么 `{} + 1`等于 1 啊，不应该是'[object Object]1'吗？
 
 我的理解是这样的，当`{}`在前面的时候，js 认为`{}`就是一个代码块，而不是一个空对象。就像这样：
 
-![](/caisr.github.io/database/images/articles/other/implicit_conversion/image8.png)
+![](/madao.github.io/database/images/articles/other/implicit_conversion/image8.png)
 
 那么上面的代码转换一下就是：
 

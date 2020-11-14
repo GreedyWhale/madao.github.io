@@ -8,7 +8,7 @@ yarn add webpack webpack-cli -D
 
 ### 二. 项目目录
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image.png)
 
 - a.js
   ```
@@ -144,7 +144,7 @@ module.exports = {
 
   打包后的结果：
 
-  ![](/caisr.github.io/database/images/articles/webpack/static_assets/image1.png)
+  ![](/madao.github.io/database/images/articles/webpack/static_assets/image1.png)
 
   图片路径有问题，因为 index.html 并不位于 dist 目录下，webpack 提供了生成 html 文件的插件，这里暂时先不用，改一下 loader 的配置：
 
@@ -158,7 +158,7 @@ module.exports = {
 
   publicPath 的值可以认为是 img 标签中的 src 中除了图片名以外的路径，现在就可以看到图片了：
 
-  ![](/caisr.github.io/database/images/articles/webpack/static_assets/image2.png)
+  ![](/madao.github.io/database/images/articles/webpack/static_assets/image2.png)
 
 - url-loader 配置:
 
@@ -184,7 +184,7 @@ module.exports = {
 
   看下效果
 
-  ![](/caisr.github.io/database/images/articles/webpack/static_assets/image3.png)
+  ![](/madao.github.io/database/images/articles/webpack/static_assets/image3.png)
 
 ### 五. css 资源打包
 
@@ -219,7 +219,7 @@ import './style/index.css'
 
 打包后的结果：
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image4.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image4.png)
 
 现在大家基本都用 css 预处理器来写 css 了，所以还得处理这些，用 scss 来举例：
 
@@ -261,11 +261,11 @@ import './style/index.scss'
 
 打包结果：
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image5.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image5.png)
 
 css 资源的打包还有一个要注意的，就是浏览器厂商前缀:
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image6.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image6.png)
 
 用 postcss-loader 这个 loader 就可以自动的为 css 属性加上前缀了，在这之前还需要下载一个插件`autoprefixer`。
 
@@ -327,7 +327,7 @@ img {
 
 打包看结果：
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image7.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image7.png)
 
 到了这里，渐渐的将就开始坑了，你会发现越配越多，不仅要知道 webpack 的配置，还得知道相关 loader 的配置，绝望。。
 
@@ -345,7 +345,7 @@ img {
 
 可以看到它并没有经过 postcss-loader 的处理：
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image8.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image8.png)
 
 为了让 webpack 可以正确处理它，需要加上下面配置：
 
@@ -410,7 +410,7 @@ index.scss:
 
 打包看结果：
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image9.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image9.png)
 modules 就是让 class 不冲突的一个配置。
 
 ### 六. 自动生成 html
@@ -429,7 +429,7 @@ module.exports = {
 
 这时候打包就可以看到，dist 目录下多了 index.html，并且自动的引用了打包后的 js 文件
 
-![](/caisr.github.io/database/images/articles/webpack/static_assets/image10.png)
+![](/madao.github.io/database/images/articles/webpack/static_assets/image10.png)
 
 html-webpack-plugin 所做的事就是：自动生成一个 html 文件，并把打包后的 js 文件自动引入到这个 html 文件中。
 

@@ -18,7 +18,7 @@ macOS 系统自带 Python，不过是 2.7.10 的，所以需要自己安装 pyth
 python --version
 ```
 
-![](/caisr.github.io/database/images/articles/python/setup/image.png)
+![](/madao.github.io/database/images/articles/python/setup/image.png)
 
 这个版本是系统自带的
 
@@ -26,7 +26,7 @@ python --version
 python3 --version
 ```
 
-![](/caisr.github.io/database/images/articles/python/setup/image1.png)
+![](/madao.github.io/database/images/articles/python/setup/image1.png)
 
 这个就是自己安装的版本
 
@@ -34,7 +34,7 @@ python3 --version
 
 如果直接在终端输入`python3`，那么就会进入 Python 的环境，可以直接写 Python 的代码。退出则要输入 exit()
 
-![](/caisr.github.io/database/images/articles/python/setup/image2.png)
+![](/madao.github.io/database/images/articles/python/setup/image2.png)
 
 ### 3. VScode 配置
 
@@ -54,7 +54,7 @@ pip 类似于 npm，用来下载 Python 的包，还没有深入研究。
 
 VScode 的配置添加为：
 
-![](/caisr.github.io/database/images/articles/python/setup/image3.png)
+![](/madao.github.io/database/images/articles/python/setup/image3.png)
 
 pylint 也是代码语法检查工具，是 VScode 默认的检查工具。
 
@@ -62,7 +62,7 @@ pylint 也是代码语法检查工具，是 VScode 默认的检查工具。
 
 还有一点是当用 VScode 打开一个 Python 文件的时候，如果没有指定 Python 的版本，需要手动的指定一下。
 
-![](/caisr.github.io/database/images/articles/python/setup/image4.png)
+![](/madao.github.io/database/images/articles/python/setup/image4.png)
 
 选择 python3.7.1 就好了。里面有两个，我选的是第二个，也就是 3.7 的那个。
 
@@ -74,4 +74,4 @@ pylint 也是代码语法检查工具，是 VScode 默认的检查工具。
 print('Hello Python world!')
 ```
 
-![](/caisr.github.io/database/images/articles/python/setup/image5.png)
+![](/madao.github.io/database/images/articles/python/setup/image5.png)

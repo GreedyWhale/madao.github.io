@@ -8,7 +8,7 @@ Python 中正则表达式相关的都在 re 模块中。简单整理一下常见
 
   那么会得到这样的结果：
 
-  ![](/caisr.github.io/database/images/articles/python/regexp/image.png)
+  ![](/madao.github.io/database/images/articles/python/regexp/image.png)
 
   并没有打印出\n 只有 a 和 b，而且它们还换行了。如果想要打印`\n`这个字符串有两种办法：
 
@@ -17,7 +17,7 @@ Python 中正则表达式相关的都在 re 模块中。简单整理一下常见
   print(r'a\nb')
   ```
 
-  ![](/caisr.github.io/database/images/articles/python/regexp/image1.png)
+  ![](/madao.github.io/database/images/articles/python/regexp/image1.png)
 
   第一种就是再加一个转义符号（\）将原本的转义符转义成原本的意思。第二种是使用`r'字符串'`这种格式。推荐用第二种。
 
@@ -68,7 +68,7 @@ Python 中正则表达式相关的都在 re 模块中。简单整理一下常见
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/regexp/image2.png)
+  ![](/madao.github.io/database/images/articles/python/regexp/image2.png)
 
   group 和 groups 方法会返回匹配到的字符，如果在正则表达式中用了`()`那么表示匹配括号内的所有内容，一个`()`就是一个组， group 方法接受的参数就是组的序号。组从 1 开始。
 

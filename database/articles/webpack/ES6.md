@@ -27,7 +27,7 @@ module.exports = {
 }
 ```
 
-![](/caisr.github.io/database/images/articles/webpack/es6/image.png)
+![](/madao.github.io/database/images/articles/webpack/es6/image.png)
 
 页面就是在本地的服务中打开，注意使用 webpack-dev-server 不会生成打包后的目录，它将文件都放在内存中。
 
@@ -79,7 +79,7 @@ devServer: {
 
 重新打包结果：
 
-![](/caisr.github.io/database/images/articles/webpack/es6/image1.png)
+![](/madao.github.io/database/images/articles/webpack/es6/image1.png)
 
 直接拿到了百度百科的接口返回内容，没有出现跨域。
 
@@ -139,7 +139,7 @@ index.scss
 
 打包后：
 
-![](/caisr.github.io/database/images/articles/webpack/es6/image2.png)
+![](/madao.github.io/database/images/articles/webpack/es6/image2.png)
 
 每点击一下 add Item 按钮就会在页面上增加一个 item 元素，奇数元素的背景色为粉色。
 
@@ -158,7 +158,7 @@ index.scss
 
 页面会重新刷新，那么之前添加的 item 就都没了。
 
-![](/caisr.github.io/database/images/articles/webpack/es6/image3.png)
+![](/madao.github.io/database/images/articles/webpack/es6/image3.png)
 
 又得去点击 add Item 按钮才行，如果想保持之前的页面状态，那么就要用到模块热替换功能：
 
@@ -257,7 +257,7 @@ if (module.hot) {
 
    打包后：
 
-   ![](/caisr.github.io/database/images/articles/webpack/es6/image4.png)
+   ![](/madao.github.io/database/images/articles/webpack/es6/image4.png)
 
    为何按照官网的配置也会出错！！！
 
@@ -284,14 +284,14 @@ if (module.hot) {
 
    重新打包，终于可以了。
 
-   ![](/caisr.github.io/database/images/articles/webpack/es6/image5.png)
+   ![](/madao.github.io/database/images/articles/webpack/es6/image5.png)
 
    开发模式打包的大小：
 
-   ![](/caisr.github.io/database/images/articles/webpack/es6/image6.png)
+   ![](/madao.github.io/database/images/articles/webpack/es6/image6.png)
 
    正式模式打包的大小：
 
-   ![](/caisr.github.io/database/images/articles/webpack/es6/image7.png)
+   ![](/madao.github.io/database/images/articles/webpack/es6/image7.png)
 
 完整的配置：[GitHub](https://github.com/GreedyWhale/webpack_demo/tree/HMR_AND_ES6)

@@ -54,7 +54,7 @@
 
      现在的目录结构应该是这样的
 
-     ![](/caisr.github.io/database/images/articles/mini_program/gulp/image.png)
+     ![](/madao.github.io/database/images/articles/mini_program/gulp/image.png)
 
      src 文件 是用来放源代码的
 

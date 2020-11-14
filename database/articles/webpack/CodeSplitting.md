@@ -55,7 +55,7 @@ Code Splitting 顾名思义就是代码分割，为什么需要做代码分割�
 
    代码是可以运行的
 
-   ![](/caisr.github.io/database/images/articles/webpack/code_splitting/image.png)
+   ![](/madao.github.io/database/images/articles/webpack/code_splitting/image.png)
 
 5. 将 lodash 拆分出来
 
@@ -73,7 +73,7 @@ Code Splitting 顾名思义就是代码分割，为什么需要做代码分割�
 
    现在打包结果：
 
-   ![](/caisr.github.io/database/images/articles/webpack/code_splitting/image1.png)
+   ![](/madao.github.io/database/images/articles/webpack/code_splitting/image1.png)
 
    现在打包后就多出了一个文件，vendors~main.js，这个就是拆分出来的 lodash 源码。
 
@@ -161,7 +161,7 @@ Code Splitting 顾名思义就是代码分割，为什么需要做代码分割�
 
    注意上面的配置中添加了一个 minSize，这是因为 dayjs 这个库很小，webpack 默认配置中代码分离最小为 30kb，所以加上了这个条件，所以这个参数是要看实际情况的，现在打包的结果就是这样：
 
-   ![](/caisr.github.io/database/images/articles/webpack/code_splitting/image2.png)
+   ![](/madao.github.io/database/images/articles/webpack/code_splitting/image2.png)
 
    splitChunks 配置的默认值可以在文档中找到，[链接](https://webpack.js.org/plugins/split-chunks-plugin/#splitchunks-chunks)
 
@@ -201,13 +201,13 @@ import './test2'
 
 重新打包：
 
-![](/caisr.github.io/database/images/articles/webpack/code_splitting/image3.png)
+![](/madao.github.io/database/images/articles/webpack/code_splitting/image3.png)
 
 现在多出了三个文件，array-includes.js 和 es.js 是 babel 的 polyfill，因为用到了新语法，所以会有这些文件，3.js 就是 dayjs 的源码，因为现在 dayjs 是异步导入的模块，按照文档上的例子，通过 import 这种方式导入的模块，webpack 会自动的进行代码分割，所以可以将 minSize 这个配置给删除掉，这样就就不会将 babel 的 polyfill 文件也给单独打包出来了。
 
 删除 minSize 这个配置后重新打包：
 
-![](/caisr.github.io/database/images/articles/webpack/code_splitting/image4.png)
+![](/madao.github.io/database/images/articles/webpack/code_splitting/image4.png)
 
 还是同样的问题，文件名不好认，那么 webpack 也提供了相应的配置，只要这样设置：
 
@@ -227,11 +227,11 @@ function getCurrentTime () {
 
 异步导入模块有什么好处呢，现在将打包后的 html 文件打开：
 
-![](/caisr.github.io/database/images/articles/webpack/code_splitting/image5.png)
+![](/madao.github.io/database/images/articles/webpack/code_splitting/image5.png)
 
 页面初始只会加载这些资源，当点击了按钮后：
 
-![](/caisr.github.io/database/images/articles/webpack/code_splitting/image6.png)
+![](/madao.github.io/database/images/articles/webpack/code_splitting/image6.png)
 
 dayjs 才会被加载，这样做有助于提高页面第一次打开的速度。
 

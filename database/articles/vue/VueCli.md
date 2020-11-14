@@ -22,13 +22,13 @@ yarn global add @vue/cli
 
     - 项目使用默认配置还是手动配置
 
-      ![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image.png)
+      ![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image.png)
 
     一般选择第二项，手动配置
 
     - 项目依赖安装
 
-      ![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image1.png)
+      ![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image1.png)
 
     默认提供的就是上面列出来的这些，按需选择即可。
 
@@ -42,35 +42,35 @@ yarn global add @vue/cli
 
 - 预处理类型选择
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image2.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image2.png)
 
 - 选择一个代码风格检测规范
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image3.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image3.png)
 
 - 在什么时候进行代码风格检测
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image4.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image4.png)
 
 - 将 bable，postcss，eslint 等配置写在 package.json 还是单独文件
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image5.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image5.png)
 
 - 是否保存为默认配置
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image6.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image6.png)
 
 如果是第一次好像还会问你使用 npm 还是 yarn 作为依赖的下载工具，我这是第二次了，所以没有提示。
 
 选择完看到下图，就证明初始化成功了
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image7.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image7.png)
 
 上面这些步骤中可能失败的步骤是下载 node-sass 失败，要么科学上网，要么用国内的源，实在不行就用 yarn 进行下载。
 
 启动项目的时候我还碰到这个问题
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image8.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image8.png)
 
 好像是 npm 包安装不完整，重新装一遍 npm 包就好了`npm i`
 
@@ -108,7 +108,7 @@ Vue.use(ElementUI)
 
 这时候打包看下：
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image9.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image9.png)
 
 可以看到打包后的体积不小，而且还什么都没写就这么大，所以不能全部把全部的 elementUI 组件引入，就要用到按需加载，按照 elementUI 的文档先安装：
 
@@ -142,7 +142,7 @@ npm install babel-plugin-component -D
 
 ```
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image10.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image10.png)
 
 然后在 main.js 中把
 
@@ -174,29 +174,29 @@ Vue.component(Select.name, Select);
 
 有一个问题就是当你的组件变得多的时候，你的 main.js 就会变得很长，所以我将用到的组件单独写在一个 js 文件中。如图：
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image11.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image11.png)
 
 在 main.js 中写上下面图中的代码
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image12.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image12.png)
 
 这还有个问题，就是类似于这种，所以目前这个组件的配置列表 js 文件中只能放组件不能放方法：
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image12.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image12.png)
 
 我目前还没用到这些，所以先不说，等用到了我再更新上去。
 
 然后在首页加一个组件试下
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image13.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image13.png)
 
 启动项目看下：
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image14.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image14.png)
 
 ok，这里组件正常的的添加了，然后看下打包体积：
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image15.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image15.png)
 
 小了很多，但是其实还是有点大（这是开发环境打包，正式的还会小一点），由于对 webpack 用的很不熟练，所以暂时先这样，等我再研究研究。
 
@@ -522,14 +522,14 @@ Vue.use(AxiosPlugin)
 
 在正常的开发中我们肯定是分几种环境的，比如正式，测试之类的，在 vue-cli 中我们可以新建这几个文件
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image16.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image16.png)
 
 每一个文件的代表开发，生产，预发布，当然这些名字都是可以自定义的，这些文件有什么用呢，比如我们不同环境开发使用的域名不同，我们就可以放在这些文件中，比如在.env.development 文件中：
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image17.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image17.png)
 
 然后在封装请求的 js 文件中这样用
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image18.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image18.png)
 
 这里注意变量的命名要加上 VUE_APP，[文档链接](https://cli.vuejs.org/guide/mode-and-env.html#example-staging-mode)。
 
@@ -565,12 +565,12 @@ Vue.use(AxiosPlugin)
 
 查看默认配置：
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image19.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image19.png)
 
 就是这几个文件了。
 
 可配置项，可以在这里看，也可以去文档里找
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image21.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image21.png)
 
 ### 七、路由懒加载
 
@@ -758,7 +758,7 @@ module.exports = {
 
 有时候会出现这种错误：
 
-![image.png](/caisr.github.io/database/images/articles/vue/vue_cli/image20.png)
+![image.png](/madao.github.io/database/images/articles/vue/vue_cli/image20.png)
 
 就是不断的请求这个然后失败，我的解决办法是改下端口号，或者 host 值改为 localhost，然后重启项目。如果谁有更好的解决方法，麻烦告诉我一下，感激不尽
 

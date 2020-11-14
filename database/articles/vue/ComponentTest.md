@@ -5,7 +5,7 @@
 - 断言
   查了下维基百科发现解释的好长啊，直接举个例子看下：
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/component_test/image.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/component_test/image.png)
 
   可以使用 console.assert 在控制台进行简单的断言
   第一句我认为 1 完全等于 1，断言成功了，就什么也不发生。
@@ -31,7 +31,7 @@
 - chai，断言库
   [官网](http://www.chaijs.com/)
   看下它给出的用法
-  ![image.png](/caisr.github.io/database/images/articles/vue/component_test/image1.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/component_test/image1.png)
 
   它用来测试的语句和英语的语法很像，就好像用英语的语法去写测试代码，我觉得这就是自然语言 😁
 
@@ -91,7 +91,7 @@
 
   用浏览器打开这个 html 文件，然后打开控制台，你会看到一个报错信息，如下图
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/component_test/image2.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/component_test/image2.png)
 
   它说断言失败了，实际的值是 rgb(255, 0, 0)这个字符串，期待 red 字符串等于 rgb(255, 0, 0)字符串是不成立的。
 
@@ -289,13 +289,13 @@
     组件实现过程略.....
 
 最终结果：
-![image.png](/caisr.github.io/database/images/articles/vue/component_test/image3.png)
+![image.png](/madao.github.io/database/images/articles/vue/component_test/image3.png)
 
 这是一个简单的按钮组件，支持图标，图标位置，禁用，loading 状态，可以响应点击事件，现在就来使用我们搭好的测试框架测试一下功能
 
 目前的目录结构是这样的
 
-![image.png](/caisr.github.io/database/images/articles/vue/component_test/image4.png)
+![image.png](/madao.github.io/database/images/articles/vue/component_test/image4.png)
 
 现在就开始写测试用例
 
@@ -380,7 +380,7 @@ props: {
   执行 npm test
   如果看到下图这样的输出则证明测试通过：
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/component_test/image5.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/component_test/image5.png)
 
   为了证明测试是有效的，故意写错测试下：
   把之前的断言写成这样
@@ -392,7 +392,7 @@ props: {
 
   得到结果是这样：
 
-  ![image.png](/caisr.github.io/database/images/articles/vue/component_test/image6.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/component_test/image6.png)
 
   他告诉我们 VButton 组件存在这个测试用例失败了。
 
@@ -465,7 +465,7 @@ props: {
   ```
 
   得到的结果：
-  ![image.png](/caisr.github.io/database/images/articles/vue/component_test/image7.png)
+  ![image.png](/madao.github.io/database/images/articles/vue/component_test/image7.png)
 
   ```
 

@@ -28,7 +28,7 @@
 
   ```
 
-  ![](/caisr.github.io/database/images/articles/python/iterator/image.png)
+  ![](/madao.github.io/database/images/articles/python/iterator/image.png)
 
   每次调用 next 函数，迭代器会返回下一个值，如果下一个值没有，那么就会报错。
 
@@ -48,6 +48,6 @@ def float_range(start, stop, step):
         x += step
 ```
 
-![](/caisr.github.io/database/images/articles/python/iterator/image.png)
+![](/madao.github.io/database/images/articles/python/iterator/image.png)
 
 注意例子中的 yield 关键字，在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，返回 yield 的值, 并在下一次执行 next() 方法时从当前位置继续运行。

@@ -54,7 +54,7 @@
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/multiprocessing/image.png)
+  ![](/madao.github.io/database/images/articles/python/multiprocessing/image.png)
 
   单线程计算的是多线程中每个线程计算的 4 倍，理论上多线程应该比单线程快 3~4 倍左右，但是从结果看来 mutilThread 并没有比 normal 快那么多，而且如果多运行几次你还会发现多线程有时候还会比单线程慢。这就是因为 GIL 的存在导致的。
 
@@ -172,7 +172,7 @@
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/multiprocessing/image1.png)
+  ![](/madao.github.io/database/images/articles/python/multiprocessing/image1.png)
 
   对比一下，多进程效率是最高的，当然了这个例子是属于计算密集型的例子，在 io 密集型的程序上，多线程的优势还是挺大的。
 
@@ -210,7 +210,7 @@
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/multiprocessing/image2.png)
+  ![](/madao.github.io/database/images/articles/python/multiprocessing/image2.png)
 
   解释：
 

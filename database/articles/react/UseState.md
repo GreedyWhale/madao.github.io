@@ -24,9 +24,9 @@ setState(newState);
 
 看下效果
 
-![](/caisr.github.io/database/images/articles/react/useState/code.png)
+![](/madao.github.io/database/images/articles/react/useState/code.png)
 
-![](/caisr.github.io/database/images/articles/react/useState/image.png)
+![](/madao.github.io/database/images/articles/react/useState/image.png)
 
 ### useState 原理
 
@@ -48,15 +48,15 @@ const [count, setCount] = useState(0)
 
 现在试着自己实现 useState
 
-![](/caisr.github.io/database/images/articles/react/useState/code1.png)
+![](/madao.github.io/database/images/articles/react/useState/code1.png)
 
-![](/caisr.github.io/database/images/articles/react/useState/image1.png)
+![](/madao.github.io/database/images/articles/react/useState/image1.png)
 
 虽然写的很丑陋，但是确实实现了 useState 的效果 React 的实现肯定不是这样的，原理基本是一样
 
 仔细看上面代码，这个代码有一个 bug，如果存在多个 state 的时候，就会出现冲突，接下来进行优化
 
-![](/caisr.github.io/database/images/articles/react/useState/code2.png)
+![](/madao.github.io/database/images/articles/react/useState/code2.png)
 
 将 state 的数据结构改为
 
@@ -66,26 +66,26 @@ const [count, setCount] = useState(0)
 
 这种格式，value 是一个数组，用于储存多个 state，index 则是为了记录下一次设置 state 的时候的下标，每次执行 setState 的时候将 index 初始化为 0，这样组件重新渲染后获取的 state 顺序就不会乱了。现在测试一下
 
-![](/caisr.github.io/database/images/articles/react/useState/code3.png)
+![](/madao.github.io/database/images/articles/react/useState/code3.png)
 
-![](/caisr.github.io/database/images/articles/react/useState/image2.png)
+![](/madao.github.io/database/images/articles/react/useState/image2.png)
 
 从这个实现就能看出，useState 的调用顺序是很重要的，所以在 React 中是不能在 if 中写 useState 的：
 
-![](/caisr.github.io/database/images/articles/react/useState/code4.png)
+![](/madao.github.io/database/images/articles/react/useState/code4.png)
 
-![](/caisr.github.io/database/images/articles/react/useState/image3.png)
+![](/madao.github.io/database/images/articles/react/useState/image3.png)
 
 ### 对 useState 的误解
 
 看个例子：
 
-![](/caisr.github.io/database/images/articles/react/useState/code5.png)
+![](/madao.github.io/database/images/articles/react/useState/code5.png)
 
 先 +1，后 log
-![](/caisr.github.io/database/images/articles/react/useState/image4.png)
+![](/madao.github.io/database/images/articles/react/useState/image4.png)
 先 log，后 +1
-![](/caisr.github.io/database/images/articles/react/useState/image5.png)
+![](/madao.github.io/database/images/articles/react/useState/image5.png)
 
 先 +1，后 log 结果符合预期，但是先 log，后 +1，log 出的 n 是旧的 n
 

@@ -84,11 +84,11 @@ server.listen(3000);
 
 效果：
 
-![](/caisr.github.io/database/images/articles/node/http/image.png)
+![](/madao.github.io/database/images/articles/node/http/image.png)
 
-![](/caisr.github.io/database/images/articles/node/http/image1.png)
+![](/madao.github.io/database/images/articles/node/http/image1.png)
 
-![](/caisr.github.io/database/images/articles/node/http/image2.png)
+![](/madao.github.io/database/images/articles/node/http/image2.png)
 
 通过 request 中的 url，就可以根据路径的不同返回不同的内容，注意 request.url 会匹配到域名后的所有内容。
 
@@ -310,7 +310,7 @@ server.listen(3000);
 
 看看 postman 上的 body 一栏：
 
-![](/caisr.github.io/database/images/articles/node/http/image3.png)
+![](/madao.github.io/database/images/articles/node/http/image3.png)
 
 可以看到请求体中的数据类型还是很多的，这些类型通过请求头中的`Content-Type`来决定。
 
@@ -506,13 +506,13 @@ server.listen(3000);
 
 ```
 
-![](/caisr.github.io/database/images/articles/node/http/image4.png)
+![](/madao.github.io/database/images/articles/node/http/image4.png)
 
 通过 form-data 格式传一个 rar 格式的文件。这个文件大小是 65.2MB
 
 结果
 
-![](/caisr.github.io/database/images/articles/node/http/image5.png)
+![](/madao.github.io/database/images/articles/node/http/image5.png)
 
 node.js 用了 1354 次将池塘里的水挑完。
 

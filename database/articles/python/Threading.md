@@ -2,7 +2,7 @@
 
   线程和进程是操作系统相关的概念，比如在电脑上可以一边听歌，一边浏览网页，当你打开一个音乐播放器的时候就会启动一个进程，打开浏览器的时候也会启动一个进程。
 
-  ![](/caisr.github.io/database/images/articles/python/threading/image.png)
+  ![](/madao.github.io/database/images/articles/python/threading/image.png)
 
   在音乐播放器中我们在听歌的同时，发表一些评论或者搜索其他歌曲。在进程里同时执行的这些任务，叫做线程。一个进程里是可以包含多个线程的。
 
@@ -30,7 +30,7 @@
       ```
 
       结果：
-      ![](/caisr.github.io/database/images/articles/python/threading/image1.png)
+      ![](/madao.github.io/database/images/articles/python/threading/image1.png)
       例子中看单线程程序执行呢就是一个接着一个执行
 
     - 多线程：
@@ -53,7 +53,7 @@
 
       结果：
 
-      ![](/caisr.github.io/database/images/articles/python/threading/image2.png)
+      ![](/madao.github.io/database/images/articles/python/threading/image2.png)
 
       多线程则像是超市的收银台一样，2 号收银台不用等 1 号收银台的顾客全部交完钱了再开始工作，可以一起工作。
 
@@ -124,7 +124,7 @@
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/threading/image3.png)
+  ![](/madao.github.io/database/images/articles/python/threading/image3.png)
 
 结合 Thread 类的 join 方法，可以看下主线程和子线程之间的顺序：
 
@@ -147,7 +147,7 @@ print(currentThread().getName(), '结束')
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/threading/image4.png)
+![](/madao.github.io/database/images/articles/python/threading/image4.png)
 
 MainThread 就是主线程，可以看到是主线程先结束 Thread-1 线程再结束的，如果想要主线程最后结束，那么就可以使用 join 方法了。
 
@@ -169,7 +169,7 @@ print(currentThread().getName(), '结束')
 
 ```
 
-![](/caisr.github.io/database/images/articles/python/threading/image5.png)
+![](/madao.github.io/database/images/articles/python/threading/image5.png)
 
 - ### 多个线程之间的变量
 
@@ -202,7 +202,7 @@ print(currentThread().getName(), '结束')
 
     多次运行上面代码的结果：
 
-    ![](/caisr.github.io/database/images/articles/python/threading/image6.png)
+    ![](/madao.github.io/database/images/articles/python/threading/image6.png)
 
     a 的值应该永远是 0 的，但是有时候会变，多线程中的变量是共享的，如果同时去改一个变量，那么有可能会将该变量改乱。[原因](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143192823818768cd506abbc94eb5916192364506fa5d000)
 
@@ -300,7 +300,7 @@ print(currentThread().getName(), '结束')
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/python/threading/image7.png)
+  ![](/madao.github.io/database/images/articles/python/threading/image7.png)
 
   用 threading.local 的好处是，当线程中函数比较复杂的时候，也就是说不仅仅只是执行一个函数，而是多个函数，比如：
 

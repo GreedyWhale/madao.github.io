@@ -167,7 +167,7 @@ sub(1, 3)
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/decorator/image.png)
+![](/madao.github.io/database/images/articles/python/decorator/image.png)
 
 用了装饰器之后，调用和以前完全一样。只是在定义函数的时候加上`@装饰函数名`这种语法，原本函数就获得了装饰函数中新增的功能。
 
@@ -178,7 +178,7 @@ print('sum的__name__是：%s' % (sum.__name__))
 print('sub的__name__是：%s' % (sub.__name__))
 ```
 
-![](/caisr.github.io/database/images/articles/python/decorator/image1.png)
+![](/madao.github.io/database/images/articles/python/decorator/image1.png)
 
 变了，全部变成 wrpper 了。这是因为使用`@print_execution_time`的时候实际上等于
 `sum = print_execution_time(sum)`，得到结果就是 wrapper 函数。我们可以使用 funcools 模块中的 wrap 方法来改正这个问题：
@@ -323,7 +323,7 @@ print('sub的__name__是：%s' % (sub.__name__))
 
 结果：
 
-![](/caisr.github.io/database/images/articles/python/decorator/image2.png)
+![](/madao.github.io/database/images/articles/python/decorator/image2.png)
 
 写法就是在原有的装饰器上再包裹一层函数。
 

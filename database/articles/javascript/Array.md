@@ -19,7 +19,7 @@ let arr = [1,[2, [3], [4, 5, 6], [7, 8, 9], 10, 11], 12, 13, 14, [15, 16, 17]]
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/javascript/array/image.png)
+  ![](/madao.github.io/database/images/articles/javascript/array/image.png)
 
 - 方法二：reduce
 
@@ -35,7 +35,7 @@ let arr = [1,[2, [3], [4, 5, 6], [7, 8, 9], 10, 11], 12, 13, 14, [15, 16, 17]]
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/javascript/array/image1.png)
+  ![](/madao.github.io/database/images/articles/javascript/array/image1.png)
 
 - 方法三：flat
 
@@ -43,7 +43,7 @@ let arr = [1,[2, [3], [4, 5, 6], [7, 8, 9], 10, 11], 12, 13, 14, [15, 16, 17]]
   let newArr3 = arr.flat(Infinity);
   ```
 
-  ![](/caisr.github.io/database/images/articles/javascript/array/image2.png)
+  ![](/madao.github.io/database/images/articles/javascript/array/image2.png)
 
 ### 2. 二维数组变一维数组
 
@@ -71,7 +71,7 @@ let arr = [[1,2,3], [4,5,6], 7,8,9];
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/javascript/array/image3.png)
+  ![](/madao.github.io/database/images/articles/javascript/array/image3.png)
 
 ### 3. 将一维数组变为二维数组
 
@@ -94,7 +94,7 @@ let arr = [1,2,3,4,5,6,7,8,9,0];
 
   结果：
 
-  ![](/caisr.github.io/database/images/articles/javascript/array/image4.png)
+  ![](/madao.github.io/database/images/articles/javascript/array/image4.png)
 
 ### 4. 关于 ruduce 的理解
 

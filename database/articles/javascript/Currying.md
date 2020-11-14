@@ -216,12 +216,12 @@
 
   我觉得就是递归那里可能有些难理解。看下效果：
 
-  ![](/caisr.github.io/database/images/articles/javascript/curry/image.png)
+  ![](/madao.github.io/database/images/articles/javascript/curry/image.png)
 
   从上图看出，当传入的参数不够的时候，是不会计算的，只有等参数个数够了，才会计算，所以作用延迟计算就体现出来了。
 
   那么参数复用如何体现：
 
-  ![](/caisr.github.io/database/images/articles/javascript/curry/image1.png)
+  ![](/madao.github.io/database/images/articles/javascript/curry/image1.png)
 
   从图中看出，固定了一个参数后，之后只要传一个参数就可以了。

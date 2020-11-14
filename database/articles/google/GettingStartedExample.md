@@ -51,11 +51,11 @@ setInterval(() => {
 
 在开发模式下安装这个扩展程序：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image.png)
 
 点击`背景页`按钮，会弹出如下界面：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image1.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image1.png)
 
 background.js 的代码会一直在后台执行。
 
@@ -73,13 +73,13 @@ background.js 的代码会一直在后台执行。
 例子中配置了`persistent: false`，那么 background.js 就是按
 需运行，在扩展程序管理页面，会发现过一段时间后就会出现这样的情况：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image2.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image2.png)
 
 表示后台脚本终止了运行。
 
 还可以通过 Chrome 的任务管理器，查看后台脚本的生命周期：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image3.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image3.png)
 
 几秒钟不活动后，后台脚本会自行卸载。释放占用的资源。
 `persistent: false` 是 Chrome 官方推荐的方式
@@ -182,7 +182,7 @@ Chrome 提供的本地储存和 Window.localStorage 是有些不同的，
 
   icons 定义的是扩展程序的图标，这个图标会在 Chrome 的扩展商店、扩展程序管理页面、工具栏上展示（如果你没有配置 page_action 或 browser_action 中的 default_icon 的话），例子：
 
-  ![](/caisr.github.io/database/images/articles/google/getting_started_example/image4.png)
+  ![](/madao.github.io/database/images/articles/google/getting_started_example/image4.png)
 
   官方推荐开发者应始终提供 128 * 128 和 48*48 的图标，图标最好是正方形的。
 
@@ -190,7 +190,7 @@ Chrome 提供的本地储存和 Window.localStorage 是有些不同的，
 
 上一步使用了 page_action 这个字段，如果现在安装例子中的项目会发现：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image5.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image5.png)
 
 图标是暗的，而且点击没有任何反应，现在就需要设置一些条件，当页面满足这些条件的时候，扩展程序就可以用了：
 
@@ -248,7 +248,7 @@ declarativeContent 这 API 也需要申请才能用，所以在 manifest.json �
 
 这时候在 Chrome 中重新刷新例子中的扩展程序（如果不生效尝试删除后重新安装），就可以看到：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image6.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image6.png)
 
 在满足这些条件的页面上，例子中的扩展程序就可以用了。
 
@@ -276,7 +276,7 @@ chrome.storage.sync.get("color", function (data) {
 
 刷新扩展程序，可以看到：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image7.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image7.png)
 
 按钮的颜色变成了在 background.js 中存的颜色了
 
@@ -312,16 +312,16 @@ changeColor.onclick = ({ target: { value } }) => {
 
 再去 Chrome 扩展程序管理页面刷新扩展程序，这时候就可以改变页面的背景色了：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image8.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image8.png)
 
 #### 5. 添加选项页面
 
 选项页面就是提供给用户做一些其他配置的，看看其他扩展程序的选项页是什么样的：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image9.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image9.png)
 
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image10.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image10.png)
 
 从截图中可以看到 JSON Viewer 这个扩展程序，在他的选项页提供了一些主题供用户选择，要实现这个功能需要用到 options_page 这个字段。
 
@@ -379,7 +379,7 @@ constructOptions(kButtonColors);
 
 然后按照前面截图的步骤找到例子中扩展程序的选项页：
 
-![](/caisr.github.io/database/images/articles/google/getting_started_example/image11.png)
+![](/madao.github.io/database/images/articles/google/getting_started_example/image11.png)
 
 当你点击了其中任意一个和当前扩展程序中按钮颜色不同的按钮后，当前扩展程序的按钮就会变成你在选项页中点击的颜色，改变的页面背景色也会跟着改变。
 

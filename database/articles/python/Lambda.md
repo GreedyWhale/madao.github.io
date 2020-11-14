@@ -14,4 +14,4 @@ print(add1(1,2)) # 3
 
 使用 lambda 表达式不用写函数名，不用写 return，`:`前是参数，`:`后是返回值。
 
-![](/caisr.github.io/database/images/articles/python/lambda/image.png)
+![](/madao.github.io/database/images/articles/python/lambda/image.png)

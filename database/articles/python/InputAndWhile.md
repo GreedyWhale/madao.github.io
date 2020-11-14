@@ -7,7 +7,7 @@
   print('Hello!', name)
   ```
 
-  ![](/caisr.github.io/database/images/articles/python/input_and_while/image.png)
+  ![](/madao.github.io/database/images/articles/python/input_and_while/image.png)
 
   需要注意的是，input 获取到的值，都是字符串，例子：
 
@@ -16,7 +16,7 @@
   print(type(age))
   ```
 
-  ![](/caisr.github.io/database/images/articles/python/input_and_while/image1.png)
+  ![](/madao.github.io/database/images/articles/python/input_and_while/image1.png)
 
 - while 循环
 
@@ -57,7 +57,7 @@
           print(message)
   ```
 
-  ![](/caisr.github.io/database/images/articles/python/input_and_while/image2.png)
+  ![](/madao.github.io/database/images/articles/python/input_and_while/image2.png)
 
 - continue
 

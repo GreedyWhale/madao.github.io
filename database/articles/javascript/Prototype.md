@@ -188,7 +188,7 @@ let zombieBlack = new CreateZombie({
 
 通过构造函数创建的对象，可以解决对象识别问题，如图：
 
-![](/caisr.github.io/database/images/articles/javascript/prototype/image.png)
+![](/madao.github.io/database/images/articles/javascript/prototype/image.png)
 
 知识点回顾：
 
@@ -203,7 +203,7 @@ new 做了什么
 
 但是，上面这的这个构造函数还是有问题的，那就是创建了太多相同的函数了，
 
-![](/caisr.github.io/database/images/articles/javascript/prototype/image1.png)
+![](/madao.github.io/database/images/articles/javascript/prototype/image1.png)
 可以看出上面例子无论创建几个僵尸，它们的方法（eat,walk,shouting）都是一样的，所以可以只创建一个函数，然后让这些对象全部引用它就行了。实现这样的需求，就要用到原型的知识了。
 
 补充：
@@ -212,7 +212,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
 例子：
 
-![](/caisr.github.io/database/images/articles/javascript/prototype/image2.png)
+![](/madao.github.io/database/images/articles/javascript/prototype/image2.png)
 
 - ### 原型
 
@@ -278,7 +278,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   看下结果：
 
-  ![](/caisr.github.io/database/images/articles/javascript/prototype/image3.png)
+  ![](/madao.github.io/database/images/articles/javascript/prototype/image3.png)
 
   可以看到 zombieRed 中并没有 eat 等方法，它却可以使用。这就是通过原型机制实现的。
 
@@ -334,7 +334,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   这有点绕，在控制台上面试一试
 
-  ![](/caisr.github.io/database/images/articles/javascript/prototype/image4.png)
+  ![](/madao.github.io/database/images/articles/javascript/prototype/image4.png)
 
   这就是为什么我们只要创建一个对象，它就默认的有 toString，valueOf 等方法，它就是通过原型链一层一层找到了 Object.prototype，而 Object.prototype 中是有这些方法的。
 
@@ -345,10 +345,10 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
   例子：
 
   普通对象
-  ![](/caisr.github.io/database/images/articles/javascript/prototype/image5.png)
+  ![](/madao.github.io/database/images/articles/javascript/prototype/image5.png)
 
   函数
-  ![](/caisr.github.io/database/images/articles/javascript/prototype/image6.png)
+  ![](/madao.github.io/database/images/articles/javascript/prototype/image6.png)
 
   注意例子中的函数的 prototype 的 constructor 属性，函数 prototype 属性中的 constructor 属性指向的就是该函数。
 
@@ -372,7 +372,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   假如将函数通过 new 调用：
 
-  ![](/caisr.github.io/database/images/articles/javascript/prototype/image7.png)
+  ![](/madao.github.io/database/images/articles/javascript/prototype/image7.png)
 
   那么它构造出来的对象的 constructor 属性，继承自构造该对象的函数的 prototype 的
   constructor
@@ -416,7 +416,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   ```
 
-  ![](/caisr.github.io/database/images/articles/javascript/prototype/image8.png)
+  ![](/madao.github.io/database/images/articles/javascript/prototype/image8.png)
 
   如何让 bar.sayHello 不影响 obj.sayHello 呢，那就不要去改原型上的方法，而是直接给 bar 添加一个 sayHello 属性，之前说过查找一个对象的属性是先从自身开始找的，只要找到那么就不会去原型链上找了，例子：
 
@@ -432,7 +432,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   ```
 
-  ![](/caisr.github.io/database/images/articles/javascript/prototype/image9.png)
+  ![](/madao.github.io/database/images/articles/javascript/prototype/image9.png)
 
   补充：
 
@@ -582,7 +582,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
       es6 中添加了这个方法，但是兼容性还不太好。用上面的例子看下用法：
 
-      ![](/caisr.github.io/database/images/articles/javascript/prototype/image10.png)
+      ![](/madao.github.io/database/images/articles/javascript/prototype/image10.png)
 
       [MDN 地址](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
 

@@ -22,7 +22,7 @@ const a = fn(123);
 
 例子中的代码有一个问题，不能获取有用的 a 的类型，只能得到一个 any：
 
-![](/caisr.github.io/database/images/articles/typescript/generic/image.png)
+![](/madao.github.io/database/images/articles/typescript/generic/image.png)
 
 如果改成这样：
 
@@ -34,13 +34,13 @@ function fn<T>(params: T): T {
 
 这时候再看下 a 的类型：
 
-![](/caisr.github.io/database/images/articles/typescript/generic/image1.png)
+![](/madao.github.io/database/images/articles/typescript/generic/image1.png)
 
 TypeScript 直接把 a 的值给你了。
 
 用对象试下：
 
-![](/caisr.github.io/database/images/articles/typescript/generic/image2.png)
+![](/madao.github.io/database/images/articles/typescript/generic/image2.png)
 
 这时候 TypeScript 会给你对象 key 的信息及 key 对应的值的类型。
 
@@ -60,7 +60,7 @@ function fn<T>(params: T): T {
 
 其实 T 就是一个占位符，可以用其他的大小写字符来代替：
 
-![](/caisr.github.io/database/images/articles/typescript/generic/image3.png)
+![](/madao.github.io/database/images/articles/typescript/generic/image3.png)
 
 调用的时候，也有两种方式：
 
@@ -83,7 +83,7 @@ const p = new Promise(resolve => {
 })
 ```
 
-![](/caisr.github.io/database/images/articles/typescript/generic/image4.png)
+![](/madao.github.io/database/images/articles/typescript/generic/image4.png)
 
 这样使用的话，TypeScript 并不能推导出 T 的类型。所以需要用<>来告诉 TypeScript 类型。
 
@@ -93,7 +93,7 @@ const p1 = new Promise<string>(resolve => {
 })
 ```
 
-![](/caisr.github.io/database/images/articles/typescript/generic/image5.png)
+![](/madao.github.io/database/images/articles/typescript/generic/image5.png)
 
 ### 三. 如何声明一个泛型类型
 
