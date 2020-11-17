@@ -41,7 +41,7 @@ Vue 提供了以下类名用于实现动画：
 
     - 元素被移除的过渡开始会添加 v-leave，v-leave-active， v-leave-to 类名，过渡开始的下一帧会 v-leave 被移除，按照我对 v-enter 的立即，v-leave 应该也是元素移除过渡开始的初始样式，但是可能移除过渡开始的速度太快了，我自己测试的时候并没有看到定义在 v-leave 中的样式生效。v-leave-active 和 v-leave-to 都会在过渡效果完成之后移除。离开的过渡流程大概是这样：
 
-      `v-leave, ，v-leave-active, v-leave-to -> v-leave-active, v-leave-to -> 元素被移除`
+      `v-leave, v-leave-active, v-leave-to -> v-leave-active, v-leave-to -> 元素被移除`
 
 综合上面得出的结论：
 
