@@ -215,7 +215,6 @@ print(dict(zip_example))  # {'aaa': 'a', 'bbb': 'b', 'ccc': 'c'}
 
 还有一个用法就是用`*`：
 
-
 ```
 
 zip_example = list(zip((1,2,3), (3,2,1), (3,2,1)))

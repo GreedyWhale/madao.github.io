@@ -150,7 +150,9 @@ print(numbers[1:7])
 它不会改变原列表。
 
 - 三种简写
+
   1. 省略结尾。
+
      ```
 
      numbers = [1,2,3,4,5,6,7,8,9]
@@ -158,8 +160,11 @@ print(numbers[1:7])
      print(numbers[1:]) # [2, 3, 4, 5, 6, 7, 8, 9]
 
      ```
+
      这表示从列表的第一开始一直到列表的最后一项。
+
   2. 省略开头。
+
      ```
 
      numbers = [1,2,3,4,5,6,7,8,9]
@@ -167,8 +172,11 @@ print(numbers[1:7])
      print(numbers[:5]) # [1, 2, 3, 4, 5]
 
      ```
+
      这表示从列表的第一项开始一直到索引 4。这里注意的一点是这里返回的元素不包括索引结束的那一项
+
   3. 全部省略。
+
      ```
 
      numbers = [1,2,3,4,5,6,7,8,9]
@@ -176,9 +184,10 @@ print(numbers[1:7])
      print(numbers[:]) # [1,2,3,4,5,6,7,8,9]
 
      ```
+
      全部省略相当于返回整个列表
-  索引值也是可以用负数的，例子：
-  ![](/madao.github.io/database/images/articles/python/list/image16.png)
+     索引值也是可以用负数的，例子：
+     ![](/madao.github.io/database/images/articles/python/list/image16.png)
 
 ### 7. for 语句遍历列表
 

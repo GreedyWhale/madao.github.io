@@ -75,10 +75,12 @@
   写文件分为两种，一种是直接覆盖原有内容，一种是在原有内容基础上添加新内容。它们对应的两种模式是
 
   - w
+
     ```
     with open('test.txt', 'w') as file_object:
        file_object.write('测试')
     ```
+
     test.txt 文件内容就被覆盖了
 
     ![](/madao.github.io/database/images/articles/python/file_and_error/image1.png)
@@ -100,142 +102,142 @@
 
   1. 先读后写
 
-      ```
+     ```
 
-      # test.txt
+     # test.txt
 
-      test
+     test
 
 
 
-      # file_reader.py
+     # file_reader.py
 
-      with open('test.txt', 'r+') as file_object:
+     with open('test.txt', 'r+') as file_object:
 
-        contents = file_object.read()
+       contents = file_object.read()
 
-        print(contents)
+       print(contents)
 
-        file_object.write('Say something\n')
+       file_object.write('Say something\n')
 
-      ```
+     ```
 
-      运行结果：
+     运行结果：
 
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image3.png)
+     ![](/madao.github.io/database/images/articles/python/file_and_error/image3.png)
 
-      test.txt 文件：
+     test.txt 文件：
 
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image4.png)
+     ![](/madao.github.io/database/images/articles/python/file_and_error/image4.png)
 
-      先读后写，写入的内容会放在原有内容的末尾，读到的内容为文件原始内容。
+     先读后写，写入的内容会放在原有内容的末尾，读到的内容为文件原始内容。
 
   2. 先写后读
 
-      ```
+     ```
 
-      # test.txt
+     # test.txt
 
-      test
-
-
-
-      # file_reader.py
-
-      with open('test.txt', 'r+') as file_object:
-
-        file_object.write('Say something\n')
-
-        contents = file_object.read()
-
-        print(contents)
-
-      ```
-
-      运行结果：
-
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image5.png)
-
-      test.txt 文件：
-
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image6.png)
-
-      可以看到之前的这一行被覆盖了。而且打印出读取到的文件内容是空。
-
-      这就牵扯到了指针问题，也就是输入的时候的闪动的光标，先写后读会覆盖原先位置上的内容，然后指针会跑到最后，读文件的时候从指针位置开始读，那么指针后面没有内容了所以是空，如果把 test.txt 文件写成这样，就会出现这样的结果：
-
-      ```
-
-      # test.txt
-
-      aaaaaaaaaaaa
-
-      bbbbbbbbbbbb
-
-      cccccccccccc
-
-      dddddddddddd
-
-      eeeeeeeeeeee
+     test
 
 
 
+     # file_reader.py
+
+     with open('test.txt', 'r+') as file_object:
+
+       file_object.write('Say something\n')
+
+       contents = file_object.read()
+
+       print(contents)
+
+     ```
+
+     运行结果：
+
+     ![](/madao.github.io/database/images/articles/python/file_and_error/image5.png)
+
+     test.txt 文件：
+
+     ![](/madao.github.io/database/images/articles/python/file_and_error/image6.png)
+
+     可以看到之前的这一行被覆盖了。而且打印出读取到的文件内容是空。
+
+     这就牵扯到了指针问题，也就是输入的时候的闪动的光标，先写后读会覆盖原先位置上的内容，然后指针会跑到最后，读文件的时候从指针位置开始读，那么指针后面没有内容了所以是空，如果把 test.txt 文件写成这样，就会出现这样的结果：
+
+     ```
+
+     # test.txt
+
+     aaaaaaaaaaaa
+
+     bbbbbbbbbbbb
+
+     cccccccccccc
+
+     dddddddddddd
+
+     eeeeeeeeeeee
 
 
-      # file_reader.py
 
-      with open('test.txt', 'r+') as file_object:
 
-        file_object.write('xxx')
 
-        contents = file_object.read()
+     # file_reader.py
 
-        print(contents)
+     with open('test.txt', 'r+') as file_object:
 
-      ```
+       file_object.write('xxx')
 
-      结果：
+       contents = file_object.read()
 
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image7.png)
+       print(contents)
 
-      test.txt 文件
+     ```
 
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image8.png)
+     结果：
 
-      看到没有，打印出来的结果中被 a 的那一行少 3 个，正是被 write 中的三个 xxx 覆盖了。打印出来的内容也是从覆盖完后的指针位置一直到结尾
+     ![](/madao.github.io/database/images/articles/python/file_and_error/image7.png)
 
-      如果想要获取完整内容，那么就要用到 seek()方法，将指针移到开始的位置。
+     test.txt 文件
 
-      ```
+     ![](/madao.github.io/database/images/articles/python/file_and_error/image8.png)
 
-      with open('test.txt', 'r+') as file_object:
+     看到没有，打印出来的结果中被 a 的那一行少 3 个，正是被 write 中的三个 xxx 覆盖了。打印出来的内容也是从覆盖完后的指针位置一直到结尾
 
-        file_object.write('xxx')
+     如果想要获取完整内容，那么就要用到 seek()方法，将指针移到开始的位置。
 
-        file_object.seek(0)  # 新增
+     ```
 
-        contents = file_object.read()
+     with open('test.txt', 'r+') as file_object:
 
-        print(contents)
+       file_object.write('xxx')
 
-      ```
+       file_object.seek(0)  # 新增
 
-      结果
+       contents = file_object.read()
 
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image9.png)
+       print(contents)
+
+     ```
+
+     结果
+
+     ![](/madao.github.io/database/images/articles/python/file_and_error/image9.png)
 
   - writelines
 
-      用 write 写入内容的时候，只能写入字符串，如果我们需要写入列表，那么就要用到 writelines 方法：
+    用 write 写入内容的时候，只能写入字符串，如果我们需要写入列表，那么就要用到 writelines 方法：
 
-      ```
-      with open('./a.txt', 'w', encoding='utf-8') as file:
-          file.writelines(['1', '2', '3', '4'])
-      ```
+    ```
+    with open('./a.txt', 'w', encoding='utf-8') as file:
+        file.writelines(['1', '2', '3', '4'])
+    ```
 
-      结果：
+    结果：
 
-      ![](/madao.github.io/database/images/articles/python/file_and_error/image10.png)
+    ![](/madao.github.io/database/images/articles/python/file_and_error/image10.png)
 
 ### 2. 异常
 

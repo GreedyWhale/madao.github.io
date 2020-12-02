@@ -398,118 +398,118 @@ Redux 中有三个基本的概念：
 
 6. 子组件使用 useContext 获取到读写数据的 api
 
-Parent.tsx
+   Parent.tsx
 
-```diff
-+ import React, { useContext } from 'react'
-import Child from './Child'
-+ import { context } from './index'
+   ```diff
+   + import React, { useContext } from 'react'
+   import Child from './Child'
+   + import { context } from './index'
 
-const Parent = () => {
-  const style = {
-    color: 'red',
-    borderTop: '1px solid red'
-  }
-+ const { state, dispatch } = useContext(context)
-  return (
-    <div style={style}>
-      <p>我是父组件</p>
-      <Child />
-    </div>
-  )
-}
+   const Parent = () => {
+     const style = {
+       color: 'red',
+       borderTop: '1px solid red'
+     }
+   + const { state, dispatch } = useContext(context)
+     return (
+       <div style={style}>
+         <p>我是父组件</p>
+         <Child />
+       </div>
+     )
+   }
 
-export default Parent
-```
+   export default Parent
+   ```
 
-其他组件同上，都是引入同一个 content，然后通过 useContext 获取到数据和修改数据的方法
+   其他组件同上，都是引入同一个 content，然后通过 useContext 获取到数据和修改数据的方法
 
-现在组件就可以通过 useContext 返回的 state 获取到最新的数据，通过 dispatch 更新数据，举个例子：
+   现在组件就可以通过 useContext 返回的 state 获取到最新的数据，通过 dispatch 更新数据，举个例子：
 
-Grandson.tsx
+   Grandson.tsx
 
-```typescript
-import React, { useContext } from "react";
-import { context } from "./index";
+   ```typescript
+   import React, { useContext } from "react";
+   import { context } from "./index";
 
-const Grandson = () => {
-  const style = {
-    color: "blue",
-    borderTop: "1px solid blue",
-  };
-  const action = {
-    type: "updateUser",
-    value: {
-      name: "自来也",
-      age: "54",
-      height: "191.2cm",
-      weight: "88kg",
-    },
-  };
-  const { state, dispatch } = useContext(context);
-  return (
-    <div style={style}>
-      <button onClick={() => dispatch(action)}>更新user</button>
-      {state.user && (
-        <ul>
-          {/*
-            (xxx as any)这种写法非常不好，这里写只是为了写例子方便
-            或者说在TypeScript中尽量少用 any
-          */}
-          <li>姓名：{(state.user as any).name}</li>
-          <li>年龄：{(state.user as any).age}</li>
-          <li>身高：{(state.user as any).height}</li>
-          <li>体重：{(state.user as any).weight}</li>
-        </ul>
-      )}
-      <p>我是孙组件</p>
-    </div>
-  );
-};
+   const Grandson = () => {
+     const style = {
+       color: "blue",
+       borderTop: "1px solid blue",
+     };
+     const action = {
+       type: "updateUser",
+       value: {
+         name: "自来也",
+         age: "54",
+         height: "191.2cm",
+         weight: "88kg",
+       },
+     };
+     const { state, dispatch } = useContext(context);
+     return (
+       <div style={style}>
+         <button onClick={() => dispatch(action)}>更新user</button>
+         {state.user && (
+           <ul>
+             {/*
+               (xxx as any)这种写法非常不好，这里写只是为了写例子方便
+               或者说在TypeScript中尽量少用 any
+             */}
+             <li>姓名：{(state.user as any).name}</li>
+             <li>年龄：{(state.user as any).age}</li>
+             <li>身高：{(state.user as any).height}</li>
+             <li>体重：{(state.user as any).weight}</li>
+           </ul>
+         )}
+         <p>我是孙组件</p>
+       </div>
+     );
+   };
 
-export default Grandson;
-```
+   export default Grandson;
+   ```
 
-parent.tsx
+   parent.tsx
 
-```typescript
-import React, { useContext } from "react";
-import Child from "./Child";
-import { context } from "./index";
+   ```typescript
+   import React, { useContext } from "react";
+   import Child from "./Child";
+   import { context } from "./index";
 
-const Parent = () => {
-  const style = {
-    color: "red",
-    borderTop: "1px solid red",
-  };
-  const { state } = useContext(context);
-  return (
-    <div style={style}>
-      {state.user && (
-        <ul>
-          {/*
-            (xxx as any)这中写法非常不好，这里写只是为了写例子方便
-            或者说在TypeScript中尽量少用 any
-          */}
-          <li>我也可以获得user的信息</li>
-          <li>姓名：{(state.user as any).name}</li>
-          <li>年龄：{(state.user as any).age}</li>
-          <li>身高：{(state.user as any).height}</li>
-          <li>体重：{(state.user as any).weight}</li>
-        </ul>
-      )}
-      <p>我是父组件</p>
-      <Child />
-    </div>
-  );
-};
+   const Parent = () => {
+     const style = {
+       color: "red",
+       borderTop: "1px solid red",
+     };
+     const { state } = useContext(context);
+     return (
+       <div style={style}>
+         {state.user && (
+           <ul>
+             {/*
+               (xxx as any)这中写法非常不好，这里写只是为了写例子方便
+               或者说在TypeScript中尽量少用 any
+             */}
+             <li>我也可以获得user的信息</li>
+             <li>姓名：{(state.user as any).name}</li>
+             <li>年龄：{(state.user as any).age}</li>
+             <li>身高：{(state.user as any).height}</li>
+             <li>体重：{(state.user as any).weight}</li>
+           </ul>
+         )}
+         <p>我是父组件</p>
+         <Child />
+       </div>
+     );
+   };
 
-export default Parent;
-```
+   export default Parent;
+   ```
 
-效果：
+   效果：
 
-![](/madao.github.io/database/images/articles/react/reactHooks/image1.png)
+   ![](/madao.github.io/database/images/articles/react/reactHooks/image1.png)
 
 ### 三. useContext
 

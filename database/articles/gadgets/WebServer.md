@@ -223,7 +223,6 @@ app.post("/upload", upload.single("avatar"), (req, res) => {
 
 由于代码是写在 JS Bin 上的，使用 AJAX 请求不同域名的接口，会出现跨域情况，解决这个问题需要，在 index.js 中加上一个头部，就是报错信息中的`Access-Control-Allow-Origin`：
 
-
 ```
 
 app.post("/upload", upload.single("avatar"), (req, res) => {
@@ -419,7 +418,7 @@ Heroku 是一个支持多种编程语言的云平台即服务。最重要的它�
 1. 注册，过程省略
 2. 选择创建一个新的应用
 
-    ![](/madao.github.io/database/images/articles/gadgets/web_server/image9.png)
+   ![](/madao.github.io/database/images/articles/gadgets/web_server/image9.png)
 
 3. 在部署的时候，有三个选择，我选择选择 GitHub
 4. 由于选择 GitHub，那么还需要创建一个仓库，把代码放上去。
@@ -439,12 +438,11 @@ Heroku 是一个支持多种编程语言的云平台即服务。最重要的它�
 8. 这是我的[仓库地址](https://github.com/GreedyWhale/node-img-server)
 9. 在 heroku 中选择仓库并且选择分支 master，部署
 
-    ![](/madao.github.io/database/images/articles/gadgets/web_server/image10.png)
+   ![](/madao.github.io/database/images/articles/gadgets/web_server/image10.png)
 
 10. 预览
 
     ![](/madao.github.io/database/images/articles/gadgets/web_server/image11.png)
-
 
     这个就是部署好的域名了。
 

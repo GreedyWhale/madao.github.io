@@ -320,7 +320,6 @@ changeColor.onclick = ({ target: { value } }) => {
 
 ![](/madao.github.io/database/images/articles/google/getting_started_example/image9.png)
 
-
 ![](/madao.github.io/database/images/articles/google/getting_started_example/image10.png)
 
 从截图中可以看到 JSON Viewer 这个扩展程序，在他的选项页提供了一些主题供用户选择，要实现这个功能需要用到 options_page 这个字段。

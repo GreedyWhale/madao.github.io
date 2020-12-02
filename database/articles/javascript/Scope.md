@@ -53,7 +53,9 @@ foo();  // 1
 ### 四. 全局作用域 & 函数作用域 & 块级作用域
 
 - #### 全局作用域
+
   全局作用域中的变量在整个 JavaScript 代码中的任何地方都可以访问和修改，全局作用域中的变量都是在**全局对象**的属性，如果 JavaScript 代码是运行在浏览器的环境中，那么这个全局对象就是 window，如果是在 node.js 中那么这个全局对象就是 global，例子：
+
   ```
 
   var bar = 1;
@@ -71,7 +73,9 @@ foo();  // 1
   window.bar;  // 1
 
   ```
+
   这里要注意一下，如果使用 let 和 const 在全局作用域中声明一个变量，这个变量仍然是全局变量，但不是全局对象的属性，例子
+
   ```
 
   let a = 1;
@@ -87,6 +91,7 @@ foo();  // 1
   foo(); // 1
 
   ```
+
 - #### 函数作用域
 
   函数作用域中的变量只能在该函数中访问和修改，在函数之外无法访问和修改，通过闭包可以使函数之外的作用域访问和修改函数作用域中的变量。例子：
@@ -122,7 +127,9 @@ foo();  // 1
   ```
 
 - #### 块级作用域
+
   块级作用域在 es6 之前就已经存在了，就是 try...catch..语句，例子：
+
   ```
 
   try{
@@ -138,7 +145,9 @@ foo();  // 1
   console.log(a); // a is not defined
 
   ```
+
   在 es6 的语法中，用 let 和 const 关键字声明的变量只能在当前代码块中访问和修改。例子：
+
   ```
 
   { let foo = 1; }
@@ -298,29 +307,29 @@ chrome 浏览器控制台中：
 
 1. 关于 with 有可能声明一些意料之外的变量这一点，直接举个例子说明，因为我感觉用我的表达能力，只会让人感到越来越迷惑：
 
-    ```
+   ```
 
-    let obj = {
+   let obj = {
 
-      a: 1
+     a: 1
 
-    }
+   }
 
-    with(obj) {
+   with(obj) {
 
-      a = 3
+     a = 3
 
-      b = 2
+     b = 2
 
-    }
+   }
 
-    console.log(obj);  //  {a: 3}
+   console.log(obj);  //  {a: 3}
 
-    console.log(b);  // 2
+   console.log(b);  // 2
 
-    ```
+   ```
 
-    为啥会这样可以去看下这篇文章[12 种不宜使用的 Javascript 语法](http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html)
+   为啥会这样可以去看下这篇文章[12 种不宜使用的 Javascript 语法](http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html)
 
 2. 使用 with 和 eval 变慢的原因，书中有解释，概括下就是引擎在编译的时候会对作用域查找进行优化，以便于在代码运行时快速找到对应的作用域，但是使用的 with 和 eval 的代码，引擎无法明确的知道使用 with 和 eval 的代码的会对作用域做什么修改，所以只能不优化。
 

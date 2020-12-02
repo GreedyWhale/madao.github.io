@@ -58,8 +58,10 @@
       多线程则像是超市的收银台一样，2 号收银台不用等 1 号收银台的顾客全部交完钱了再开始工作，可以一起工作。
 
 - ### threading.Thread
+
   threading.Thread 函数，创建一个线程。
   使用 help 函数可以看到它接受的参数有这些：
+
   ```
 
   Thread(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None)
@@ -93,16 +95,19 @@
   |invocation. Defaults to {}.
 
   ```
+
   target 就是线程启动后执行的函数
   args 和 kwargs 都是这个函数的参数，args 是元组类型，kwargs 是关键字类型参数。
   name 是给这个线程的名字，如果不传就是 Thread-1, Thread-2....
   它还有一些方法：
+
   - run(): 执行线程中的方法。
   - start(): 启动线程。
   - join(): 等待线程结束。
   - isAlive(): 返回线程是否活动的。
   - getName(): 返回线程名。
   - setName(): 设置线程名。
+
 - ### threading.currentThread
 
   threading.currentThread 可以获得当前的线程信息，例子：
@@ -173,105 +178,105 @@ print(currentThread().getName(), '结束')
 
 - ### 多个线程之间的变量
 
-    ```
-    from threading import Thread
-    a = 0
+  ```
+  from threading import Thread
+  a = 0
 
 
-    def change_num(num):
-        global a
-        a += 1
-        a -= 1
+  def change_num(num):
+      global a
+      a += 1
+      a -= 1
 
 
-    def run_thread(num):
-        for i in range(100000):
-            change_num(num)
+  def run_thread(num):
+      for i in range(100000):
+          change_num(num)
 
 
-    t1 = Thread(target=run_thread, args=(1,))
-    t2 = Thread(target=run_thread, args=(2,))
+  t1 = Thread(target=run_thread, args=(1,))
+  t2 = Thread(target=run_thread, args=(2,))
 
-    t1.start()
-    t2.start()
-    t1.join()
-    t2.join()
+  t1.start()
+  t2.start()
+  t1.join()
+  t2.join()
 
-    print(a)
-    ```
+  print(a)
+  ```
 
-    多次运行上面代码的结果：
+  多次运行上面代码的结果：
 
-    ![](/madao.github.io/database/images/articles/python/threading/image6.png)
+  ![](/madao.github.io/database/images/articles/python/threading/image6.png)
 
-    a 的值应该永远是 0 的，但是有时候会变，多线程中的变量是共享的，如果同时去改一个变量，那么有可能会将该变量改乱。[原因](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143192823818768cd506abbc94eb5916192364506fa5d000)
+  a 的值应该永远是 0 的，但是有时候会变，多线程中的变量是共享的，如果同时去改一个变量，那么有可能会将该变量改乱。[原因](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143192823818768cd506abbc94eb5916192364506fa5d000)
 
-    如果想要多个线程修改同一变量，那么就需要一个锁来确保该变量修改后的正确性。
-    锁就是当一个线程在修改的时候，其他线程等待。这个线程修改完了，下个线程继续修改。
+  如果想要多个线程修改同一变量，那么就需要一个锁来确保该变量修改后的正确性。
+  锁就是当一个线程在修改的时候，其他线程等待。这个线程修改完了，下个线程继续修改。
 
-    实现这个锁，要用到 threading.lock()方法：
+  实现这个锁，要用到 threading.lock()方法：
 
-    ```
+  ```
 
-    from threading import Thread, Lock
+  from threading import Thread, Lock
 
-    a = 0
+  a = 0
 
-    thread_lock = Lock()  # 创建一个锁
-
-
-
-
-
-    def change_num(num):
-
-        global a
-
-        a += 1
-
-        a -= 1
+  thread_lock = Lock()  # 创建一个锁
 
 
 
 
 
-    def run_thread(num):
+  def change_num(num):
 
-        for i in range(100000):
+      global a
 
-            try:
+      a += 1
 
-                thread_lock.acquire()  # 锁住
-
-                change_num(num)
-
-            finally:
-
-                thread_lock.release() # 解锁
+      a -= 1
 
 
 
 
 
-    t1 = Thread(target=run_thread, args=(1,))
+  def run_thread(num):
 
-    t2 = Thread(target=run_thread, args=(2,))
+      for i in range(100000):
+
+          try:
+
+              thread_lock.acquire()  # 锁住
+
+              change_num(num)
+
+          finally:
+
+              thread_lock.release() # 解锁
 
 
 
-    t1.start()
 
-    t2.start()
 
-    t1.join()
+  t1 = Thread(target=run_thread, args=(1,))
 
-    t2.join()
+  t2 = Thread(target=run_thread, args=(2,))
 
 
 
-    print(a)
+  t1.start()
 
-    ```
+  t2.start()
+
+  t1.join()
+
+  t2.join()
+
+
+
+  print(a)
+
+  ```
 
 - ### threading.local
 

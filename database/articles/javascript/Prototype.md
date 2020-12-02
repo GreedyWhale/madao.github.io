@@ -454,136 +454,136 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   1. Object.create
 
-      ```
+     ```
 
-      function Foo(name, age) {
+     function Foo(name, age) {
 
-          this.name = name;
+         this.name = name;
 
-          this.age = age;
+         this.age = age;
 
-      }
+     }
 
-      Foo.prototype.sayName = function () {
+     Foo.prototype.sayName = function () {
 
-          console.log(this.name)
+         console.log(this.name)
 
-      }
+     }
 
 
 
-      function Bar(name,age) {
+     function Bar(name,age) {
 
-          Foo.apply(this, arguments);
+         Foo.apply(this, arguments);
 
-      }
+     }
 
-      Bar.prototype = Object.create(Foo.prototype)
+     Bar.prototype = Object.create(Foo.prototype)
 
-      Bar.prototype.sayAge = function() {
+     Bar.prototype.sayAge = function() {
 
-          console.log(this.age)
+         console.log(this.age)
 
-      }
+     }
 
 
 
-      let a = new Bar('allen', 17);
+     let a = new Bar('allen', 17);
 
 
 
-      a.sayName();  // 'allen'
+     a.sayName();  // 'allen'
 
-      a.sayAge(); // 17
+     a.sayAge(); // 17
 
 
 
-      a.constructor.name;  // Foo
+     a.constructor.name;  // Foo
 
-      ```
+     ```
 
-      [Object.create 介绍](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+     [Object.create 介绍](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 
-      上面例子中是存在一个问题的，之前介绍过一个属性 constructor，函数中的 prototype 属性中的 constructor 属性，默认指向自己，这个属性会被它创建的对象继承过去，当这句代码`Bar.prototype = Object.create(Foo.prototype)`执行过后，Bar 函数 prototype 属性中的 constructor 属性就指向了 Foo，然后使用 Bar 创建的对象的 constructor 属性就指向了 Foo，这就不对了，因为 a 是 Bar 创建的而不是 Foo，所以我们要手动改过来：
+     上面例子中是存在一个问题的，之前介绍过一个属性 constructor，函数中的 prototype 属性中的 constructor 属性，默认指向自己，这个属性会被它创建的对象继承过去，当这句代码`Bar.prototype = Object.create(Foo.prototype)`执行过后，Bar 函数 prototype 属性中的 constructor 属性就指向了 Foo，然后使用 Bar 创建的对象的 constructor 属性就指向了 Foo，这就不对了，因为 a 是 Bar 创建的而不是 Foo，所以我们要手动改过来：
 
-      ```
+     ```
 
-      function Foo(name, age) {
+     function Foo(name, age) {
 
-          this.name = name;
+         this.name = name;
 
-          this.age = age;
+         this.age = age;
 
-      }
+     }
 
-      Foo.prototype.sayName = function () {
+     Foo.prototype.sayName = function () {
 
-          console.log(this.name)
+         console.log(this.name)
 
-      }
+     }
 
 
 
-      function Bar(name,age) {
+     function Bar(name,age) {
 
-          Foo.apply(this, arguments);
+         Foo.apply(this, arguments);
 
-      }
+     }
 
-      Bar.prototype = Object.create(Foo.prototype);
+     Bar.prototype = Object.create(Foo.prototype);
 
-      Bar.prototype.constructor = Bar;
+     Bar.prototype.constructor = Bar;
 
-      Bar.prototype.sayAge = function() {
+     Bar.prototype.sayAge = function() {
 
-          console.log(this.age)
+         console.log(this.age)
 
-      }
+     }
 
 
 
-      let a = new Bar('allen', 17);
+     let a = new Bar('allen', 17);
 
 
 
-      a.sayName();  // 'allen'
+     a.sayName();  // 'allen'
 
-      a.sayAge(); // 17
+     a.sayAge(); // 17
 
 
 
-      a.constructor.name;  // Bar
+     a.constructor.name;  // Bar
 
-      ```
+     ```
 
-      小提示：
+     小提示：
 
-      Object.create 是 es5 中新增的函数，如果要在 es5 之前的环境中用它，可以用以下代码做兼容：
+     Object.create 是 es5 中新增的函数，如果要在 es5 之前的环境中用它，可以用以下代码做兼容：
 
-      ```
+     ```
 
-      if(!Object.create) {
+     if(!Object.create) {
 
-          Object.create = function(obj) {
+         Object.create = function(obj) {
 
-              function F(){};
+             function F(){};
 
-              F.prototype = obj;
+             F.prototype = obj;
 
-              return new F();
+             return new F();
 
-          }
+         }
 
-      }
+     }
 
-      ```
+     ```
 
-  2.  Object.setPrototypeOf
+  2. Object.setPrototypeOf
 
-      es6 中添加了这个方法，但是兼容性还不太好。用上面的例子看下用法：
+     es6 中添加了这个方法，但是兼容性还不太好。用上面的例子看下用法：
 
-      ![](/madao.github.io/database/images/articles/javascript/prototype/image10.png)
+     ![](/madao.github.io/database/images/articles/javascript/prototype/image10.png)
 
-      [MDN 地址](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
+     [MDN 地址](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
 
-      可以看到这种方法都不用手动的修改 constructor 指向。
+     可以看到这种方法都不用手动的修改 constructor 指向。

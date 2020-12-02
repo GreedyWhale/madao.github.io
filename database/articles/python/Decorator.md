@@ -335,53 +335,53 @@ print('sub的__name__是：%s' % (sub.__name__))
 
 1. 不带参数的装饰器
 
-    ```
+   ```
 
-    from functools import wraps
-
-
+   from functools import wraps
 
 
 
-    def decorator(func):
 
-        @wraps(func)
 
-        def wrapper(*args, **wkargs):
+   def decorator(func):
 
-            # 写新增功能
+       @wraps(func)
 
-            result = func(*args, **wkargs)
+       def wrapper(*args, **wkargs):
 
-            return result
+           # 写新增功能
 
-        return wrapper
+           result = func(*args, **wkargs)
 
-    ```
+           return result
+
+       return wrapper
+
+   ```
 
 2. 带参数的装饰器
 
-    ```
+   ```
 
-    from functools import wraps
+   from functools import wraps
 
 
-    def decorator_wrapper(*args, **wkargs):
+   def decorator_wrapper(*args, **wkargs):
 
-        def decorator(func):
+       def decorator(func):
 
-            @wraps(func)
+           @wraps(func)
 
-            def wrapper(*sub_args, **sub_wkargs):
+           def wrapper(*sub_args, **sub_wkargs):
 
-                # 写新增功能
+               # 写新增功能
 
-                result = func(*sub_args, **sub_wkargs)
+               result = func(*sub_args, **sub_wkargs)
 
-                return result
+               return result
 
-            return wrapper
+           return wrapper
 
-        return decorator
+       return decorator
 
-    ```
+   ```

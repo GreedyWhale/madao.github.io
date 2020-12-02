@@ -11,8 +11,11 @@
   - symbol
 
 - ### 声明
+
   声明对象的方法有：
-  1. 直接声明
+
+  1.  直接声明
+
       ```
 
       let obj = {
@@ -22,15 +25,18 @@
       }
 
       ```
-  2. 使用构造函数
+
+  2.  使用构造函数
       ```
 
-      let obj = new Object();
+          let obj = new Object();
 
-      obj.key = value
+          obj.key = value
 
-      ```
-  这两种方法创建出来的对象是一样的。
+          ```
+
+      这两种方法创建出来的对象是一样的。
+
 - ### 引用类型
 
   对象类型又被叫做引用类型，引用类型是什么意思呢？就是引用类型储存的是值的地址（也可以理解为指针）。
@@ -50,31 +56,31 @@
 
   它们的区别看下面例子
 
-    ```
+  ```
 
-    let a = 1;
+  let a = 1;
 
-    let b = a;
+  let b = a;
 
-    b = 2;
+  b = 2;
 
-    console.log(a, b);   // 1  2
+  console.log(a, b);   // 1  2
 
 
 
-    let foo = {
+  let foo = {
 
-      name: 'allen'
+    name: 'allen'
 
-    }
+  }
 
-    let bar = foo;
+  let bar = foo;
 
-    bar.age = 17;
+  bar.age = 17;
 
-    console.log(foo, bar)// {name: "allen", age: 17} {name: "allen", age: 17}
+  console.log(foo, bar)// {name: "allen", age: 17} {name: "allen", age: 17}
 
-    ```
+  ```
 
   如果是基本类型，将它赋值给其他变量。赋值后的值和原始值彼此是独立的，改变其中一个另一个不会跟着改变，而引用类型不同，它储存的仅仅是一个地址，赋值给其他变量后，只是将地址赋值给了另一个变量，改变其中一个会导致另一个也跟着改变，就好像你将家里的钥匙给了其他的人，那个人给你家里放了一些东西，你回到家当然也能看到多出来的东西，你们两只是拿的钥匙相同。
 
@@ -338,33 +344,33 @@
 
   1. in 操作符检查的是某个属性名是否存在而不是某个值是否存在，例子：
 
-      ```
+     ```
 
-      let foo = {a: 1};
+     let foo = {a: 1};
 
-      let bar = [5,6,7,8];
+     let bar = [5,6,7,8];
 
-      ('a' in foo);  // true
+     ('a' in foo);  // true
 
-      (5 in bar); // false
+     (5 in bar); // false
 
-      (0 in bar); // true，因为bar中的属性名是0、1、2、3
+     (0 in bar); // true，因为bar中的属性名是0、1、2、3
 
-      ```
+     ```
 
   2. 书中（《你不知道的 JavaScript（上卷）》）有说到一个很有意思的知识点，那就是这个
 
-      ```
+     ```
 
-      typeof null  // "object"
+     typeof null  // "object"
 
-      null instanceof Object   // false
+     null instanceof Object   // false
 
-      ```
+     ```
 
-      书上说，JavaScript 中不同的对象在底层都表示为二进制，如果二进制前三位都是 0 的话，就会判断为 object 类型，null 的二进制全是 0，所以 typeof null 为'object'，而 null 本身就是 null 类型而不是 object 类型，所以 null instanceof Object 为 false
+     书上说，JavaScript 中不同的对象在底层都表示为二进制，如果二进制前三位都是 0 的话，就会判断为 object 类型，null 的二进制全是 0，所以 typeof null 为'object'，而 null 本身就是 null 类型而不是 object 类型，所以 null instanceof Object 为 false
 
   3. 使用 `let obj1 = Object.create(null)` 创建的对象比 `let obj = {}`更空
 
-      例子：
-      ![image.png](/madao.github.io/database/images/articles/javascript/object/image2.png)
+     例子：
+     ![image.png](/madao.github.io/database/images/articles/javascript/object/image2.png)

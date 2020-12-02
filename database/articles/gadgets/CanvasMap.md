@@ -15,9 +15,9 @@
 #### 1. 添加背景
 
 例子中的背景是一张图片，所以直接使用 drawImage 在 canvas 上绘制即可，但是这里需要注意的是，canvas 元素的 with，height 属性，和 css 中的 with，height 属性是不一样的。
-  
+
 canvas 元素的 with，height 属性`<canvas width=xxx height=xxx>`规定的 canvas 画布的大小，而使用 css 的 with，height 属性规定的是呈现给用户的大小，当这两个尺寸不一致时，canvas 元素会根据 css 的 with，height 进行缩放，绘制出的图形就会变形，当然如果是整数倍那么是没问题的，比如 canvas 的 width 是 400，height 是 200，css 的 width 是 200，height 是 100，这样是没问题的，像这种 css 的 width，height 小于 canvas 的 width、height 的设置，还有助于提高绘制图片的清晰度。
-  
+
 参考: [canvas HTML 属性尺寸和 CSS 尺寸多个细节深入](https://www.zhangxinxu.com/wordpress/2018/07/canvas-html-size-css-size/)
 
 - ##### 新建一个 index.html
@@ -98,7 +98,7 @@ canvas 元素的 with，height 属性`<canvas width=xxx height=xxx>`规定的 ca
   + <canvas class="point-canvas"></canvas>
   ```
 
-  在之前的back-canvas元素后面再添加一个point-canvas元素，用于绘制闪烁的点
+  在之前的 back-canvas 元素后面再添加一个 point-canvas 元素，用于绘制闪烁的点
 
 - ##### 新建 style.css
 
@@ -127,189 +127,189 @@ canvas 元素的 with，height 属性`<canvas width=xxx height=xxx>`规定的 ca
 
   1. 先确定每个点的坐标
 
-      ```javascript
-      // 之前代码保持不变
-      const app = {
-        coordinateGroup: [
-          { x: 1198, y: 640 },
-          { x: 1129, y: 270 },
-          { x: 1128, y: 394 },
-          { x: 1025, y: 383 },
-          { x: 841, y: 317 },
-          { x: 756, y: 276 },
-          { x: 700, y: 500 },
-          { x: 480, y: 200 },
-          { x: 430, y: 400 },
-          { x: 470, y: 600 },
-          { x: 250, y: 360 }
-        ],
+     ```javascript
+     // 之前代码保持不变
+     const app = {
+       coordinateGroup: [
+         { x: 1198, y: 640 },
+         { x: 1129, y: 270 },
+         { x: 1128, y: 394 },
+         { x: 1025, y: 383 },
+         { x: 841, y: 317 },
+         { x: 756, y: 276 },
+         { x: 700, y: 500 },
+         { x: 480, y: 200 },
+         { x: 430, y: 400 },
+         { x: 470, y: 600 },
+         { x: 250, y: 360 },
+       ],
 
-        setCoordinateGroup() {
-          this.coordinateGroup = this.coordinateGroup.map(({ x, y }) => ({
-            x: this.numericalConversion(x),
-            y: this.numericalConversion(y),
-          }));
-        },
+       setCoordinateGroup() {
+         this.coordinateGroup = this.coordinateGroup.map(({ x, y }) => ({
+           x: this.numericalConversion(x),
+           y: this.numericalConversion(y),
+         }));
+       },
 
-        init() {
-          this.setCoordinateGroup();
-        },
-      };
-      ```
+       init() {
+         this.setCoordinateGroup();
+       },
+     };
+     ```
 
   2. 初始化圆点的画布
 
-      ```javascript
-      const app = {
-        pointCanvas: document.querySelector(".point-canvas"),
-        pointContext: null,
+     ```javascript
+     const app = {
+       pointCanvas: document.querySelector(".point-canvas"),
+       pointContext: null,
 
-        drawBg() {
-          return new Promise((resolve) => {
-            const bgImage = new Image();
-            bgImage.src = "./assets/images/map.png";
-            bgImage.onload = () => {
-              const { naturalWidth, naturalHeight } = bgImage;
-              const width = this.numericalConversion(naturalWidth);
-              const height = this.numericalConversion(naturalHeight);
-              [this.backCanvas, this.pointCanvas].forEach((value) => {
-                // 设置canvas的HTML属性width，height
-                value.width = width;
-                value.height = height;
-                // 设置canvas的css属性width，height
-                value.style.width = `${naturalWidth}px`;
-                value.style.height = `${naturalHeight}px`;
-              });
+       drawBg() {
+         return new Promise((resolve) => {
+           const bgImage = new Image();
+           bgImage.src = "./assets/images/map.png";
+           bgImage.onload = () => {
+             const { naturalWidth, naturalHeight } = bgImage;
+             const width = this.numericalConversion(naturalWidth);
+             const height = this.numericalConversion(naturalHeight);
+             [this.backCanvas, this.pointCanvas].forEach((value) => {
+               // 设置canvas的HTML属性width，height
+               value.width = width;
+               value.height = height;
+               // 设置canvas的css属性width，height
+               value.style.width = `${naturalWidth}px`;
+               value.style.height = `${naturalHeight}px`;
+             });
 
-              this.backContext.drawImage(bgImage, 0, 0, width, height);
-              resolve();
-            };
-          });
-        },
+             this.backContext.drawImage(bgImage, 0, 0, width, height);
+             resolve();
+           };
+         });
+       },
 
-        init() {
-          this.pointContext = this.pointCanvas.getContext("2d");
-        },
-      };
-      ```
+       init() {
+         this.pointContext = this.pointCanvas.getContext("2d");
+       },
+     };
+     ```
 
   3. 实现画圆的方法
 
-      ```javascript
-      const app = {
-        drawCircle() {
-          this.coordinateGroup.forEach(({ x, y }) => {
-            this.pointContext.beginPath();
-            this.pointContext.arc(x, y, 50, 0, 2 * Math.PI);
-            this.pointContext.closePath();
-            this.pointContext.strokeStyle = "#005086";
-            this.pointContext.lineWidth = 4;
-            this.pointContext.stroke();
-          });
-        },
-      };
-      ```
+     ```javascript
+     const app = {
+       drawCircle() {
+         this.coordinateGroup.forEach(({ x, y }) => {
+           this.pointContext.beginPath();
+           this.pointContext.arc(x, y, 50, 0, 2 * Math.PI);
+           this.pointContext.closePath();
+           this.pointContext.strokeStyle = "#005086";
+           this.pointContext.lineWidth = 4;
+           this.pointContext.stroke();
+         });
+       },
+     };
+     ```
 
   4. 将圆画出来
 
-      ```javascript
-      const app = {
-          init () {
-              this.pointContext = this.pointCanvas.getContext('2d')
-              // 画背景
-              this.drawBg().then(() => {
-                // 画圆
-                this.drawCircle()
-              })
-          }
-      }
-      ```
+     ```javascript
+     const app = {
+       init() {
+         this.pointContext = this.pointCanvas.getContext("2d");
+         // 画背景
+         this.drawBg().then(() => {
+           // 画圆
+           this.drawCircle();
+         });
+       },
+     };
+     ```
 
-      目前的效果：
+     目前的效果：
 
-      ![](/madao.github.io/database/images/articles/gadgets/canvas_map/map2.png)
+     ![](/madao.github.io/database/images/articles/gadgets/canvas_map/map2.png)
 
-      上面说过这种闪烁的其实是不断的变化圆的半径和透明度实现的，所以这里还需要一个可以变化的半径
+     上面说过这种闪烁的其实是不断的变化圆的半径和透明度实现的，所以这里还需要一个可以变化的半径
 
   5. 实现圆点半径的动态改变
 
-      ```javascript
-      // 修改一下drawCircle方法
+     ```javascript
+     // 修改一下drawCircle方法
 
-      drawCircle () {
-        this.coordinateGroup = this.coordinateGroup.map(({ x, y, radius = 0 }) => {
-          this.pointContext.beginPath()
-          this.pointContext.arc(x, y, radius, 0, 2 * Math.PI)
-          this.pointContext.closePath()
-          this.pointContext.strokeStyle = '#ed6663'
-          this.pointContext.lineWidth= 4
-          this.pointContext.stroke()
-          radius += 1
-          if (radius > 60) {
-            radius = 0
-          }
-          return { x, y, radius }
-        })
-      },
-      ```
+     drawCircle () {
+       this.coordinateGroup = this.coordinateGroup.map(({ x, y, radius = 0 }) => {
+         this.pointContext.beginPath()
+         this.pointContext.arc(x, y, radius, 0, 2 * Math.PI)
+         this.pointContext.closePath()
+         this.pointContext.strokeStyle = '#ed6663'
+         this.pointContext.lineWidth= 4
+         this.pointContext.stroke()
+         radius += 1
+         if (radius > 60) {
+           radius = 0
+         }
+         return { x, y, radius }
+       })
+     },
+     ```
 
-      上面在每次画圆的同时，更新坐标，给半径一个最大值和每次增加加的量，当超过最大值后归零。
+     上面在每次画圆的同时，更新坐标，给半径一个最大值和每次增加加的量，当超过最大值后归零。
 
   6. 实现闪烁效果
 
-      ```javascript
-      const app = {
-          drawBg () {
-              return new Promise(resolve => {
-                const bgImage = new Image()
-                bgImage.src = './assets/images/map.png'
-                bgImage.onload = () => {
-                  const { naturalWidth, naturalHeight } = bgImage
-                  const width = this.numericalConversion(naturalWidth)
-                  const height = this.numericalConversion(naturalHeight)
-                  ;[this.backCanvas, this.pointCanvas].forEach(value => {
-                    // 设置canvas的HTML属性width，height
-                    value.width = width
-                    value.height = height
-                    // 设置canvas的css属性width，height
-                    value.style.width = `${naturalWidth}px`
-                    value.style.height = `${naturalHeight}px`
-                  })
+     ```javascript
+     const app = {
+         drawBg () {
+             return new Promise(resolve => {
+               const bgImage = new Image()
+               bgImage.src = './assets/images/map.png'
+               bgImage.onload = () => {
+                 const { naturalWidth, naturalHeight } = bgImage
+                 const width = this.numericalConversion(naturalWidth)
+                 const height = this.numericalConversion(naturalHeight)
+                 ;[this.backCanvas, this.pointCanvas].forEach(value => {
+                   // 设置canvas的HTML属性width，height
+                   value.width = width
+                   value.height = height
+                   // 设置canvas的css属性width，height
+                   value.style.width = `${naturalWidth}px`
+                   value.style.height = `${naturalHeight}px`
+                 })
 
-                  this.backContext.drawImage(bgImage, 0, 0, width, height)
-                  this.pointContext.globalAlpha = 0.95 // 重要，重要，重要！！！
-                  resolve()
-                }
-              })
-          },
-          renderPoint () {
-            this.pointContext.globalCompositeOperation = 'destination-in'
-            this.pointContext.fillRect(0, 0, this.pointCanvas.width, this.pointCanvas.height)
-            this.pointContext.globalCompositeOperation = 'source-over'
-            this.drawCircle()
-          }，
-          render () {
-            this.renderPoint()
-            window.requestAnimationFrame(this.render.bind(this))
-          },
-          init () {
-          	init () {
-              this.backContext = this.backCanvas.getContext('2d')
-              this.pointContext = this.pointCanvas.getContext('2d')
-              this.setCoordinateGroup()
-              // 画背景
-              this.drawBg().then(() => {
-                // 启动动画
-                this.render()
-              })
-            }
-          }
-      }
-      ```
+                 this.backContext.drawImage(bgImage, 0, 0, width, height)
+                 this.pointContext.globalAlpha = 0.95 // 重要，重要，重要！！！
+                 resolve()
+               }
+             })
+         },
+         renderPoint () {
+           this.pointContext.globalCompositeOperation = 'destination-in'
+           this.pointContext.fillRect(0, 0, this.pointCanvas.width, this.pointCanvas.height)
+           this.pointContext.globalCompositeOperation = 'source-over'
+           this.drawCircle()
+         }，
+         render () {
+           this.renderPoint()
+           window.requestAnimationFrame(this.render.bind(this))
+         },
+         init () {
+         	init () {
+             this.backContext = this.backCanvas.getContext('2d')
+             this.pointContext = this.pointCanvas.getContext('2d')
+             this.setCoordinateGroup()
+             // 画背景
+             this.drawBg().then(() => {
+               // 启动动画
+               this.render()
+             })
+           }
+         }
+     }
+     ```
 
-      效果：
+     效果：
 
-      ![](/madao.github.io/database/images/articles/gadgets/canvas_map/map1.gif)
+     ![](/madao.github.io/database/images/articles/gadgets/canvas_map/map1.gif)
 
 - ##### 解释下代码：
 
@@ -334,7 +334,7 @@ canvas 元素的 with，height 属性`<canvas width=xxx height=xxx>`规定的 ca
 
       这两句的代码的意思就是把之前画出的圆保存起来。
 
-  2. this.pointContext.globalAlpha = 0.95
+  2.  this.pointContext.globalAlpha = 0.95
 
       这一句是非常重要的一句代码，也是我理解最久的一句，globalAlpha 是用来设置整个画布的透明度的，只要你设置了这个属性，之后绘制的图形都会有设置的透明度
 
@@ -353,7 +353,7 @@ canvas 元素的 with，height 属性`<canvas width=xxx height=xxx>`规定的 ca
 
       这个只是个人理解，不知道对不对。
 
-  3. window.requestAnimationFrame(this.render.bind(this))
+  3.  window.requestAnimationFrame(this.render.bind(this))
 
       上面也说过，动画是通过不断渲染实现的，这个就是用来进行重复渲染的方式，当然也可以改成 setTimeout 或 setInterval 来实现。
 
@@ -364,50 +364,54 @@ canvas 元素的 with，height 属性`<canvas width=xxx height=xxx>`规定的 ca
 - #### main.js
 
   ```javascript
-
   const app = {
     centerCoordinate: null,
 
-    isCenterPoint (x, y) {
-      return (x === this.centerCoordinate.x && y === this.centerCoordinate.y)
+    isCenterPoint(x, y) {
+      return x === this.centerCoordinate.x && y === this.centerCoordinate.y;
     },
 
-    drawLine () {
+    drawLine() {
       this.coordinateGroup.forEach(({ x, y }) => {
         // 中心点与中心点之间不需要连线
         if (this.isCenterPoint(x, y)) {
-          return
+          return;
         }
-        this.backContext.strokeStyle = '#b52b65'
-        this.backContext.lineWidth = this.numericalConversion(1)
-        this.backContext.moveTo(x, y)
+        this.backContext.strokeStyle = "#b52b65";
+        this.backContext.lineWidth = this.numericalConversion(1);
+        this.backContext.moveTo(x, y);
         const controlPoint = {
           x: (x + this.centerCoordinate.x) / 2,
-          y: y - this.numericalConversion(100)
-        }
-        this.backContext.quadraticCurveTo(controlPoint.x, controlPoint.y, this.centerCoordinate.x, this.centerCoordinate.y)
-        this.backContext.stroke()
-      })
+          y: y - this.numericalConversion(100),
+        };
+        this.backContext.quadraticCurveTo(
+          controlPoint.x,
+          controlPoint.y,
+          this.centerCoordinate.x,
+          this.centerCoordinate.y
+        );
+        this.backContext.stroke();
+      });
     },
 
-    init () {
-      this.backContext = this.backCanvas.getContext('2d')
-      this.pointContext = this.pointCanvas.getContext('2d')
-      this.setCoordinateGroup()
+    init() {
+      this.backContext = this.backCanvas.getContext("2d");
+      this.pointContext = this.pointCanvas.getContext("2d");
+      this.setCoordinateGroup();
       // 设置中心点坐标
       this.centerCoordinate = {
         x: this.numericalConversion(1025),
-        y: this.numericalConversion(383)
-      }
+        y: this.numericalConversion(383),
+      };
       // 画背景
       this.drawBg().then(() => {
         // 绘制连线
-        this.drawLine()
+        this.drawLine();
         // 启动动画
-        this.render()
-      })
-    }
-  }
+        this.render();
+      });
+    },
+  };
   ```
 
   效果：

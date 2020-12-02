@@ -128,165 +128,165 @@
    [官方配置文档](http://karma-runner.github.io/2.0/config/configuration-file.html)
    [Karma 中文配置 API](https://blog.csdn.net/maomaolaoshi/article/details/78542837)
 
-    ```
+   ```
 
-    // Karma configuration
+   // Karma configuration
 
-    // Generated on Tue Aug 07 2018 15:02:42 GMT+0800 (CST)
+   // Generated on Tue Aug 07 2018 15:02:42 GMT+0800 (CST)
 
 
 
-    module.exports = function(config) {
+   module.exports = function(config) {
 
-      config.set({
+     config.set({
 
 
 
-        // base path that will be used to resolve all patterns (eg. files, exclude)
+       // base path that will be used to resolve all patterns (eg. files, exclude)
 
-        basePath: '',
+       basePath: '',
 
 
 
 
 
-        // frameworks to use
+       // frameworks to use
 
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+       // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
 
-        frameworks: ['mocha'],
+       frameworks: ['mocha'],
 
 
 
 
 
-        // list of files / patterns to load in the browser
+       // list of files / patterns to load in the browser
 
-        files: [
+       files: [
 
-          'test'
+         'test'
 
-        ],
+       ],
 
 
 
 
 
-        // list of files / patterns to exclude
+       // list of files / patterns to exclude
 
-        exclude: [
+       exclude: [
 
-        ],
+       ],
 
 
 
 
 
-        // preprocess matching files before serving them to the browser
+       // preprocess matching files before serving them to the browser
 
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+       // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
-        preprocessors: {
+       preprocessors: {
 
-        },
+       },
 
 
 
 
 
-        // test results reporter to use
+       // test results reporter to use
 
-        // possible values: 'dots', 'progress'
+       // possible values: 'dots', 'progress'
 
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+       // available reporters: https://npmjs.org/browse/keyword/karma-reporter
 
-        reporters: ['progress'],
+       reporters: ['progress'],
 
 
 
 
 
-        // web server port
+       // web server port
 
-        port: 9876,
+       port: 9876,
 
 
 
 
 
-        // enable / disable colors in the output (reporters and logs)
+       // enable / disable colors in the output (reporters and logs)
 
-        colors: true,
+       colors: true,
 
 
 
 
 
-        // level of logging
+       // level of logging
 
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+       // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
 
-        logLevel: config.LOG_INFO,
+       logLevel: config.LOG_INFO,
 
 
 
 
 
-        // enable / disable watching file and executing tests whenever any file changes
+       // enable / disable watching file and executing tests whenever any file changes
 
-        autoWatch: true,
+       autoWatch: true,
 
 
 
 
 
-        // start these browsers
+       // start these browsers
 
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+       // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
 
-        browsers: ['Chrome'],
+       browsers: ['Chrome'],
 
 
 
 
 
-        // Continuous Integration mode
+       // Continuous Integration mode
 
-        // if true, Karma captures browsers, runs the tests and exits
+       // if true, Karma captures browsers, runs the tests and exits
 
-        singleRun: false,
+       singleRun: false,
 
 
 
-        // Concurrency level
+       // Concurrency level
 
-        // how many browser should be started simultaneous
+       // how many browser should be started simultaneous
 
-        concurrency: Infinity
+       concurrency: Infinity
 
-      })
+     })
 
-    }
+   }
 
 
 
-    ```
+   ```
 
-    生成的文件大概是这个样子，会根据之前不同的选项有稍微的偏差，不过没关系，都要改的。
+   生成的文件大概是这个样子，会根据之前不同的选项有稍微的偏差，不过没关系，都要改的。
 
-    - frameworks 改为`frameworks: ['mocha', 'sinon-chai']`
-    - files 改为`files: ['dist/**/*.test.js','dist/**/*.test.css']`
-      这里也可以根据你想放的文件位置改动
-    - browsers 改为` browsers: ['ChromeHeadless']`
+   - frameworks 改为`frameworks: ['mocha', 'sinon-chai']`
+   - files 改为`files: ['dist/**/*.test.js','dist/**/*.test.css']`
+     这里也可以根据你想放的文件位置改动
+   - browsers 改为` browsers: ['ChromeHeadless']`
 
-    其他的就不用改了。
+   其他的就不用改了。
 
-4.  使用 parcel + vue 写一个小组件进行测试
-    `npm i parcel-bundler -D`
-    `npm i vue`
-5.  根据 vue 官方文档给 package.json 添加一项配置
-    `"alias": { "vue" : "./node_modules/vue/dist/vue.common.js" }`
-    组件实现过程略.....
+4. 使用 parcel + vue 写一个小组件进行测试
+   `npm i parcel-bundler -D`
+   `npm i vue`
+5. 根据 vue 官方文档给 package.json 添加一项配置
+   `"alias": { "vue" : "./node_modules/vue/dist/vue.common.js" }`
+   组件实现过程略.....
 
 最终结果：
 ![image.png](/madao.github.io/database/images/articles/vue/component_test/image3.png)

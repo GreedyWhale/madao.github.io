@@ -60,361 +60,359 @@
 
   2. 引入插件
 
-      ```
+     ```
 
-      const path = require('path');
+     const path = require('path');
 
-      const gulp = require('gulp');
+     const gulp = require('gulp');
 
-      const del = require('del');
+     const del = require('del');
 
-      const sass = require('gulp-sass');
+     const sass = require('gulp-sass');
 
-      const rename = require("gulp-rename");
+     const rename = require("gulp-rename");
 
-      const jsonfile = require('jsonfile');
+     const jsonfile = require('jsonfile');
 
-      const replace = require('replace-in-file');
+     const replace = require('replace-in-file');
 
-      const watch = require('gulp-watch');
+     const watch = require('gulp-watch');
 
-      const newer = require('gulp-newer');
+     const newer = require('gulp-newer');
 
-      ```
+     ```
 
   3. 定义环境变量 & 配置
 
-      ```
+     ```
 
-      /*
+     /*
 
-        node.js中的环境变量，可以手动修改
+       node.js中的环境变量，可以手动修改
 
-      */
-      // 故意加上空格的，其实没有，不加vite（1.0.0-rc.1）在打包的时候会报错
-      const environment = process. env. NODE_ENV;
+     */
+     // 故意加上空格的，其实没有，不加vite（1.0.0-rc.1）在打包的时候会报错
+     const environment = process. env. NODE_ENV;
 
-      const config = {};
-
-
-
-      config.development = {
-
-        appid: 'developmentAppid',
-
-        buildPath: './build/development/',
-
-        requestOrigin: 'https://developmentOrigin/',
-
-        projectname: '开发环境'
-
-      }
+     const config = {};
 
 
 
-      config.staging = {
+     config.development = {
 
-        appid: 'stagingAppid',
+       appid: 'developmentAppid',
 
-        buildPath: './build/staging/',
+       buildPath: './build/development/',
 
-        requestOrigin: 'https://stagingOrigin/',
+       requestOrigin: 'https://developmentOrigin/',
 
-        projectname: '预发布环境'
+       projectname: '开发环境'
 
-      }
-
-
-
-      config.production = {
-
-        appid: 'productionAppid',
-
-        buildPath: './build/production/',
-
-        requestOrigin: 'https://productionOrigin/',
-
-        projectname: '正式环境'
-
-      }
+     }
 
 
 
-      /*
+     config.staging = {
 
-        buildPath 打包后文件存放路径
+       appid: 'stagingAppid',
 
-        sourcePath 源代码路径
+       buildPath: './build/staging/',
 
-        configPath 小程序工具配置文件打包后存放路径
+       requestOrigin: 'https://stagingOrigin/',
 
-      */
+       projectname: '预发布环境'
 
-      const buildPath = path.join(__dirname, `${config[environment].buildPath}`);
+     }
 
-      const sourcePath = path.join(__dirname, './src');
 
-      const configPath = path.join(buildPath, './project.config.json');
 
-      ```
+     config.production = {
+
+       appid: 'productionAppid',
+
+       buildPath: './build/production/',
+
+       requestOrigin: 'https://productionOrigin/',
+
+       projectname: '正式环境'
+
+     }
+
+
+
+     /*
+
+       buildPath 打包后文件存放路径
+
+       sourcePath 源代码路径
+
+       configPath 小程序工具配置文件打包后存放路径
+
+     */
+
+     const buildPath = path.join(__dirname, `${config[environment].buildPath}`);
+
+     const sourcePath = path.join(__dirname, './src');
+
+     const configPath = path.join(buildPath, './project.config.json');
+
+     ```
 
   4. 定义具体的任务
 
-      我这里使用的是 gulp 4.0，这篇文章我觉得很好，想要快速了解 Gulp 可以看下：
-      [Gulp 4 入门指南](https://github.com/baixing/FE-Blog/issues/7)
+     我这里使用的是 gulp 4.0，这篇文章我觉得很好，想要快速了解 Gulp 可以看下：
+     [Gulp 4 入门指南](https://github.com/baixing/FE-Blog/issues/7)
 
-      具体的文件处理流程是这样的：
+     具体的文件处理流程是这样的：
 
-      1. 构建前清理旧的 build 文件夹
-      2. 将 src 中的代码移入 build 目录下，并使用 gulp-newer 插件对 build 目录下的文件进行处理
-      3. 将 scss 文件编译成 wxss 文件
-      4. 清除 build 文件下，发布小程序后不用的文件（比如：scss 文件，README.md 文件等）
-      5. 替换所有文件中的域名为当前环境的域名，并生成 project.config.json 文件
+     1. 构建前清理旧的 build 文件夹
+     2. 将 src 中的代码移入 build 目录下，并使用 gulp-newer 插件对 build 目录下的文件进行处理
+     3. 将 scss 文件编译成 wxss 文件
+     4. 清除 build 文件下，发布小程序后不用的文件（比如：scss 文件，README.md 文件等）
+     5. 替换所有文件中的域名为当前环境的域名，并生成 project.config.json 文件
 
-      流程清楚了就开始写代码：
+     流程清楚了就开始写代码：
 
-      ```
+     ```
 
-      gulp.task('default', gulp.series(
+     gulp.task('default', gulp.series(
 
-          'cleanBuildFolder',
+         'cleanBuildFolder',
 
-          'moveSourceToBuildFolder',
+         'moveSourceToBuildFolder',
 
-          'compileScss',
+         'compileScss',
 
-          'cleanUselessFile',
+         'cleanUselessFile',
 
-          'build'
+         'build'
 
-      ));
+     ));
 
 
 
-      先定义一个默认的任务，然后定好每个任务的名字，然后开始一个一个实现
+     先定义一个默认的任务，然后定好每个任务的名字，然后开始一个一个实现
 
-      ```
+     ```
 
+     ```
 
+     gulp.task('cleanBuildFolder', () =>
 
-      ```
+         del([
 
-      gulp.task('cleanBuildFolder', () =>
+             `${buildPath}**/*`
 
-          del([
+         ])
 
-              `${buildPath}**/*`
+     );
 
-          ])
 
-      );
 
+     gulp.task('moveSourceToBuildFolder', () =>
 
+         gulp
 
-      gulp.task('moveSourceToBuildFolder', () =>
+             .src(`${sourcePath}/**/*.*`)
 
-          gulp
+             .pipe(newer(buildPath))
 
-              .src(`${sourcePath}/**/*.*`)
+             .pipe(gulp.dest(buildPath))
 
-              .pipe(newer(buildPath))
+     );
 
-              .pipe(gulp.dest(buildPath))
 
-      );
 
+     /*
 
+       这里要注意，要用src 的 base参数，将文件目录指定到当前目录，
 
-      /*
+       因为每个通过scss文件编译成的wxss文件位置要和scss文件位置保持一致
 
-        这里要注意，要用src 的 base参数，将文件目录指定到当前目录，
+     */
 
-        因为每个通过scss文件编译成的wxss文件位置要和scss文件位置保持一致
+     gulp.task('compileScss', () =>
 
-      */
+         gulp
 
-      gulp.task('compileScss', () =>
+             .src(path.join(buildPath, '**/*.{sass,scss}'), { base: './' })
 
-          gulp
+             .pipe(sass().on('error', sass.logError))
 
-              .src(path.join(buildPath, '**/*.{sass,scss}'), { base: './' })
+             .pipe(rename((file) => { file.extname = '.wxss' }))
 
-              .pipe(sass().on('error', sass.logError))
+             .pipe(gulp.dest('./'))
 
-              .pipe(rename((file) => { file.extname = '.wxss' }))
+     );
 
-              .pipe(gulp.dest('./'))
 
-      );
 
+     gulp.task('cleanUselessFile', () =>
 
+         del([
 
-      gulp.task('cleanUselessFile', () =>
+             path.join(buildPath, './**/*.{sass,scss}'),
 
-          del([
+             path.join(buildPath, './**/*.md')
 
-              path.join(buildPath, './**/*.{sass,scss}'),
+         ])
 
-              path.join(buildPath, './**/*.md')
+     )
 
-          ])
+     function createConfigFile() {
 
-      )
+         const { requestOrigin, appid, projectname } = config[environment];
 
-      function createConfigFile() {
 
-          const { requestOrigin, appid, projectname } = config[environment];
 
+         return replace({
 
+             files: path.join(buildPath, '**/*'),
 
-          return replace({
+             from: [ /'API_BASE'/g ],
 
-              files: path.join(buildPath, '**/*'),
+             to: [`'${requestOrigin}'`]
 
-              from: [ /'API_BASE'/g ],
+         })
 
-              to: [`'${requestOrigin}'`]
+             .then(() => {
 
-          })
+                 jsonfile.readFile(configPath, (error, oldFile) => {
 
-              .then(() => {
+                 if (error) { oldFile = null };
 
-                  jsonfile.readFile(configPath, (error, oldFile) => {
+                     const fileContent = {
 
-                  if (error) { oldFile = null };
+                         appid,
 
-                      const fileContent = {
+                         projectname,
 
-                          appid,
+                         description: '项目配置文件',
 
-                          projectname,
+                         packOptions: { ignore: [] },
 
-                          description: '项目配置文件',
+                         setting: {
 
-                          packOptions: { ignore: [] },
+                             urlCheck: true,
 
-                          setting: {
+                             es6: true,
 
-                              urlCheck: true,
+                             postcss: true,
 
-                              es6: true,
+                             minified: true,
 
-                              postcss: true,
+                             newFeature: true
 
-                              minified: true,
+                         },
 
-                              newFeature: true
+                         compileType: 'miniprogram',
 
-                          },
+                         libVersion: '2.3.0',
 
-                          compileType: 'miniprogram',
+                         debugOptions: { hidedInDevtools: []},
 
-                          libVersion: '2.3.0',
+                         isGameTourist: false,
 
-                          debugOptions: { hidedInDevtools: []},
+                         condition: oldFile ? oldFile.condition : { search: { current: -1, list: [] },
 
-                          isGameTourist: false,
+                         conversation: oldFile ? oldFile.conversation : { current: -1, list: []}, plugin: { current: -1, list: [] }, game: { currentL: -1,list: []},
 
-                          condition: oldFile ? oldFile.condition : { search: { current: -1, list: [] },
+                         miniprogram: oldFile ? oldFile.miniprogram : {current: -1,list: [] } }
 
-                          conversation: oldFile ? oldFile.conversation : { current: -1, list: []}, plugin: { current: -1, list: [] }, game: { currentL: -1,list: []},
+                     }
 
-                          miniprogram: oldFile ? oldFile.miniprogram : {current: -1,list: [] } }
+                 jsonfile.writeFile(configPath, fileContent, { spaces: 2 });
 
-                      }
+             })
 
-                  jsonfile.writeFile(configPath, fileContent, { spaces: 2 });
+         })
 
-              })
+     }
 
-          })
 
-      }
 
+     /*
 
+       https://blog.csdn.net/weixin_40817115/article/details/81079507
 
-      /*
+       为什么使用done
 
-        https://blog.csdn.net/weixin_40817115/article/details/81079507
+     */
 
-        为什么使用done
+     gulp.task('build', done => {
 
-      */
+         createConfigFile()
 
-      gulp.task('build', done => {
+             .then(done)
 
-          createConfigFile()
+         });
 
-              .then(done)
+     }
 
-          });
 
-      }
 
+     // 修改最初定义的default任务
 
 
-      // 修改最初定义的default任务
 
+     gulp.task('default', gulp.series(
 
+         'cleanBuildFolder',
 
-      gulp.task('default', gulp.series(
+         'moveSourceToBuildFolder',
 
-          'cleanBuildFolder',
+         'compileScss',
 
-          'moveSourceToBuildFolder',
+         'cleanUselessFile',
 
-          'compileScss',
+         'build',
 
-          'cleanUselessFile',
+         done => {
 
-          'build',
+             done();
 
-          done => {
+             console.log('编译完成');
 
-              done();
+             console.log(`当前环境为${environment}`);
 
-              console.log('编译完成');
+         }
 
-              console.log(`当前环境为${environment}`);
+     ));
 
-          }
+     // 最后还要实现一个watch任务
 
-      ));
 
-      // 最后还要实现一个watch任务
 
+     gulp.task('watch', gulp.series('default', () =>
 
+         watch(`${sourcePath}/**/*.*`, gulp.series(
 
-      gulp.task('watch', gulp.series('default', () =>
+             'cleanBuildFolder',
 
-          watch(`${sourcePath}/**/*.*`, gulp.series(
+             'moveSourceToBuildFolder',
 
-              'cleanBuildFolder',
+             'compileScss',
 
-              'moveSourceToBuildFolder',
+             'cleanUselessFile'
 
-              'compileScss',
+         )))
 
-              'cleanUselessFile'
+     )
 
-          )))
-
-      )
-
-      ```
+     ```
 
   5. 给 package.json 中添加编译命令
 
-      ```
-      "scripts": {
+     ```
+     "scripts": {
 
-          "dev": "NODE_ENV='development' gulp watch",
+         "dev": "NODE_ENV='development' gulp watch",
 
-          "stag": "NODE_ENV='staging' gulp",
+         "stag": "NODE_ENV='staging' gulp",
 
-          "prod": "NODE_ENV='production' gulp"
+         "prod": "NODE_ENV='production' gulp"
 
-      }
-      ```
+     }
+     ```
 
 到这里就结束了，完整的代码可以看我的[github](https://github.com/GreedyWhale/gulp-demo)

@@ -89,6 +89,7 @@
 - strip 可以将字符串两端的空白删除。
 - lstrip 可以字符串左端的空白删除。
 - rstrip 可以字符串右端的空白删除。
+
   ```
 
   language = '  Python      '
@@ -104,7 +105,9 @@
   print(language2.rstrip())
 
   ```
+
   ![](/madao.github.io/database/images/articles/python/string_and_number/image6.png)
+
 - 长字符串
 
   Python 中过长的字符串可以用"""或者'''来包裹，例子：

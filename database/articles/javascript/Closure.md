@@ -63,88 +63,89 @@ bar()  // 3
 - ### 闭包的作用
 
   利用闭包特性，可以实现模块模式，模块模式是一种设计模式，就是将为了实现某个功能的函数或者变量都放在一起。这样做的好处有：
-    1. 方便维护
-    2. 避免命名冲突
-    3. 复用性更高
 
-    例子：
+  1. 方便维护
+  2. 避免命名冲突
+  3. 复用性更高
 
-    ```
+  例子：
 
-    function control() {
+  ```
 
-      let currentSpeed = 0;
+  function control() {
 
-
-
-      function setSpeed(speed) {
-
-        return currentSpeed = speed;
-
-      }
+    let currentSpeed = 0;
 
 
 
-      function getSpeed() {
+    function setSpeed(speed) {
 
-        return currentSpeed;
-
-      }
-
-
-
-      function accelerate(speed) {
-
-        return currentSpeed += speed;
-
-      }
-
-
-
-      function decelerate(speed) {
-
-        return currentSpeed -= speed;
-
-      }
-
-
-
-      function getStatus() {
-
-        if (currentSpeed > 0) {
-
-          return 'running';
-
-        } else {
-
-          return 'stop'
-
-        }
-
-      }
-
-      return {
-
-        setSpeed,
-
-        getSpeed,
-
-        accelerate,
-
-        decelerate,
-
-        getStatus
-
-      }
+      return currentSpeed = speed;
 
     }
 
 
 
-    const car = control()
+    function getSpeed() {
 
-    ```
+      return currentSpeed;
 
-    这样就封装了一个简单的模块，该模块暴露的方法有 setSpeed,getSpeed 等等，就可以通过这些方法去改变 control 函数中 currentSpeed 变量。
+    }
+
+
+
+    function accelerate(speed) {
+
+      return currentSpeed += speed;
+
+    }
+
+
+
+    function decelerate(speed) {
+
+      return currentSpeed -= speed;
+
+    }
+
+
+
+    function getStatus() {
+
+      if (currentSpeed > 0) {
+
+        return 'running';
+
+      } else {
+
+        return 'stop'
+
+      }
+
+    }
+
+    return {
+
+      setSpeed,
+
+      getSpeed,
+
+      accelerate,
+
+      decelerate,
+
+      getStatus
+
+    }
+
+  }
+
+
+
+  const car = control()
+
+  ```
+
+  这样就封装了一个简单的模块，该模块暴露的方法有 setSpeed,getSpeed 等等，就可以通过这些方法去改变 control 函数中 currentSpeed 变量。
 
 总结下就是，在函数中通过返回一个新函数，能使函数外部的作用域访问到函数内部的作用域，就产生了闭包。

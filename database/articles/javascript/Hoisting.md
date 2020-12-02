@@ -202,8 +202,6 @@
 
   ```
 
-
-
   ```
 
   console.log(foo)  // 报错 foo is not defined

@@ -26,6 +26,7 @@
   print(2 >= 1) # True
   ```
 - 多个条件判断
+
   - and
 
     当需要多个条件**同时**为 True 的判断，可以用关键字 and 将测试条件合并，例子：
@@ -45,10 +46,12 @@
     ```
 
     只有所有条件都不满足，使用 or 的表达式才会为 False。
+
 - 检查列表中的元素
 
   - in
     如果想要检查某个元素的是否在列表中，可以使用 in 关键字，例子：
+
     ```
 
     users = ['Reese', 'Miles', 'Blake']
@@ -58,8 +61,10 @@
     print('Brooke' in users) # False
 
     ```
+
   - not in
     not in 就是检查元素不在列表中的关键字，例子：
+
     ```
 
     users = ['Reese', 'Miles', 'Blake']
