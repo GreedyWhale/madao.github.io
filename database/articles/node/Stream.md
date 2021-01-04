@@ -283,4 +283,4 @@ process.stdin
 | 事件 | data, end, error, close, readable                                                                    | drain, finish, error, close, pipe, unpipe                         |
 | 方法 | pipe(), unpipe(), wrap(), destroy(), read(), unshift(), resume(), pause(), isPaused(), setEncoding() | write(), destroy(), end(), cork(), uncork(), setDefaultEncoding() |
 
-这里主要说一下 drain 事件，有这么一种情况， 当 Readable 传输给 Writable 的速度远大于它接受和处理的速度，简单说就是读的太快，写的太慢，这时候就会有数据积压的情况出现，如果调用 stream.write(chunk) 返回 false 后就不要在调用 write 方法了，这时需要监听 drain 事件，当 drain 事件触发后，就可以继续写入了。
+这里主要说一下 drain 事件，有这么一种情况， 当 Readable 传输给 Writable 的速度远大于它接受和处理的速度，简单说就是读的太快，写的太慢，这时候就会有数据积压的情况出现，如果调用 stream.write(chunk) 返回 false, 那么证明当前已经出现数据积压情况了，这时不应该继续调用 write 进行写入，需要监听 drain 事件，当 drain 事件触发后，就可以继续写入了。
