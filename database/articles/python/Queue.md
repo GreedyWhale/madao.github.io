@@ -128,14 +128,10 @@
     def put_something():
         q.put(1)
         print('生产者1')
-
-
     # 消费者2
     def early_treatment():
         print('消费者2', q.get())
         q.task_done()
-
-
     t1 = Thread(target=put_something)
     t2 = Thread(target=print_something)
     t3 = Thread(target=early_treatment)
@@ -279,8 +275,6 @@
         print("等待所有的钱被取走...")
         q.join()
         print("所有的钱被取完了...")
-
-
     def consumer(n):
         """
         模拟消费者
@@ -288,8 +282,6 @@
         while q.qsize() > 0:
             print("%s 取到" % n, q.get())
             q.task_done()
-
-
     q = queue.Queue()
 
     p1 = threading.Thread(target=producer)
@@ -305,8 +297,6 @@
     import queue
     import random
     import time
-
-
     def producer():
         """
         模拟生产者
@@ -316,8 +306,6 @@
             data = random.randint(1, 100)
             q.put("%s元" % data)
             print('存入：%s元' % data)
-
-
     def consumer(n):
         """
         模拟消费者
@@ -327,8 +315,6 @@
             data = q.get()
             print("%s 取到" % n, data)
             q.task_done()
-
-
     q = queue.Queue()
     names = ['allen', 'jack']
     p1 = threading.Thread(target=producer)
@@ -336,6 +322,4 @@
     for name in names:
         c = threading.Thread(target=consumer, args=(name,))
         c.start()
-
-
     ```

@@ -76,15 +76,11 @@ bar()  // 3
 
     let currentSpeed = 0;
 
-
-
     function setSpeed(speed) {
 
       return currentSpeed = speed;
 
     }
-
-
 
     function getSpeed() {
 
@@ -92,23 +88,17 @@ bar()  // 3
 
     }
 
-
-
     function accelerate(speed) {
 
       return currentSpeed += speed;
 
     }
 
-
-
     function decelerate(speed) {
 
       return currentSpeed -= speed;
 
     }
-
-
 
     function getStatus() {
 
@@ -139,8 +129,6 @@ bar()  // 3
     }
 
   }
-
-
 
   const car = control()
 

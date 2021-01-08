@@ -55,8 +55,6 @@ Python 中正则表达式相关的都在 re 模块中。简单整理一下常见
   import re
 
   res_match = re.match(r'(ab)-(cd)-(ef)', 'ab-cd-ef')
-
-
   print('group不带参数：', res_match.group())
   print('group带参数：', res_match.group(1))
   print('group带参数：', res_match.group(2))
@@ -134,8 +132,6 @@ Python 中正则表达式相关的都在 re 模块中。简单整理一下常见
 
   def square(num):
       return str(int(num.group())**2)
-
-
   res = re.sub(r'\D', '/', test_str)
   res_func = re.sub(r'\d', square, test_str)
 

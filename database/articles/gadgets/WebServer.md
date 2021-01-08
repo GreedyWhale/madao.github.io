@@ -16,19 +16,13 @@ npm install express --save
 
 const express = require("express");
 
-
-
 const app = express();
-
-
 
 app.get("/", (req, res) => {
 
     res.send("Hello Node.js");
 
 });
-
-
 
 const port = 3000;
 
@@ -111,8 +105,6 @@ const express = require("express");
 
 const multer = require("multer");
 
-
-
 // 这里定义图片储存的路径，是以当前文件为基本目录
 
 const upload = multer({ dest: "uploads/" });
@@ -134,8 +126,6 @@ app.post("/upload", upload.single("avatar"), (req, res) => {
   res.send("上传成功");
 
 });
-
-
 
 const port = 3000;
 
@@ -171,8 +161,6 @@ upload.addEventListener('submit', (e) => {
 
   e.preventDefault();
 
-
-
   // 创建FormData对象
 
   var formData = new FormData();
@@ -180,8 +168,6 @@ upload.addEventListener('submit', (e) => {
   var fileInput = document.querySelector('input[name="avatar"]');
 
   formData.append(fileInput.name, fileInput.files[0]);
-
-
 
   // 创建XMLHttpRequest
 
@@ -212,8 +198,6 @@ app.post("/upload", upload.single("avatar"), (req, res) => {
   res.json({name: req.file.filename }); // 使用json格式返回数据。
 
 });
-
-
 
 ```
 
@@ -263,8 +247,6 @@ const upload = multer({ dest: "uploads/" });
 
 const app = express();
 
-
-
 app.use(cors());  // 新增
 
 /*
@@ -281,13 +263,9 @@ app.post("/upload", upload.single("avatar"), (req, res) => {
 
 });
 
-
-
 const port = 3000;
 
 app.listen(port);
-
-
 
 ```
 
@@ -375,8 +353,6 @@ upload.addEventListener('submit', (e) => {
 
   e.preventDefault();
 
-
-
   // 创建FormData对象
 
   var formData = new FormData();
@@ -384,8 +360,6 @@ upload.addEventListener('submit', (e) => {
   var fileInput = document.querySelector('input[name="avatar"]');
 
   formData.append(fileInput.name, fileInput.files[0]);
-
-
 
   // 创建XMLHttpRequest
 

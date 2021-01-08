@@ -157,8 +157,6 @@
 
      from email.header import Header
 
-
-
      msg['From'] = Header("发件人",'utf-8')
 
      msg['To'] = Header("收件人",'utf-8')
@@ -205,19 +203,11 @@
 
    from email.utils import parseaddr, formataddr
 
-
-
-
-
    def format_addr(str):
 
        name, address = parseaddr(str)
 
        return formataddr([Header(name, 'utf-8').encode(), address])
-
-
-
-
 
    try:
 
@@ -229,13 +219,9 @@
 
        qq_mail.login(from_address, password)
 
-
-
        to_address = input('请输入收件人地址：')
 
        message = input('请输入邮件内容：')
-
-
 
        msg = MIMEText(message, 'plain', 'utf-8')
 
@@ -244,8 +230,6 @@
        msg['To'] = format_addr('另一个神秘人 <%s>' % to_address)
 
        msg['Subject'] = Header('今天吃了吗？', 'utf-8').encode()
-
-
 
        qq_mail.sendmail(from_address, [to_address], msg.as_string())
 
@@ -256,8 +240,6 @@
    except smtplib.SMTPException as e:
 
        print('邮件发送失败，原因:%s' % e)
-
-
 
    ```
 
@@ -336,8 +318,6 @@
 
   msg.attach(MIMEText('发个图片', 'plain', 'utf-8'))
 
-
-
   # 从本地读取一个图片添加为附件:
 
   with open('./test.jpeg', 'rb') as f:
@@ -378,19 +358,11 @@
 
   from email.mime.image import MIMEImage
 
-
-
-
-
   def format_addr(str):
 
       name, address = parseaddr(str)
 
       return formataddr([Header(name, 'utf-8').encode(), address])
-
-
-
-
 
   try:
 
@@ -411,8 +383,6 @@
       # attach方法相当于给msg对象，添加不同的部分
 
       msg.attach(MIMEText('发个图片', 'plain', 'utf-8'))
-
-
 
       # 从本地读取一个图片添加为附件:
 
@@ -437,8 +407,6 @@
       msg['To'] = format_addr('另一个神秘人 <%s>' % to_address)
 
       msg['Subject'] = Header('今天吃了吗？', 'utf-8').encode()
-
-
 
       qq_mail.sendmail(from_address, [to_address], msg.as_string())
 

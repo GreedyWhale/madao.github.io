@@ -11,8 +11,6 @@ this 是一个比较难理解的关键字，它在不同情况下的指向不同
 
 // this不指向函数本身
 
-
-
 function foo(num) {
 
   console.log(`foo被调用了${num}次`)
@@ -23,15 +21,11 @@ function foo(num) {
 
 foo.count = 0
 
-
-
 for(let i = 1; i < 6; i++) {
 
   foo(i)
 
 }
-
-
 
 console.log(foo.count)
 
@@ -82,8 +76,6 @@ foo() // undefined
      }
 
      foo() // Window
-
-
 
      ```
 
@@ -222,11 +214,7 @@ foo() // undefined
 
      }
 
-
-
      const Tom = new CreatePerson({name: 'Tom', gender: 'male'})
-
-
 
      Tom.getName()   //  Tom
 
@@ -254,8 +242,6 @@ foo() // undefined
 
        }
 
-
-
        let obj = {
 
          name: 'alex',
@@ -263,8 +249,6 @@ foo() // undefined
          age: 18
 
        }
-
-
 
        foo.bind(obj)()  // alex  18
 

@@ -8,11 +8,7 @@ index.js
 
 const http = require('http');
 
-
-
 const server = http.createServer();
-
-
 
 server.on('request', (request, response) => {
 
@@ -21,8 +17,6 @@ server.on('request', (request, response) => {
   response.end('hello Node.js');
 
 });
-
-
 
 server.listen(3000);
 
@@ -38,11 +32,7 @@ server.listen(3000);
 
 const http = require('http');
 
-
-
 const server = http.createServer();
-
-
 
 server.on('request', (request, response) => {
 
@@ -76,8 +66,6 @@ server.on('request', (request, response) => {
 
 });
 
-
-
 server.listen(3000);
 
 ```
@@ -102,11 +90,7 @@ const urlParse = require('url');
 
 const qs = require('querystring');
 
-
-
 const server = http.createServer();
-
-
 
 server.on('request', (request, response) => {
 
@@ -117,8 +101,6 @@ server.on('request', (request, response) => {
   const { amount } = qs.parse(query);
 
   response.statusCode = 200;
-
-
 
   switch (pathname) {
 
@@ -152,11 +134,7 @@ server.on('request', (request, response) => {
 
 });
 
-
-
 server.listen(3000);
-
-
 
 ```
 
@@ -218,15 +196,11 @@ const urlParse = require('url');
 
 const qs = require('querystring');
 
-
-
 const server = http.createServer();
 
 let users = [];
 
 let userId = 0;
-
-
 
 function updateUsers(res, method, id) {
 
@@ -294,11 +268,7 @@ server.on('request', (request, response) => {
 
 });
 
-
-
 server.listen(3000);
-
-
 
 ```
 
@@ -319,8 +289,6 @@ server.listen(3000);
 const http = require('http');
 
 const urlParse = require('url');
-
-
 
 const server = http.createServer();
 
@@ -402,11 +370,7 @@ server.on('request', (request, response) => {
 
 });
 
-
-
 server.listen(3000);
-
-
 
 ```
 
@@ -456,8 +420,6 @@ const http = require('http');
 
 const urlParse = require('url');
 
-
-
 const server = http.createServer();
 
 server.on('request', (request, response) => {
@@ -498,11 +460,7 @@ server.on('request', (request, response) => {
 
 });
 
-
-
 server.listen(3000);
-
-
 
 ```
 

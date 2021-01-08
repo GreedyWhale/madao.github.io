@@ -101,8 +101,6 @@ export default class Home extends Vue {}
     @print_execute_time # 新增
     def square(a):
         return a ** 2
-
-
     add(10, 20)
     square(10)
     ```

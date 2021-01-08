@@ -14,13 +14,9 @@ class Human():
 
         self.age = age
 
-
-
     def cry(self):
 
         print("I'm " + self.name + ' ,I am so sad')
-
-
 
     def laugh(self):
 
@@ -60,21 +56,13 @@ class Human():
 
       self.age = age
 
-
-
   def cry(self):
 
       print("I'm " + self.name + ' ,I am so sad')
 
-
-
   def laugh(self):
 
       print("I'm " + self.name + ' ,I am very happy')
-
-
-
-
 
   john = Human('John', 50)
 
@@ -120,25 +108,17 @@ class Human():
 
         self.age = age
 
-
-
     def cry(self):
 
         print("I'm " + self.name + ' ,I am so sad')
-
-
 
     def laugh(self):
 
         print("I'm " + self.name + ' ,I am very happy')
 
-
-
     def addAge(self):
 
         self.age += 1
-
-
 
   tom = Human('Tom', 12)
 
@@ -166,25 +146,17 @@ class Human():
 
        self.age = age
 
-
-
    def cry(self):
 
        print("I'm " + self.name + ' ,I am so sad')
-
-
 
    def laugh(self):
 
        print("I'm " + self.name + ' ,I am very happy')
 
-
-
    def addAge(self):
 
        self.age += 1
-
-
 
 # 子类
 
@@ -194,23 +166,13 @@ class Superman(Human):
 
        super().__init__(name, age)
 
-
-
-
-
 kal = Superman('Kal', 100)
 
-
-
 print(kal.name) # Kal
-
-
 
 kal.addAge()
 
 print(kal.age) # 101
-
-
 
 ```
 
@@ -238,13 +200,9 @@ class Superman(Human):
 
        self.address = 'Krypton'
 
-
-
    def fly(self):
 
        print('I can fly')
-
-
 
 kal = Superman('Kal', 100)
 
@@ -266,15 +224,9 @@ class Skills():
 
        self.skills = ['Super Flare', 'Invulnerability', 'Super power', 'Super speed']
 
-
-
    def print_skill_list(self):
 
        print(self.skills)
-
-
-
-
 
 class Superman(Human):
 
@@ -286,15 +238,9 @@ class Superman(Human):
 
        self.skills = Skills()
 
-
-
    def fly(self):
 
        print('I can fly')
-
-
-
-
 
 kal = Superman('Kal', 100)
 
@@ -314,13 +260,9 @@ kal.skills.print_skill_list() # ['Super Flare', 'Invulnerability', 'Super power'
 
 from module_name import class_name
 
-
-
 # 导入多个类
 
 from module_name import class_name_one, class_name_two
-
-
 
 # 导入所有类
 

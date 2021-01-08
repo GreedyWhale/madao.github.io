@@ -134,31 +134,19 @@
 
    // Generated on Tue Aug 07 2018 15:02:42 GMT+0800 (CST)
 
-
-
    module.exports = function(config) {
 
      config.set({
 
-
-
        // base path that will be used to resolve all patterns (eg. files, exclude)
 
        basePath: '',
-
-
-
-
 
        // frameworks to use
 
        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
 
        frameworks: ['mocha'],
-
-
-
-
 
        // list of files / patterns to load in the browser
 
@@ -168,19 +156,11 @@
 
        ],
 
-
-
-
-
        // list of files / patterns to exclude
 
        exclude: [
 
        ],
-
-
-
-
 
        // preprocess matching files before serving them to the browser
 
@@ -190,10 +170,6 @@
 
        },
 
-
-
-
-
        // test results reporter to use
 
        // possible values: 'dots', 'progress'
@@ -202,25 +178,13 @@
 
        reporters: ['progress'],
 
-
-
-
-
        // web server port
 
        port: 9876,
 
-
-
-
-
        // enable / disable colors in the output (reporters and logs)
 
        colors: true,
-
-
-
-
 
        // level of logging
 
@@ -228,17 +192,9 @@
 
        logLevel: config.LOG_INFO,
 
-
-
-
-
        // enable / disable watching file and executing tests whenever any file changes
 
        autoWatch: true,
-
-
-
-
 
        // start these browsers
 
@@ -246,17 +202,11 @@
 
        browsers: ['Chrome'],
 
-
-
-
-
        // Continuous Integration mode
 
        // if true, Karma captures browsers, runs the tests and exits
 
        singleRun: false,
-
-
 
        // Concurrency level
 
@@ -267,8 +217,6 @@
      })
 
    }
-
-
 
    ```
 
@@ -363,8 +311,6 @@ props: {
 
   const Constructor = Vue.extend(VButton)
 
-
-
   describe('VButton 组件测试', function () {
 
     it('VButton 组件存在', function () {
@@ -404,11 +350,7 @@ props: {
 
   it('VButton 组件可以设置icon', function () {
 
-
-
     const constructor = Vue.extend(VButton)
-
-
 
     const vm = new Constructor({
 
@@ -416,15 +358,9 @@ props: {
 
     }).$mount()
 
-
-
     const element = vm.$el.querySelector('use')
 
-
-
     expect(element.getAttribute('xlink:href')).to.equal('#i-warning')
-
-
 
     vm.$destroy()
 
@@ -438,23 +374,15 @@ props: {
 
   it('VButton 组件可以设置icon', function () {
 
-
-
     const vm = new Constructor({
 
       propsData: { iconName: 'warning' }
 
     }).$mount()
 
-
-
     console.log(vm.$el)
 
-
-
     const element = vm.$el.querySelector('use')
-
-
 
     expect(element.getAttribute('xlink:href')).to.equal('#i-warning')
 
@@ -473,15 +401,9 @@ props: {
 
   it('VButton 组件可以设置icon的位置', function () {
 
-
-
     const div = document.createElement('div')
 
-
-
     document.body.appendChild(div)
-
-
 
     const vm = new Constructor({
 
@@ -495,19 +417,11 @@ props: {
 
     }).$mount(div)
 
-
-
     const element = vm.$el.querySelector('.icon')
-
-
 
     expect(getComputedStyle(element).order).to.equal('1')
 
-
-
     vm.$el.remove()
-
-
 
     vm.$destroy()
 
@@ -525,27 +439,15 @@ props: {
 
    it('VButton 组件可以响应点击事件', function () {
 
-
-
     const vm = new Constructor({}).$mount()
-
-
 
     const callback = sinon.spy()
 
-
-
     vm.$on('click', callback)
-
-
 
     vm.$el.click()
 
-
-
     expect(callback).to.have.been.called
-
-
 
     vm.$destroy()
 
@@ -559,19 +461,11 @@ props: {
 
   it('测试异步代码', function (done) {
 
-
-
     const div = document.createElement('div')
-
-
 
     document.body.appendChild(div)
 
-
-
     const vm = new Constructor({}).$mount(div)
-
-
 
     setTimeout(() => {
 
@@ -580,8 +474,6 @@ props: {
       done()
 
     }, 200)
-
-
 
   })
 

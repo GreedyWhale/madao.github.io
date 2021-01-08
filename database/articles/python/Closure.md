@@ -10,11 +10,7 @@ def foo(a):
 
     return bar
 
-
-
 add_one = foo(1)
-
-
 
 print(add_one(1)) # 2
 
@@ -34,8 +30,6 @@ print(add_one(3)) # 4
 
   # 计数器，每调用一次就加一
 
-
-
   def counter():
 
       counts = 0
@@ -49,8 +43,6 @@ print(add_one(3)) # 4
           return counts
 
       return add_one
-
-
 
   counter_1 = counter()
 
@@ -72,27 +64,19 @@ print(add_one(3)) # 4
 
   # 做一个运算 a * x + b，x可变，a,b固定
 
-
-
   def line(a, b):
 
       return lambda x: a * x + b
 
-
-
   line_1 = line(10, 20)
 
   line_2 = line(100, 200)
-
-
 
   print(line_1(5)) # 70
 
   print(line_1(6)) # 80
 
   print(line_1(7)) # 90
-
-
 
   print(line_2(5)) # 700
 

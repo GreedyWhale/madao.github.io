@@ -51,13 +51,9 @@ function numbersCloseEnoughEqual(num1, num2) {
 
 }
 
-
-
 let a = 0.1 + 0.2;
 
 let b = 0.3;
-
-
 
 numbersCloseEnoughEqual(a, b);   // true
 
@@ -96,8 +92,6 @@ NaN 指的是“不是一个数字”（not a number）,但是它却是数字类
 ```
 
 NaN === NaN;  // false
-
-
 
 typeof NaN;  // "number"
 
@@ -159,39 +153,23 @@ let obj = {
 
 };
 
-
-
 let obj1 = obj;
-
-
 
 obj1.b = 2;
 
-
-
 console.log(obj);  {a: 1, b: 2}
 
-
-
 console.log(obj1); {a: 1, b: 2}
-
-
 
 let str = 1;
 
 let str1 = str;
 
-
-
 str1 += 1;
-
-
 
 console.log(str);  // 1
 
 console.log(str1); // 2
-
-
 
 ```
 
@@ -206,11 +184,7 @@ let arr = [1,2,3];
 
 let arr1 = arr;
 
-
-
 arr1 = [4,5,6];
-
-
 
 console.log(arr);   // [1,2,3]
 

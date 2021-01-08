@@ -18,8 +18,6 @@ index.js
 
 ```diff
 + import { add } from './methods'
-
-
 + add(1, 2)
 ```
 

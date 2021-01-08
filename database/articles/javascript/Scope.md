@@ -36,15 +36,11 @@ function foo() {
 
 }
 
-
-
 function bar() {
 
     console.log(a);
 
 }
-
-
 
 foo();  // 1
 
@@ -350,8 +346,6 @@ chrome 浏览器控制台中：
    }
 
 }
-
-
 
 function foo() {
 

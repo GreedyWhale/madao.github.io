@@ -18,15 +18,11 @@
   from threading import Thread
   import time
   import queue
-
-
   def work(q):
       res = 0
       for i in range(1000000):
           res += i ** 2
       q.put(res)
-
-
   def mutil_thread():
       res = 0
       threads = []
@@ -40,8 +36,6 @@
       while not q.empty():
           res += q.get()
       print(res)
-
-
   def coroutine_consumer():
       n = 0
       while True:
@@ -49,8 +43,6 @@
           if not isinstance(m, int):
               return
           n += m ** 2
-
-
   def coroutine_producer(consumer):
       consumer.send(None)
       for i in range(2):
@@ -58,16 +50,12 @@
               res = consumer.send(i)
       consumer.close()
       print(res)
-
-
   def normal():
       res = 0
       for i in range(2):
           for j in range(1000000):
               res += j ** 2
       print(res)
-
-
   t1 = time.time()
   normal()
   print('单线程：%fs' % (time.time() - t1))
@@ -91,18 +79,12 @@
   import time
   import asyncio
   import threading
-
-
   def work(t):
       print('task %d start' % t)
       time.sleep(t)   # 想象这是一个费时的io操作
       print('task %d end' % t)
-
-
   def normal():
       [work(i) for i in range(1, 3)]
-
-
   def multi_thread():
       threads = []
       for i in range(1, 3):
@@ -110,19 +92,13 @@
           t.start()
           threads.append(t)
       [thread.join() for thread in threads]
-
-
   async def work_coroutine(t):
       print('task %d start' % t)
       await asyncio.sleep(t)  # 想象这是一个费时的io操作
       print('task %d end' % t)
-
-
   async def main(loop):
       tasks = [loop.create_task(work_coroutine(t)) for t in range(1, 3)]
       await asyncio.wait(tasks)
-
-
   t1 = time.time()
   normal()
   print('单线程：%fs' % (time.time() - t1))
@@ -158,8 +134,6 @@
       yield n
       print('yield后')
       n += 1
-
-
   g = my_generator(10)
   print(next(g))
   print('=' * 10)
@@ -189,15 +163,11 @@
 
   ```
   from inspect import getgeneratorstate
-
-
   def my_generator(max):
       n = 0
       while n <= max:
           yield n
           n += 1
-
-
   g = my_generator(10)
   print(g)  # <generator object my_generator at 0x102804d68>
   print(getgeneratorstate(g)) # GEN_CREATED
@@ -211,8 +181,6 @@
       while n < max:
           m = yield n
           n += m
-
-
   g = my_generator(10)
   print(next(g))   # 0
   print(g.send(4)) # 4
@@ -269,8 +237,6 @@
   while n < max:
       m = yield n
       n = m
-
-
   g = my_generator(100)
   # g.send(None) == next(g)
   print(g.send(None))  # 0
@@ -286,8 +252,6 @@
   while n < max:
       m = yield n
       n = m
-
-
   g = my_generator(100)
   print(g.send(None))
   print(g.send(4))
@@ -316,8 +280,6 @@
           n = m
   except ValueError:
       print('ValueError')
-
-
   g = my_generator(100)
   print(g.send(None))  # 0
   print(g.send(4))     # 4
@@ -336,8 +298,6 @@ asyncio 的使用：
 
    ```
    import asyncio
-
-
    async def say_hello():
        print('Hello')
        await asyncio.sleep(1)
@@ -357,19 +317,13 @@ asyncio 的使用：
 
    ```
    import asyncio
-
-
    async def say_hello(i):
        print('Hello start %d ' % i)
        await asyncio.sleep(1)
        print('Hello end %d' % i)
-
-
    async def main(loop):
        tasks = [loop.create_task(say_hello(i)) for i in range(1, 3)]
        await asyncio.wait(tasks)
-
-
    loop = asyncio.get_event_loop()
    loop.run_until_complete(main(loop))
    ```
@@ -413,12 +367,8 @@ asyncio 的使用：
 
    ```
    import asyncio
-
-
    async def foo(i):
        return i ** i
-
-
    async def work_1(loop):
        tasks = [asyncio.create_task(foo(i)) for i in range(4)]
        done, pending = await asyncio.wait(tasks)
@@ -446,12 +396,8 @@ asyncio 的使用：
 
    ```
    import asyncio
-
-
    async def foo(i):
        return i ** i
-
-
 
    async def work_2(loop):
        tasks = [asyncio.create_task(foo(i)) for i in range(4)]

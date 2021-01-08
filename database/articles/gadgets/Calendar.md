@@ -88,8 +88,6 @@
 
     }
 
-
-
     // 设置日期数组
 
     function setDateList (year, month) {
@@ -99,8 +97,6 @@
         const firstDayInCurrentMonth = getDayOfWeek(year, month, 1)
 
         const dateList = []
-
-
 
         /*
 
@@ -152,8 +148,6 @@
 
         }
 
-
-
         // 当月日期添加，这里就没什么好说的，直接循环就行了
 
         for (let i = 0; i < currentMonthDays; i += 1) {
@@ -177,8 +171,6 @@
             )
 
         }
-
-
 
         const currentDateListLen = dateList.length
 
@@ -227,8 +219,6 @@
             }
 
         }
-
-
 
         return dateList
 

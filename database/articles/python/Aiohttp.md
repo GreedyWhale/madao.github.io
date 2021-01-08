@@ -137,8 +137,6 @@
     import multiprocessing
     import os
     import time
-
-
     urls = [
         "https://alpha.wallhaven.cc/wallpapers/thumb/small/th-729560.jpg",
         "https://alpha.wallhaven.cc/wallpapers/thumb/small/th-724055.jpg",
@@ -194,8 +192,6 @@
 
     req_session = requests.Session()
     req_session.headers['user-agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
-
-
     def get_store_path(dir_name):
         current_path = os.path.abspath('.')
         target_path = os.path.join(current_path, 'wallpaper/%s' % dir_name)
@@ -204,16 +200,12 @@
             os.makedirs(target_path)
 
         return target_path
-
-
     def download_img(url):
         img = req_session.get(url, stream=True)
         image_name = url.split('/')[-1]
         with open('%s/%s' % (get_store_path('city'), image_name), 'wb') as fd:
             for chunk in img.iter_content(chunk_size=128):
                 fd.write(chunk)
-
-
     def main():
         p = multiprocessing.Pool()
         [p.apply_async(download_img, args=(url,)) for url in urls]

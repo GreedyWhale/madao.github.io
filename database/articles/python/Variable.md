@@ -72,8 +72,6 @@ print(message)
 
   n
 
-
-
   # good
 
   name_length
@@ -94,8 +92,6 @@ print(message)
 message = 'Hate to work'
 
 print(message)
-
-
 
 message = 'Like to go to work'
 

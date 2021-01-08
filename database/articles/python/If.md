@@ -127,8 +127,6 @@
 
   age = 18
 
-
-
   if age < 4:
 
       print('Too young')

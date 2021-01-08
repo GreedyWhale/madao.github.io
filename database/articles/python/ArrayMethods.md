@@ -34,13 +34,9 @@ list_1 = [1, 2, 3, 4, 5]
 
 list_2 = [9, 8, 7, 6, 5]
 
-
-
 new_list_1 = map(lambda i: i**2, list_1)
 
 new_list_2 = map(lambda x, y: x + y, list_1, list_2)
-
-
 
 print(list(new_list_1))  # [1, 4, 9, 16, 25]
 
@@ -90,8 +86,6 @@ sequence is empty.
 
 from functools import reduce
 
-
-
 nums = reduce(lambda x, y: x + y, [1,2,3,4,5])
 
 print(nums)
@@ -104,13 +98,9 @@ reduce 计算的过程可以理解为下面这样:
 
 '''
 
-
-
 nums = reduce(lambda x, y: x - y, [1,2,3,4,5])
 
 print(nums)
-
-
 
 '''
 
@@ -128,8 +118,6 @@ reduce 计算的过程可以理解为下面这样:
 
 from functools import reduce
 
-
-
 nums = reduce(lambda x, y: x + y, [1,2,3,4,5], 1)
 
 print(nums)
@@ -142,13 +130,9 @@ reduce 计算的过程可以理解为下面这样:
 
 '''
 
-
-
 nums = reduce(lambda x, y: x - y, [1,2,3,4,5], 1)
 
 print(nums)
-
-
 
 '''
 
@@ -220,8 +204,6 @@ print(dict(zip_example))  # {'aaa': 'a', 'bbb': 'b', 'ccc': 'c'}
 zip_example = list(zip((1,2,3), (3,2,1), (3,2,1)))
 
 print(zip_example) # [(1, 3, 3), (2, 2, 2), (3, 1, 1)]
-
-
 
 zip_example_restore = list(zip(*zip_example))
 

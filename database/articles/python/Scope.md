@@ -13,8 +13,6 @@ Python 有局部作用域和全局作用域。还可以细分为这四种情况�
 def say_name():
     name = 'Allen'
     print(name)
-
-
 say_name()
 print(name)
 ```
@@ -30,8 +28,6 @@ def say_name():
     global name
     name = 'Allen'
     print(name)
-
-
 say_name()
 print(name)
 ```

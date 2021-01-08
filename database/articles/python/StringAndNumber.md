@@ -12,8 +12,6 @@
 
   print(sentence)
 
-
-
   sentence = "Love is a touch and yet not a touch.'——Jerome David Salinger'"
 
   print(sentence)
@@ -122,8 +120,6 @@
 
   ground-dwelling insects with powerful hind legs which enable the"""
 
-
-
   long_string1 = '''\n\nGrasshoppers are insects in the suborder Caelifera, probably
 
   the oldest living group of chewing herbivorous insects, dating back to the
@@ -131,8 +127,6 @@
   early Triassic around 250 million years ago. They are typically
 
   ground-dwelling insects with powerful hind legs which enable the'''
-
-
 
   print(long_string, long_string1)
 

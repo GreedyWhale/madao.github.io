@@ -10,8 +10,6 @@ languages = ['JavaScript', 'Python', 'Java', 'c']
 
 languages = ['JavaScript', 'Python', 'Java', 'c']
 
-
-
 print('My favorite language is ' + languages[1]) # My favorite language is Python
 
 ```
@@ -120,8 +118,6 @@ colors = ('red', 'green', 'blue')
 ```
 
 my_tuple = ((1,2), (3,4))
-
-
 
 print(my_tuple[0] < my_tuple[1]) # True
 

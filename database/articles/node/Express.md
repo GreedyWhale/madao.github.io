@@ -14,15 +14,11 @@ const express = require('express');
 
 const app = express();
 
-
-
 app.use('/', (req, res) => {
 
     res.send('hello express')
 
 })
-
-
 
 app.listen(3000);
 
@@ -50,8 +46,6 @@ const express = require('express');
 
 const app = express();
 
-
-
 let human = [];
 
 app.use('/human', (req, res, next) => {
@@ -66,8 +60,6 @@ app.use('/human', (req, res, next) => {
 
 })
 
-
-
 app.use('/human', (req, res, next) => {
 
   console.log('我来组成身体');
@@ -77,8 +69,6 @@ app.use('/human', (req, res, next) => {
   next();
 
 })
-
-
 
 app.use('/human', (req, res, next) => {
 
@@ -90,8 +80,6 @@ app.use('/human', (req, res, next) => {
 
 })
 
-
-
 app.use('/human', (req, res, next) => {
 
   console.log('我来组成双腿');
@@ -101,8 +89,6 @@ app.use('/human', (req, res, next) => {
   next();
 
 })
-
-
 
 app.use('/human', (req, res, next) => {
 
@@ -117,8 +103,6 @@ app.use('/human', (req, res, next) => {
   human = [];
 
 })
-
-
 
 app.listen(3000);
 
@@ -148,8 +132,6 @@ app.listen(3000);
 
   const app = express();
 
-
-
   let human = [];
 
   function middleware1(req, res, next) {
@@ -174,8 +156,6 @@ app.listen(3000);
 
   }
 
-
-
   function middleware3(req, res, next) {
 
       console.log('我来组成双手');
@@ -186,8 +166,6 @@ app.listen(3000);
 
   }
 
-
-
   function middleware4(req, res, next) {
 
       console.log('我来组成双腿');
@@ -197,8 +175,6 @@ app.listen(3000);
       next();
 
   }
-
-
 
   function middleware5(req, res, next) {
 
@@ -214,11 +190,7 @@ app.listen(3000);
 
   }
 
-
-
   app.use('/human', middleware1, middleware2, middleware3, middleware4, middleware5);
-
-
 
   // 这样写也是可以的
 
@@ -256,8 +228,6 @@ app.listen(3000);
 
   const app = express();
 
-
-
   let human = [];
 
   function middleware1(req, res, next) {
@@ -282,8 +252,6 @@ app.listen(3000);
 
   }
 
-
-
   function middleware3(req, res, next) {
 
       console.log('我来组成双手');
@@ -294,8 +262,6 @@ app.listen(3000);
 
   }
 
-
-
   function middleware4(req, res, next) {
 
       console.log('我来组成双腿');
@@ -305,8 +271,6 @@ app.listen(3000);
       next();
 
   }
-
-
 
   function middleware5(req, res, next) {
 
@@ -319,8 +283,6 @@ app.listen(3000);
       next();
 
   }
-
-
 
   function middleware6(reward) {
 
@@ -338,8 +300,6 @@ app.listen(3000);
 
   }
 
-
-
   app.use('/human', [
 
       middleware1,
@@ -355,10 +315,6 @@ app.listen(3000);
       middleware6('赐你富二代属性')
 
   ]);
-
-
-
-
 
   app.listen(3000);
 
@@ -393,17 +349,11 @@ app.listen(3000);
 
   const app = express();
 
-
-
-
-
   app.use('/whatever', (req, res, next) => {
 
       next('出错啦！！')
 
   });
-
-
 
   app.use((error, req, res, next) => {
 
@@ -433,13 +383,7 @@ const app = express();
 
 const router = require('./router');
 
-
-
-
-
 app.use('/', router);
-
-
 
 app.use((error, req, res, next) => {
 
@@ -469,8 +413,6 @@ router.use('/', (req, res, next) => {
 
 })
 
-
-
 router.use('/', (req, res, next) => {
 
   console.log('我的车里有空调，让我们去那边谈吧。');
@@ -478,8 +420,6 @@ router.use('/', (req, res, next) => {
   res.send('我的车里有空调，让我们去那边谈吧。')
 
 })
-
-
 
 module.exports = router;
 
@@ -509,13 +449,7 @@ const app = express();
 
 const router = require('./router');
 
-
-
-
-
 app.use('/hello', router);
-
-
 
 app.use((error, req, res, next) => {
 
@@ -545,8 +479,6 @@ router.use('/first', (req, res, next) => {
 
 })
 
-
-
 router.use('/second', (req, res, next) => {
 
   console.log('我的车里有空调，让我们去那边谈吧。');
@@ -555,8 +487,6 @@ router.use('/second', (req, res, next) => {
 
 })
 
-
-
 router.use('/', (req, res, next) => {
 
   console.log('空调系统运行正常。');
@@ -564,10 +494,6 @@ router.use('/', (req, res, next) => {
   res.send('空调系统运行正常。')
 
 })
-
-
-
-
 
 module.exports = router;
 
@@ -599,10 +525,6 @@ const app = express();
 
 const router = require('./router');
 
-
-
-
-
 app.use('/', router);
 
 app.use('/', (req, res) => {
@@ -612,8 +534,6 @@ app.use('/', (req, res) => {
   res.send('进入贤者模式');
 
 });
-
-
 
 app.use((error, req, res, next) => {
 
@@ -643,8 +563,6 @@ router.use('/', (req, res, next) => {
 
 })
 
-
-
 router.use('/', (req, res, next) => {
 
   console.log('我的车里有空调，让我们去那边谈吧。');
@@ -653,8 +571,6 @@ router.use('/', (req, res, next) => {
 
 })
 
-
-
 router.use('/', (req, res, next) => {
 
   console.log('空调系统运行正常。');
@@ -662,10 +578,6 @@ router.use('/', (req, res, next) => {
   res.send('空调系统运行正常。');
 
 })
-
-
-
-
 
 module.exports = router;
 
@@ -693,8 +605,6 @@ router.use('/', (req, res, next) => {
 
 })
 
-
-
 router.use('/', (req, res, next) => {
 
   console.log('我的车里有空调，让我们去那边谈吧。');
@@ -703,8 +613,6 @@ router.use('/', (req, res, next) => {
 
 })
 
-
-
 router.use('/', (req, res, next) => {
 
   console.log('空调系统运行正常。');
@@ -712,10 +620,6 @@ router.use('/', (req, res, next) => {
   res.send('空调系统运行正常。');
 
 })
-
-
-
-
 
 module.exports = router;
 

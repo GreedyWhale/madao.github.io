@@ -31,14 +31,10 @@ function createZombie(config = {}) {
 
     const zombie = Object.assign({}, config, {eat, walk, shouting});
 
-
-
     return zombie;
 
 }
 
-
-
 let zombieRed = createZombie({
 
   name: '小红',
@@ -50,13 +46,9 @@ let zombieRed = createZombie({
   sex: 'male'
 
 })
-
-
 
 ...
 
-
-
 let zombieBlack = createZombie({
 
   name: '小黑',
@@ -69,15 +61,9 @@ let zombieBlack = createZombie({
 
 })
 
-
-
 // 这样就可以创建出10个对象，它们都具有eat,walk,shouting方法，而且名字等信息都不同。
 
-
-
 // 但是这有一个问题，那就是对象识别问题，或者说无法判断创建出的对象是由谁创建的。例子：
-
-
 
 let zombieRed = createZombie({
 
@@ -91,8 +77,6 @@ let zombieRed = createZombie({
 
 })
 
-
-
 let zombieBlack = createZombie({
 
   name: '小黑',
@@ -104,19 +88,13 @@ let zombieBlack = createZombie({
   sex: 'female'
 
 })
-
-
 zombieRed instanceof createZombie;   // false
 
 zombieBlack instanceof createZombie; // false
 
-
-
 zombieRed instanceof Object;   // true
 
 zombieBlack instanceof Object; // true
-
-
 
 // 为了解决这个问题，可以使用构造函数模式
 
@@ -156,8 +134,6 @@ function CreateZombie(config = {}) {
 
 }
 
-
-
 let zombieRed = new CreateZombie({
 
   name: '小红',
@@ -169,8 +145,6 @@ let zombieRed = new CreateZombie({
   sex: 'male'
 
 })
-
-
 
 let zombieBlack = new CreateZombie({
 
@@ -260,8 +234,6 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   }
 
-
-
   let zombieRed = new CreateZombie({
 
     name: '小红',
@@ -292,11 +264,7 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
       ↓
       ↓ （指向）
   创建该对象的构造函数.prototype →→→ (指向) 存放公共属性的内存
-
-
   被创建对象.__proto__ === 创建该对象的构造函数.prototype
-
-
   prototype是只有函数才有的属性
   __proto__是对象有的属性
   ```
@@ -390,25 +358,15 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
   Foo.prototype.sayHello = function() { console.log('hello') }
 
-
-
   let bar = new Foo();
 
   let obj = new Foo();
-
-
 
   bar.sayHello();  // hello
 
   obj.sayHello();  // hello
 
-
-
   Object.getPrototypeOf(bar).sayHello = function() { console.log('good bye') }
-
-
-
-
 
   bar.sayHello(); // good bye
 
@@ -423,8 +381,6 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
   ```
 
   bar.sayHello = function () { console.log('be in another world') }
-
-
 
   bar.sayHello();  // be in another world
 
@@ -443,8 +399,6 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
   typeof Function.prototype;  // 'function'
 
   Function.prototype();
-
-
 
   typeof RegExp.prototype;  // 'function'
 
@@ -470,8 +424,6 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
      }
 
-
-
      function Bar(name,age) {
 
          Foo.apply(this, arguments);
@@ -486,17 +438,11 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
      }
 
-
-
      let a = new Bar('allen', 17);
-
-
 
      a.sayName();  // 'allen'
 
      a.sayAge(); // 17
-
-
 
      a.constructor.name;  // Foo
 
@@ -522,8 +468,6 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
      }
 
-
-
      function Bar(name,age) {
 
          Foo.apply(this, arguments);
@@ -540,17 +484,11 @@ JavaScript 中有个奇怪的语法，那就是，构造函数如果没有参数
 
      }
 
-
-
      let a = new Bar('allen', 17);
-
-
 
      a.sayName();  // 'allen'
 
      a.sayAge(); // 17
-
-
 
      a.constructor.name;  // Bar
 

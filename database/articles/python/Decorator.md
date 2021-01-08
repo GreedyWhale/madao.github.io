@@ -10,17 +10,11 @@ def sum(a, b):
 
     return a + b
 
-
-
 # 2. 如果想要知道这个函数的执行时间，如何实现?
-
-
 
 # 实现一
 
 import time
-
-
 
 def sum(a, b):
 
@@ -32,11 +26,7 @@ sum(5, 6)
 
 end = time.time()
 
-
-
 print('sum函数的执行时间大约是：%f秒' % (end - start))
-
-
 
 # 3. 如果还有一个求差函数sub，要知道这个函数的执行时间，如何实现?
 
@@ -48,17 +38,9 @@ print('sum函数的执行时间大约是：%f秒' % (end - start))
 
 '''
 
-
-
 # 实现二
 
-
-
 import time
-
-
-
-
 
 def print_execution_time(func):
 
@@ -76,31 +58,17 @@ def print_execution_time(func):
 
     return wrapper
 
-
-
-
-
 def sum(a, b):
 
     return a + b
-
-
-
-
 
 def sub(a, b):
 
     return a - b
 
-
-
-
-
 print_execution_time(sum)(10, 20)
 
 print_execution_time(sub)(10, 20)
-
-
 
 ```
 
@@ -117,13 +85,7 @@ Python 提供了一个语法糖 - 装饰器@。通过这个可以写出更为简
 
 # 上面例子使用Python提供的装饰器改写：
 
-
-
 import time
-
-
-
-
 
 def print_execution_time(func):
 
@@ -141,23 +103,17 @@ def print_execution_time(func):
 
     return wrapper
 
-
-
 @print_execution_time  # 新增
 
 def sum(a, b):
 
     return a + b
 
-
-
 @print_execution_time  # 新增
 
 def sub(a, b):
 
     return a - b
-
-
 
 sum(10, 10)
 
@@ -189,10 +145,6 @@ import time
 
 from functools import wraps # 新增
 
-
-
-
-
 def print_execution_time(func):
 
     @wraps(func)                  # 新增
@@ -211,19 +163,11 @@ def print_execution_time(func):
 
     return wrapper
 
-
-
-
-
 @print_execution_time
 
 def sum(a, b):
 
     return a + b
-
-
-
-
 
 @print_execution_time
 
@@ -231,15 +175,9 @@ def sub(a, b):
 
     return a - b
 
-
-
-
-
 sum(10, 10)
 
 sub(1, 3)
-
-
 
 print('sum的__name__是：%s' % (sum.__name__))  # sum的__name__是：sum
 
@@ -254,10 +192,6 @@ print('sub的__name__是：%s' % (sub.__name__))  # sub的__name__是：sub
 import time
 
 from functools import wraps
-
-
-
-
 
 def print_execution_time(text):
 
@@ -283,19 +217,11 @@ def print_execution_time(text):
 
     return decorator
 
-
-
-
-
 @print_execution_time('今天天气不错')
 
 def sum(a, b):
 
     return a + b
-
-
-
-
 
 @print_execution_time('今天天气不好')
 
@@ -303,21 +229,13 @@ def sub(a, b):
 
     return a - b
 
-
-
-
-
 sum(10, 10)
 
 sub(1, 3)
 
-
-
 print('sum的__name__是：%s' % (sum.__name__))
 
 print('sub的__name__是：%s' % (sub.__name__))
-
-
 
 ```
 
@@ -338,10 +256,6 @@ print('sub的__name__是：%s' % (sub.__name__))
    ```
 
    from functools import wraps
-
-
-
-
 
    def decorator(func):
 
@@ -364,8 +278,6 @@ print('sub的__name__是：%s' % (sub.__name__))
    ```
 
    from functools import wraps
-
-
    def decorator_wrapper(*args, **wkargs):
 
        def decorator(func):

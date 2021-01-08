@@ -131,8 +131,6 @@
 
        return cookies
 
-
-
    headers = {
 
        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
@@ -159,13 +157,7 @@ import time
 
 from bs4 import BeautifulSoup
 
-
-
 movie_list = []
-
-
-
-
 
 # 设置cookie
 
@@ -178,10 +170,6 @@ def set_cookies(cookies_str):
         key, value = cookie.split('=', 1)
 
         cookies[key] = value
-
-
-
-
 
 # 获取豆瓣电影top 250的数据
 
@@ -212,10 +200,6 @@ def get_douban_html(start_num):
     douban_html.encoding = 'utf-8'
 
     return douban_html
-
-
-
-
 
 # 拿到html之后，解析html
 
@@ -255,10 +239,6 @@ def set_movie_list(html):
 
         movie_list.append(movie_list_item)
 
-
-
-
-
 print('开始爬取数据')
 
 # 从豆瓣电影top 250的最后一页看出，它最后一页的start是255，每次间隔25个
@@ -277,15 +257,11 @@ for index in range(0, 226, 25):
 
     print('当前进度%d' % (25 + index))
 
-
-
 with open('douban_movie.json', 'w') as file:
 
     json.dump(movie_list, file, indent=4, ensure_ascii=False)
 
     print('爬取结束，数据已存放至当前目录下的douban_movie.json中')
-
-
 
 ```
 

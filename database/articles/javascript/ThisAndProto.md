@@ -28,8 +28,6 @@
 
   }
 
-
-
   这样就创造了10个人类。
 
   ```
@@ -49,8 +47,6 @@
 
   }
 
-
-
   for(let i = 0; i < 10; i++) {
 
       let human = {
@@ -64,8 +60,6 @@
       humans.push(human)
 
   }
-
-
 
   这样就节省了很多内存
 
@@ -90,8 +84,6 @@
   let arr = [];
 
   let obj = {};
-
-
 
   arr.push // function
 
@@ -145,8 +137,6 @@ function sayHello() {
 
 }
 
-
-
 sayHello();
 
 ```
@@ -163,17 +153,11 @@ sayHello() 可以转换成 sayHello.call(undefined)
 
 function a() { console.log(this) };
 
-
-
 a();  // this是什么
-
-
 
 答案是window，这可是和上面说的不一样啊，
 
 a() 转换成 a.call(undefined)，应该是undefined啊。为什么是window。
-
-
 
 这是因为如果JavaScript在浏览器环境运行，如果call的第一个参数是undefined或者
 
@@ -201,11 +185,7 @@ let obj = {
 
 }
 
-
-
 obj.sayName(); // 'allen'
-
-
 
 obj.sayName() 转换为 obj.sayName.call(obj)
 
@@ -223,11 +203,7 @@ obj.sayName 目的是不是要操作sayName前面.的那个对象
 
 name，例子中只有一个name，改写一下；
 
-
-
 var name = '小红';
-
-
 
 var xiaoming = {
 
@@ -247,45 +223,25 @@ var xiaoming = {
 
 }
 
-
-
 var xiaogang = {
 
     name: '小刚'
 
 }
 
-
-
-
-
 1. 我想要打印小明的名字
-
-
 
 xiaoming.sayName.call(xiaoming)
 
-
-
 2. 我想要打印小小明的名字
-
-
 
 xiaoming.sayName.call(xiaoming.son)
 
-
-
 3. 我想要打印小刚的名字
-
-
 
 xiaoming.sayName.call(xiaogang)
 
-
-
 4. 我想要打印小红的名字
-
-
 
 xiaoming.sayName.call(undefined)
 
@@ -307,11 +263,7 @@ function a() {
 
 }
 
-
-
 a中的this是什么
-
-
 
 2.
 
@@ -329,19 +281,11 @@ var obj = {
 
 var name = '小黑'
 
-
-
 var sayName1 = obj.sayName
-
-
 
 sayName1();
 
-
-
 console.log 出来的name是什么
-
-
 
 3.
 
@@ -352,8 +296,6 @@ button.onclick = function() {
     console.log(this)
 
 }
-
-
 
 ```
 
@@ -396,8 +338,6 @@ var name = '阿花';
 
 var foo = () => { console.log(this.name) };
 
-
-
 foo.call({ name: '阿水' });  // '阿花'
 
 ```
@@ -432,23 +372,13 @@ var foo = {
 
 }
 
-
-
 foo.sayName();  // '张三'
-
-
 
 sayName1外面是sayName函数。sayName函数的this是什么？
 
-
-
 foo.sayName()  转换成 foo.sayName.call(foo)
 
-
-
 所以sayName函数的this是 foo
-
-
 
 ```
 
@@ -466,15 +396,9 @@ var foo = {
 
 }
 
-
-
 var name = '李四'
 
-
-
 foo.sayName(); // '李四'
-
-
 
 sayName 外面是什么，是全局对象window，所以是李四
 
@@ -490,11 +414,7 @@ function foo() {
 
 var name = '王麻子'
 
-
-
 foo.call({ name: '赵老爷' }); // '赵老爷'
-
-
 
 () => { console.log(this.name) } 外面是foo，foo通过call传入一个对象作为this，
 
@@ -511,8 +431,6 @@ foo.call({ name: '赵老爷' }); // '赵老爷'
 ```
 
 let humans = [];
-
-
 
 let common = {
 
@@ -541,8 +459,6 @@ function CreateHuman(id) {
     return human;
 
 }
-
-
 
 for(let i = 0; i < 10; i++) {
 
@@ -580,8 +496,6 @@ for(let i = 0; i < 10; i++) {
 
  }
 
-
-
  CreateHuman.common = {
 
      heart: 1,
@@ -597,8 +511,6 @@ for(let i = 0; i < 10; i++) {
      cry: function(){}
 
  }
-
-
 
  for(let i = 0; i < 10; i++) {
 
@@ -626,8 +538,6 @@ common 这个属性在 JavaScript 中就被叫做 prototype。也就是这样
 
  }
 
-
-
  CreateHuman.prototype = {
 
      heart: 1,
@@ -643,8 +553,6 @@ common 这个属性在 JavaScript 中就被叫做 prototype。也就是这样
      cry: function(){}
 
  }
-
-
 
  for(let i = 0; i < 10; i++) {
 
@@ -670,8 +578,6 @@ common 这个属性在 JavaScript 中就被叫做 prototype。也就是这样
 
  }
 
-
-
  CreateHuman.prototype = {
 
      heart: 1,
@@ -688,19 +594,13 @@ common 这个属性在 JavaScript 中就被叫做 prototype。也就是这样
 
  }
 
-
-
  for(let i = 0; i < 10; i++) {
 
      humans.push(new CreateHuman(i))
 
  }
 
-
-
  可以看到少了三行代码，分别是
-
-
 
  1. let human = {}; 不用自己创建对象，new 帮你创建这个对象，this = {}
 
@@ -726,8 +626,6 @@ common 这个属性在 JavaScript 中就被叫做 prototype。也就是这样
 
  }
 
-
-
  CreateHuman.prototype = {
 
      constructor: CreateHuman,    // 新增
@@ -746,27 +644,19 @@ common 这个属性在 JavaScript 中就被叫做 prototype。也就是这样
 
  }
 
-
-
  for(let i = 0; i < 10; i++) {
 
      humans.push(new CreateHuman(i))
 
  }
 
-
-
  当然，你也可以这样写
-
-
 
  CreateHuman.prototype.eat = function(){}
 
  ...
 
  CreateHuman.prototype.cry = function(){}
-
-
 
  这样就不用重新指定constructor的指向了
 
@@ -790,8 +680,6 @@ function Human(id) {
 
 }
 
-
-
 Human.prototype = {
 
     constructor: Human,
@@ -810,8 +698,6 @@ Human.prototype = {
 
 }
 
-
-
 for(let i = 0; i < 10; i++) {
 
     humans.push(new Human(i))
@@ -827,8 +713,6 @@ for(let i = 0; i < 10; i++) {
 ```
 
 如何让函数Jack拥有函数Human的自有属性和共有属性?
-
-
 
 function Human(config) {
 
@@ -852,19 +736,11 @@ Human.prototype = {
 
 }
 
-
-
 function Jack(config) {
-
-
 
 }
 
-
-
 思路：
-
-
 
 共有属性好说，就是让 Jack.prototype.__proto__ = Human.prototype就行了，
 
@@ -872,11 +748,7 @@ function Jack(config) {
 
 把this传进去执行一下Human是不是就可以了。
 
-
-
 实现：
-
-
 
 function Jack(config) {
 
@@ -902,21 +774,15 @@ Jack.prototype = {
 
 Jack.prototype.__proto__ = Human.prototype
 
-
-
 问题：
 
    __proto__ 不能用
-
-
 
 解决问题思路：
 
   由于 __proto__ 不能用，所以用new解决，new一下Human我们不就可以实现
 
   Jack.prototype.__proto__ = Human.prototype这句代码了吗
-
-
 
 第一次解决：
 
@@ -940,8 +806,6 @@ Jack.prototype.__proto__ = Human.prototype
 
   Jack.prototype.playGames = function(){}
 
-
-
   要先new Human才行，不然writeCode这些Jack共有的方法就没了。
 
   结果如下：
@@ -956,19 +820,13 @@ Jack.prototype.__proto__ = Human.prototype
 
   又出现重复的属性了。
 
-
-
 解决思路：
 
   如果有一个空函数，让这个空函数.prototype = Human.prototype，然后我们再
 
   Jack.prototype = new 这个空函数，不就可以了吗？
 
-
-
 第二次解决：
-
-
 
   function Jack(config) {
 
@@ -982,23 +840,17 @@ Jack.prototype.__proto__ = Human.prototype
 
   }
 
-
-
   function fakeFn(){}
 
   fakeFn.prototype = Human.prototype
 
   Jack.prototype = new fakeFn()
 
-
-
   Jack.prototype.constructor = Jack
 
   Jack.prototype.writeCode = function(){}
 
   Jack.prototype.playGames = function(){}
-
-
 
   结果如下
 
@@ -1020,8 +872,6 @@ Jack.prototype.__proto__ = Human.prototype
 
  }
 
-
-
  Human.prototype = {
 
     constructor: Human,
@@ -1036,8 +886,6 @@ Jack.prototype.__proto__ = Human.prototype
 
  }
 
-
-
  function Jack(config) {
 
     Human.call(this, config)
@@ -1050,13 +898,7 @@ Jack.prototype.__proto__ = Human.prototype
 
   }
 
-
-
-
-
   Jack.prototype = Object.create(Human.prototype)
-
-
 
   Jack.prototype.constructor = Jack
 
@@ -1064,31 +906,21 @@ Jack.prototype.__proto__ = Human.prototype
 
   Jack.prototype.playGames = function(){}
 
-
-
   Object.create代替了之前的这三句代码
-
-
 
   function fakeFn(){}
 
   fakeFn.prototype = Human.prototype
 
   Jack.prototype = new fakeFn()
-
-
 
   所以在不支持Object.create环境中，使用
 
-
-
   function fakeFn(){}
 
   fakeFn.prototype = Human.prototype
 
   Jack.prototype = new fakeFn()
-
-
 
   这三句代码进行Object.create的兼容就行了
 
@@ -1119,8 +951,6 @@ class Human {
     say(){}
 
 }
-
-
 
 class Jack extends Human {
 

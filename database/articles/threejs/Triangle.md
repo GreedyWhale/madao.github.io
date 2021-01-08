@@ -179,8 +179,6 @@ import './libs/weapp-adapter'
 
 import * as THREE from './libs/three'
 
-
-
 const width = window.innerWidth
 
 const height = window.innerHeight
@@ -195,13 +193,9 @@ const renderer = new THREE.WebGLRenderer({
 
 })
 
-
-
 // 创建场景
 
 const scene = new THREE.Scene()
-
-
 
 /**
 
@@ -212,10 +206,6 @@ const scene = new THREE.Scene()
 */
 
 const camera = new THREE.OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, 0, 1000)
-
-
-
-
 
 // 画一个三角形
 
@@ -233,8 +223,6 @@ triangleShape.lineTo(0, 100)
 
 const geometry = new THREE.ShapeGeometry(triangleShape)
 
-
-
 // 物体的材料
 
 const material = new THREE.MeshBasicMaterial({
@@ -245,8 +233,6 @@ const material = new THREE.MeshBasicMaterial({
 
 })
 
-
-
 // 组成物体并添加到场景中
 
 const mesh = new THREE.Mesh(geometry, material)
@@ -255,19 +241,13 @@ mesh.position.set(0, 0, -200)  // 设置物体在场景中的位置
 
 scene.add(mesh)
 
-
-
 camera.position.set(0, 0, 0)  // 相机位置
 
 camera.lookAt(new THREE.Vector3(0, 0, -200)) // 让相机从0, 0, 0 看向 0, 0, -200
 
-
-
 renderer.setClearColor(new THREE.Color('#f84462')) // 设置背景色
 
 renderer.setSize(width, height) // 设置最终渲染的尺寸
-
-
 
 const render = () => {
 
@@ -278,8 +258,6 @@ const render = () => {
   requestAnimationFrame(render)
 
 }
-
-
 
 render()
 

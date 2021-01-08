@@ -19,19 +19,11 @@ let str = 'abc';
 
 let str1 = new String('efg');
 
-
-
 它们的区别是：
-
-
 
 typeof str  // 'string'
 
-
-
 typeof str1 // 'object'
-
-
 
 ```
 
@@ -65,33 +57,21 @@ JavaScript 会自动的为基本类型包装一个封装对象，所以一般情
 
 let bool = new Boolean(false);
 
-
-
 if(!bool) {
 
     console.log('here');
 
 }
 
-
-
 这个if语句中的console.log是不会执行的的，
 
 因为使用new Boolean为false创建了一个封装对象，而对象转换成布尔值总是true
 
-
-
 let arr = new Array(3);
-
-
 
 arr.length; // 3
 
-
-
 arr  // [empty × 3]
-
-
 
 当通过 new Array创建一个数组的时候只有一个数字参数的时候，这个参数就会成为
 
@@ -106,8 +86,6 @@ arr  // [empty × 3]
 ```
 
 let str = new String('abc');
-
-
 
 str.valueOf(); // "abc"
 

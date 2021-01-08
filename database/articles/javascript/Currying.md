@@ -20,15 +20,9 @@
 
   function sum(x,y) { return x + y; }
 
-
-
   如何将上面的函数变成下面这种调用方式：
 
-
-
   sum1(1)(2);
-
-
 
   答案：
 
@@ -46,11 +40,7 @@
 
   }
 
-
-
   let sum1 = curry(sum);
-
-
 
   sum1(1)(2);
 
@@ -62,15 +52,9 @@
 
   function sum(x,y,z) { return x + y + z; }
 
-
-
   如何将上面的函数变成下面这种调用方式：
 
-
-
   sum1(1)(2)(3);
-
-
 
   答案：
 
@@ -92,11 +76,7 @@
 
   }
 
-
-
   let sum1 = curry(sum);
-
-
 
   sum1(1)(2)(3);
 
@@ -136,23 +116,15 @@
 
   }
 
-
-
   function sum(x,y,z){ return x + y + z }
 
-
-
   let sum1 = curry(sum);
-
-
 
   sum1(1);
 
   sum1(1)(2);
 
   sum1(1)(2)(3);  // 6
-
-
 
   sum1(10, 100)(2);  // 112
 
@@ -168,8 +140,6 @@
 
      2. fixedParmas是需要被固定的参数，可以不传
 
-
-
    if(!Array.isArray(fixedParmas)) {
 
       fixedParmas = []
@@ -182,8 +152,6 @@
 
        的参数
 
-
-
    return function(...rest) {
 
        if(fixedParmas.length + rest.length < fn.length) {
@@ -195,8 +163,6 @@
        return fn.apply(undefined, fixedParmas.concat(rest))
 
    }
-
-
 
    1. ...rest是es6的语法，因为arguments是一个类数组对象，要转换成数组才能用
 

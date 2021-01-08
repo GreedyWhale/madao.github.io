@@ -96,8 +96,6 @@
 
      const config = {};
 
-
-
      config.development = {
 
        appid: 'developmentAppid',
@@ -109,8 +107,6 @@
        projectname: '开发环境'
 
      }
-
-
 
      config.staging = {
 
@@ -124,8 +120,6 @@
 
      }
 
-
-
      config.production = {
 
        appid: 'productionAppid',
@@ -137,8 +131,6 @@
        projectname: '正式环境'
 
      }
-
-
 
      /*
 
@@ -189,8 +181,6 @@
 
      ));
 
-
-
      先定义一个默认的任务，然后定好每个任务的名字，然后开始一个一个实现
 
      ```
@@ -207,8 +197,6 @@
 
      );
 
-
-
      gulp.task('moveSourceToBuildFolder', () =>
 
          gulp
@@ -220,8 +208,6 @@
              .pipe(gulp.dest(buildPath))
 
      );
-
-
 
      /*
 
@@ -245,8 +231,6 @@
 
      );
 
-
-
      gulp.task('cleanUselessFile', () =>
 
          del([
@@ -262,8 +246,6 @@
      function createConfigFile() {
 
          const { requestOrigin, appid, projectname } = config[environment];
-
-
 
          return replace({
 
@@ -329,8 +311,6 @@
 
      }
 
-
-
      /*
 
        https://blog.csdn.net/weixin_40817115/article/details/81079507
@@ -349,11 +329,7 @@
 
      }
 
-
-
      // 修改最初定义的default任务
-
-
 
      gulp.task('default', gulp.series(
 
@@ -380,8 +356,6 @@
      ));
 
      // 最后还要实现一个watch任务
-
-
 
      gulp.task('watch', gulp.series('default', () =>
 

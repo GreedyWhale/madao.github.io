@@ -16,15 +16,11 @@
 
       ```
       import time
-
-
       # 单线程
       def sayHello(index):
           print('hello!', index)
           time.sleep(1)
           print('执行完成')
-
-
       for i in range(5):
           sayHello(i)
       ```
@@ -38,14 +34,10 @@
       ```
       import time
       import threading
-
-
       def sayHello(index):
           print('hello!', index)
           time.sleep(1)
           print('执行完成')
-
-
       for i in range(5):
           t1 = threading.Thread(target=sayHello, args=(i,))
           t1.start()
@@ -65,8 +57,6 @@
   ```
 
   Thread(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None)
-
-
 
   |*group* should be None; reserved for future extension when a ThreadGroup
 
@@ -120,8 +110,6 @@
       print(currentThread().getName(), index)
       time.sleep(1)
       print('执行完成')
-
-
   for i in range(5):
       t1 = Thread(target=sayHello, kwargs={'index': 1})
       t1.start()
@@ -136,14 +124,10 @@
 ```
 from threading import Thread, currentThread
 import time
-
-
 def do_somethong():
     print(currentThread().getName(), '开始')
     time.sleep(1)
     print(currentThread().getName(), '结束')
-
-
 t1 = Thread(target=do_somethong)
 t1.start()
 print(currentThread().getName(), '结束')
@@ -159,14 +143,10 @@ MainThread 就是主线程，可以看到是主线程先结束 Thread-1 线程�
 ```
 from threading import Thread, currentThread
 import time
-
-
 def do_somethong():
     print(currentThread().getName(), '开始')
     time.sleep(1)
     print(currentThread().getName(), '结束')
-
-
 t1 = Thread(target=do_somethong)
 t1.start()
 t1.join()  # 新增
@@ -181,19 +161,13 @@ print(currentThread().getName(), '结束')
   ```
   from threading import Thread
   a = 0
-
-
   def change_num(num):
       global a
       a += 1
       a -= 1
-
-
   def run_thread(num):
       for i in range(100000):
           change_num(num)
-
-
   t1 = Thread(target=run_thread, args=(1,))
   t2 = Thread(target=run_thread, args=(2,))
 
@@ -224,10 +198,6 @@ print(currentThread().getName(), '结束')
 
   thread_lock = Lock()  # 创建一个锁
 
-
-
-
-
   def change_num(num):
 
       global a
@@ -235,10 +205,6 @@ print(currentThread().getName(), '结束')
       a += 1
 
       a -= 1
-
-
-
-
 
   def run_thread(num):
 
@@ -254,15 +220,9 @@ print(currentThread().getName(), '结束')
 
               thread_lock.release() # 解锁
 
-
-
-
-
   t1 = Thread(target=run_thread, args=(1,))
 
   t2 = Thread(target=run_thread, args=(2,))
-
-
 
   t1.start()
 
@@ -271,8 +231,6 @@ print(currentThread().getName(), '结束')
   t1.join()
 
   t2.join()
-
-
 
   print(a)
 
@@ -284,16 +242,10 @@ print(currentThread().getName(), '结束')
 
   ```
   from threading import Thread, currentThread, local
-
-
   data = local()
-
-
   def do_somethong(name):
       data.name = name
       print(currentThread().getName(), data.name)
-
-
   t1 = Thread(target=do_somethong, args=('jack',))
   t2 = Thread(target=do_somethong, args=('alex',))
   t1.start()
@@ -312,8 +264,6 @@ print(currentThread().getName(), '结束')
   ```
   from threading import Thread
   import time
-
-
   def sayHelle(name):
       print('hello!%s' % name)
 

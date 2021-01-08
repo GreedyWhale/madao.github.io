@@ -7,8 +7,6 @@ Python 中函数通过 def 关键字定义，例子：
 ```
 def sayHello():
     print('Hello !')
-
-
 sayHello() # Hello !
 ```
 
@@ -21,8 +19,6 @@ sayHello() # Hello !
 ```
 def sayName(username):
     print('Hello, ' + username.title() + '!')
-
-
 sayName('allen') # Hello, Allen!
 ```
 
@@ -38,8 +34,6 @@ sayName('allen') # Hello, Allen!
   def collect_userinfo(name, age):
       print('Hello!', name.title())
       print('Your age is', age)
-
-
   collect_userinfo('jesse', 12)
   # Hello! Jesse
   # Your age is 12
@@ -92,8 +86,6 @@ def collect_userinfo(name, age, gender='male'):
     print('Hello!', name.title())
     print('Your age is', age)
     print('Your gender is', gender)
-
-
 collect_userinfo('allen', 12, 'male')
 collect_userinfo(age=12, name='allen', gender='male')
 collect_userinfo(name='allen', age=12)
@@ -112,8 +104,6 @@ def get_formatted_user_info(name, age, gender):
       age: age,
       gender: gender
     }
-
-
 user_info = get_formatted_user_info('allen walker', 19, 'male')
 print(user_info)
 # {'allen walker': 'Allen Walker', 19: 19, 'male': 'male'}
@@ -149,12 +139,8 @@ print(user_info)
 
 ```
 list = [1, 2, 3, 4, 5]
-
-
 def get_last_item(list):
     return list.pop()
-
-
 last_item = get_last_item(list)
 print(last_item, list) # 5 [1, 2, 3, 4]
 ```
@@ -163,12 +149,8 @@ print(last_item, list) # 5 [1, 2, 3, 4]
 
 ```
 list = [1, 2, 3, 4, 5]
-
-
 def get_last_item(list):
     return list.pop()
-
-
 last_item = get_last_item(list[:])
 print(last_item, list) # 5 [1, 2, 3, 4, 5]
 
@@ -246,12 +228,8 @@ set_user_info('Jack', **{'age': 12, 'address': 'hell'}) # {'age': 12, 'address':
 
   def x():
       print('x')
-
-
   def y():
       print('y')
-
-
   def z():
       print('z')
 

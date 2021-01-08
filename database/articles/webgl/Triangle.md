@@ -89,13 +89,9 @@
 
       gl.compileShader(shader)
 
-
-
       return shader
 
   }
-
-
 
   // 顶点着色器的源码，暂时理解为固定的格式，必须要有main函数
 
@@ -127,8 +123,6 @@
 
   `
 
-
-
   // 定义着色器
 
   const vertexShader = createShader(gl, VSHADER_SCURCE_CODE, gl.VERTEX_SHADER)
@@ -145,15 +139,11 @@
 
   const program = gl.createProgram()
 
-
-
   // 给着色器程序添加着色器
 
   gl.attachShader(program, vertexShader)
 
   gl.attachShader(program, fragmentShader)
-
-
 
   // 将着色器程序绑定到webgl
 
@@ -195,8 +185,6 @@
 
       gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
 
-
-
       // 获取a_Position在缓冲区的地址，目的是确定传入的坐标应用到顶点着色器中的哪一个变量
 
       const a_position = gl.getAttribLocation(gl.program, 'a_Position')
@@ -215,19 +203,13 @@
 
       // 第六个参数属性在缓冲区的偏移值，单位是字节。0表示从头开始读取。
 
-
-
       // 第四，五，六个参数，我暂时还不能理解是干嘛的。。。
 
       gl.vertexAttribPointer(a_position, 2, gl.FLOAT, false, 0, 0)
 
-
-
       // 让顶点着色器的a_position可以从缓冲区中拿数据
 
       gl.enableVertexAttribArray(a_position)
-
-
 
       // 这里返回的3是为了指定有多少个顶点
 
@@ -244,8 +226,6 @@
   // 获取顶点的数量
 
   const n = initVertexBuffers(gl)
-
-
 
   // 指定设置清空颜色缓冲区时的颜色值。
 
@@ -323,11 +303,7 @@
 
       const gl = canvas.getContext('webgl')
 
-
-
       const program = gl.createProgram()
-
-
 
       function createShader(gl, sourceCode, type) {
 
@@ -336,8 +312,6 @@
           gl.shaderSource(shader, sourceCode)
 
           gl.compileShader(shader)
-
-
 
           return shader
 
@@ -365,27 +339,19 @@
 
       `
 
-
-
       const vertexShader = createShader(gl, VSHADER_SCURCE_CODE, gl.VERTEX_SHADER)
 
       const fragmentShader = createShader(gl, FSHADER_SCURCE_CODE, gl.FRAGMENT_SHADER)
 
-
-
       gl.attachShader(program, vertexShader)
 
       gl.attachShader(program, fragmentShader)
-
-
 
       gl.linkProgram(program)
 
       gl.useProgram(program)
 
       gl.program = program
-
-
 
       function initVertexBuffers(gl) {
 
@@ -399,15 +365,11 @@
 
           ])
 
-
-
           const vertexBuffer = gl.createBuffer()
 
           gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
 
           gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
-
-
 
           const a_position = gl.getAttribLocation(gl.program, 'a_Position')
 
@@ -415,21 +377,13 @@
 
           gl.enableVertexAttribArray(a_position)
 
-
-
           return 3
 
       }
 
-
-
       const n = initVertexBuffers(gl)
 
-
-
       gl.clearColor(0.0, 0.0, 0.0, 1.0)
-
-
 
       function draw() {
 

@@ -100,8 +100,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import ElementUI from 'element-ui'
 
-
-
 Vue.use(ElementUI)
 
 ```
@@ -152,8 +150,6 @@ import ElementUI from 'element-ui'
 
 import 'element-ui/lib/theme-chalk/index.css'
 
-
-
 Vue.use(ElementUI)
 
 ```
@@ -163,8 +159,6 @@ Vue.use(ElementUI)
 ```
 
 import { Button, Select } from 'element-ui';
-
-
 
 Vue.component(Button.name, Button);
 
@@ -222,11 +216,7 @@ import { Loading } from 'element-ui'
 
 import { TOKEN } from '../constant'
 
-
-
 let isLoading
-
-
 
 const Axios = axios.create({
 
@@ -248,13 +238,9 @@ const Axios = axios.create({
 
 })
 
-
-
 Axios.defaults.retry = 3
 
 Axios.defaults.retryDelay = 10000
-
-
 
 Axios.interceptors.request.use(
 
@@ -356,8 +342,6 @@ Axios.interceptors.response.use(
 
 )
 
-
-
 export default {
 
   install: function (Vue, Option) {
@@ -367,8 +351,6 @@ export default {
   }
 
 }
-
-
 
 ```
 
@@ -380,11 +362,7 @@ import Router from 'vue-router'
 
 import { showDialog } from '../dialog'
 
-
-
 const router = new Router()
-
-
 
 const filterResponse = response => {
 
@@ -420,15 +398,11 @@ const filterResponse = response => {
 
 }
 
-
-
 export {
 
   filterResponse
 
 }
-
-
 
 ```
 
@@ -437,8 +411,6 @@ export {
 // filterStatusCode.js
 
 import { showDialog } from '../dialog'
-
-
 
 const filterStatusCode = error => {
 
@@ -472,15 +444,11 @@ const filterStatusCode = error => {
 
 }
 
-
-
 export {
 
   filterStatusCode
 
 }
-
-
 
 ```
 
@@ -503,8 +471,6 @@ const closeLoading = (isLoading) => {
 }
 
 export { closeLoading }
-
-
 
 ```
 
@@ -596,8 +562,6 @@ const StatisticsScm = () => import(/* webpackChunkName: "statisticsScm" */ '../v
 
 const domain = process.env.VUE_APP_DOMAIN
 
-
-
 export default [
 
   {
@@ -632,8 +596,6 @@ export default [
 
 ]
 
-
-
 ```
 
 ```
@@ -646,8 +608,6 @@ import Router from 'vue-router'
 
 import routes from './config/routeConfig'
 
-
-
 Vue.use(Router)
 
 const router = new Router({
@@ -658,8 +618,6 @@ const router = new Router({
 
 })
 
-
-
 router.beforeEach((to, from, next) => {
 
   window.document.title = to.meta.title || ''   //这里就是用来设置页面的title的
@@ -667,8 +625,6 @@ router.beforeEach((to, from, next) => {
   next()
 
 })
-
-
 
 export default router
 
@@ -683,8 +639,6 @@ export default router
 在 vue.config.js 中，如果没有要新建一个在根目录
 
 ```
-
-
 
 module.exports = {
 

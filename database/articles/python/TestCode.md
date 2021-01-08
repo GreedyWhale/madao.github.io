@@ -15,13 +15,9 @@ Python 标准库中的 unittest 模块，它提供了代码测试工具。
 
 # 4. 给这个类添加方法用于对函数行为的测试
 
-
-
 # name.py
 
 # 在name.py文件创建一个函数，用于生成整洁的姓名。
-
-
 
 def get_formatted_name(first_name, last_name):
 
@@ -29,19 +25,11 @@ def get_formatted_name(first_name, last_name):
 
     return full_name.title()
 
-
-
 # test_name.py，在test_name.py文件中写测试代码
-
-
 
 import unittest
 
 from name import get_formatted_name
-
-
-
-
 
 class NameFunctionTestCase(unittest.TestCase):
 
@@ -50,10 +38,6 @@ class NameFunctionTestCase(unittest.TestCase):
         fotmatted_name = get_formatted_name('allen', 'walker')
 
         self.assertEqual(fotmatted_name, 'Allen Walker')
-
-
-
-
 
 unittest.main()
 
@@ -101,10 +85,6 @@ import unittest
 
 from name import get_formatted_name
 
-
-
-
-
 class NameFunctionTestCase(unittest.TestCase):
 
     def test_first_last_name(self):  # 这个方法必须以test开头，才会自动执行
@@ -112,10 +92,6 @@ class NameFunctionTestCase(unittest.TestCase):
         fotmatted_name = get_formatted_name('allen', 'walker')
 
         self.assertEqual(fotmatted_name, 'Allen Walker')
-
-
-
-
 
 unittest.main()
 
@@ -131,8 +107,6 @@ unittest.main()
 
 # 在survey.py文件中创建一个问卷调查类
 
-
-
 class survey():
 
     def __init__(self, questions):
@@ -142,8 +116,6 @@ class survey():
         self.questionIndex = 0
 
         self.responses = []
-
-
 
     # 展示问题
 
@@ -161,8 +133,6 @@ class survey():
 
             exit()
 
-
-
     # 存储用户输入
 
     def store_response(self, new_response):
@@ -170,8 +140,6 @@ class survey():
         self.responses.append(new_response)
 
         self.questionIndex += 1
-
-
 
     # 展示所有用户输入
 
@@ -183,19 +151,11 @@ class survey():
 
             print('- %s' % response)
 
-
-
-
-
 # user_info_surevy.py
 
 # 在user_info_surevy.py文件中编写一个调查用户信息的程序
 
-
-
 from survey import survey
-
-
 
 questions = [
 
@@ -207,11 +167,7 @@ questions = [
 
 ]
 
-
-
 user_info_survey = survey(questions)
-
-
 
 print('输入q退出\n')
 
@@ -266,8 +222,6 @@ unittest.main()
 import unittest
 
 from survey import survey
-
-
 class TestSurvey(unittest.TestCase):
 
     def test_store_single_response(self):
@@ -279,8 +233,6 @@ class TestSurvey(unittest.TestCase):
         my_survey.store_response('吃了')
 
         self.assertIn('吃了', my_survey.responses)
-
-
 
     # 新增
 
@@ -295,8 +247,6 @@ class TestSurvey(unittest.TestCase):
         for response in responses:
 
             my_survey.store_response(response)
-
-
 
         for response in responses:
 
@@ -337,21 +287,15 @@ class TestSurvey(unittest.TestCase):
 
             self.my_survey.store_response(response)
 
-
-
     def test_store_single_response(self):
 
         self.assertIn('吃了', self.my_survey.responses)
-
-
 
     def test_store_three_response(self):
 
         for response in self.responses:
 
             self.assertIn(response, self.my_survey.responses)
-
-
 unittest.main()
 
 ```

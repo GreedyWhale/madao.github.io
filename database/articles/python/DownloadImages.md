@@ -85,19 +85,11 @@ print(zhihu_sign_in.request.headers)
 
   from functools import reduce
 
-
-
-
-
   base_url = 'https://alpha.wallhaven.cc/' # 壁纸网址
 
   req_session = requests.Session()
 
   req_session.headers['user-agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
-
-
-
-
 
   def get_store_path(dir_name):
 
@@ -117,13 +109,7 @@ print(zhihu_sign_in.request.headers)
 
           os.makedirs(target_path)
 
-
-
       return target_path
-
-
-
-
 
   def get_img_html(page_size):
 
@@ -157,10 +143,6 @@ print(zhihu_sign_in.request.headers)
 
       return htmls
 
-
-
-
-
   def parse_html(html):
 
       '''
@@ -182,10 +164,6 @@ print(zhihu_sign_in.request.headers)
               imgs_src.append(img['data-src'])
 
       return imgs_src
-
-
-
-
 
   def download_imgs(imgs_src):
 
@@ -219,10 +197,6 @@ print(zhihu_sign_in.request.headers)
 
           print('没有找到相关主题的壁纸')
 
-
-
-
-
   keyword = input('请输入你想要下载的壁纸主题：')
 
   page_size = int(input('请输入下载壁纸的页数，每页24张：'))
@@ -254,8 +228,6 @@ print(zhihu_sign_in.request.headers)
   else:
 
       print('没有找到相关主题的壁纸')
-
-
 
   ```
 

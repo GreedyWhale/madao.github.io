@@ -66,8 +66,6 @@
 
   console.log(a, b);   // 1  2
 
-
-
   let foo = {
 
     name: 'allen'
@@ -104,8 +102,6 @@
   bar[true] = 'e';
 
   bar[foo] = 's'
-
-
 
   bar['1'];  // 'd'
 
@@ -162,8 +158,6 @@
 
     let bar = {};
 
-
-
     Object.defineProperty(bar, 'a', {
 
       enumerable: false,
@@ -175,8 +169,6 @@
       value: 1
 
     });  // 成功
-
-
 
     Object.defineProperty(bar, 'a', {
 
@@ -190,8 +182,6 @@
 
     });   // 报错 Uncaught TypeError: Cannot redefine property: a
 
-
-
     Object.defineProperty(bar, 'a', {
 
       enumerable: false,
@@ -203,8 +193,6 @@
       value: 1
 
     });   // 成功
-
-
 
     Object.defineProperty(bar, 'a', {
 
@@ -218,15 +206,9 @@
 
     });  // 报错 Uncaught TypeError: Cannot redefine property: a
 
-
-
     bar.a;  // 1
 
-
-
     delete bar.a;
-
-
 
     bar.a;  // 1
 
@@ -296,8 +278,6 @@
 
   let bar = {a: 1, b:2};
 
-
-
   bar.a;   // 这就是getter
 
   bar.a = 3;  // 这就是setter
@@ -327,8 +307,6 @@
     }
 
   }
-
-
 
   bar.a;  // 访问了 bar 的 a属性
 

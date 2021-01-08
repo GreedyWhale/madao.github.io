@@ -14,17 +14,11 @@
   import threading
   import time
   from queue import Queue
-
-
   def normal(num_list):
       total = sum(num_list)
       print(total)
-
-
   def mutilThread_sum(l, q):
       q.put(sum(l))
-
-
   def mutilThread(num_list):
       q = Queue()
       threads = []
@@ -37,8 +31,6 @@
       for thread in threads:
           total += q.get()
       print(total)
-
-
   num_list = list(range(1000000))
 
   normal_start = time.time()
@@ -48,8 +40,6 @@
   mutilThread_start = time.time()
   mutilThread(num_list)
   print('mutilThread:', time.time() - mutilThread_start)
-
-
   ```
 
   结果：
@@ -68,12 +58,8 @@
 
     ```
     from multiprocessing import Process
-
-
     def add_one(a):
         print(a + 1)
-
-
     p1 = Process(target=add_one, args=(1,)) # 创建一个进程
     p1.start()  # 启动进程
     p1.join()   # 等待进程结束
@@ -85,12 +71,8 @@
 
     ```
     from multiprocessing import Process, Queue
-
-
     def add_one(q, a):
         q.put(a + 1)
-
-
     q = Queue()
     p1 = Process(target=add_one, args=(q, 1))
     p2 = Process(target=add_one, args=(q, 10))
@@ -111,15 +93,11 @@
   from multiprocessing import Process, Queue
   from threading import Thread
   import time
-
-
   def calculate(q):
       res = 0
       for i in range(10000000):
           res += i ** 2
       q.put(res)
-
-
   # 多进程
   def multi_process():
       q = Queue()
@@ -132,8 +110,6 @@
 
       res = q.get() + q.get()
       print('multi_process:', res)
-
-
   # 多线程
   def multi_thread():
       q = Queue()
@@ -146,8 +122,6 @@
 
       res = q.get() + q.get()
       print('multi_thread:', res)
-
-
   # 单线程
   def normal():
       res = 0
@@ -155,8 +129,6 @@
           for j in range(10000000):
               res += j ** 2
       print('normal:', res)
-
-
   t1 = time.time()
   normal()
   t2 = time.time()
@@ -185,15 +157,11 @@
   from os import getpid
   import time
   import random
-
-
   def square(num):
       print('进程id：%s启动' % getpid())
       time.sleep(random.random() * 3)
       print('进程id：%s执行完毕' % getpid())
       return num ** 2
-
-
   p = Pool()
   results = []
   for i in range(10):
@@ -238,15 +206,11 @@
   from os import getpid
   import time
   import random
-
-
   def square(num):
       print('进程id：%s启动' % getpid())
       time.sleep(random.random() * 3)
       print('进程id：%s执行完毕' % getpid())
       return num ** 2
-
-
   p = Pool()
   res = p.map(square, range(10))
 

@@ -445,8 +445,6 @@
       ```
       // 常量也建议全部存放在单独的文件中
       const MUTATION_ADD = 'MUTATION_ADD'
-
-
       mutations: {
           [MUTATION_ADD](state, n) {
               state.num += n

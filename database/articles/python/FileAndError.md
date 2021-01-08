@@ -108,8 +108,6 @@
 
      test
 
-
-
      # file_reader.py
 
      with open('test.txt', 'r+') as file_object:
@@ -139,8 +137,6 @@
      # test.txt
 
      test
-
-
 
      # file_reader.py
 
@@ -179,10 +175,6 @@
      dddddddddddd
 
      eeeeeeeeeeee
-
-
-
-
 
      # file_reader.py
 
@@ -251,11 +243,7 @@
 
 # 只做除法的计算器
 
-
-
 print('Enter q to quit.')
-
-
 
 while True:
 
@@ -290,8 +278,6 @@ while True:
 ```
 
 print('Enter q to quit.')
-
-
 
 while True:
 
