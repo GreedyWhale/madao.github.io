@@ -27,13 +27,14 @@
       ```
 
   2.  使用构造函数
+
       ```
 
-          let obj = new Object();
+      let obj = new Object();
 
-          obj.key = value
+      obj.key = value
 
-          ```
+      ```
 
       这两种方法创建出来的对象是一样的。
 
