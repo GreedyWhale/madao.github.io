@@ -25,11 +25,11 @@
 
      > 构建 WWW 的技术中就包括了：把 SGML(Standard Generalized Markup Language，标准通用标记语言)作为页面的文本标 记语言的 HTML(HyperText Markup Language，超文本标记语言); 作为文档传递协议的 HTTP ;指定文档所在地址的 URL(Uniform Resource Locator，统一资源定位符)。
 
-  简单说就是：
+      简单说就是：
 
-  - HTML：用于描述文档
-  - HTTP：用于传输文档
-  - URL：用于定位文档
+      - HTML：用于描述文档
+      - HTTP：用于传输文档
+      - URL：用于定位文档
 
   2. HTTP 协议的作用
 
