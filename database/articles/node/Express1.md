@@ -90,8 +90,6 @@ Express 官方提供了脚手架工具 express-generator 可以快速搭建一�
 从创建好的项目中，可以看到使用了很多 `app.use` 方法，这个方法会将中间件添加到指定的路径上。
 这里提到一个在 express 中很重要的概念“中间件”
 
-#### 1. 中间件
-
 中间件的意思就是一个请求从接收到响应请求的过程中执行的用于完成特定任务的函数，举个例子：
 
 ```
@@ -103,7 +101,7 @@ app.use('/xxx', (request, response, next) => {
   next()
 })
 app.use('/xxx', (request, response, next) => {
-  // 我也是中间件，我可以在请求/xxx这个路径的时候给响应结果中添加数据
+  // 我也是中间件，我可以在请求/xxx这个路径的时候将hello作为响应结果返回
   response.send('hello')
 })
 ```
@@ -134,6 +132,4 @@ app.use((request, response, next) => {
 
 当出现这传入多个函数的情况时，next('route')会跳过剩余的函数
 
-#### 2. router
-
-看完中间件之后发现路由功能可以使用中间件实现，但是 express 提供了一个 router 方法，它的用法我的[另一篇笔记](https://greedywhale.github.io/madao.github.io/#/article/node/Express)总结过，这里就不重复了
+中间件的优点是模块化，从代码中就可以看到不同的路由由不同的中间件处理，让代码维护和开发都十分方便。
