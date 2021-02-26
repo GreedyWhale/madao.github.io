@@ -86,19 +86,19 @@ Docker 在一定程度上解决了这类问题，简单说 Docker 就是将程�
   index.js
 
   ```
-  const mysql = require('mysql')
-   var connection = mysql.createConnection({
-   host: 'localhost',
-   user: 'root',
-   password: '123456'
-   });
+    const mysql = require('mysql')
+    const connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '123456'
+    });
 
    connection.connect()
 
    connection.query('CREATE DATABASE IF NOT EXISTS test_1 DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;', function (error, results, fields) {
-   if (error) throw error;
-   console.log('results: ', results);
-   console.log('fields: ', fields);
+      if (error) throw error;
+      console.log('results: ', results);
+      console.log('fields: ', fields);
    });
 
    connection.end()

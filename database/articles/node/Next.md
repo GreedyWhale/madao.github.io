@@ -209,26 +209,26 @@ export default Detail
 
     \_app.js
 
-      ```
-      import '../styles/globals.scss'
-      import type { AppProps } from 'next/app'
-      import React from 'react'
-      import Head from 'next/head'
+    ```
+    import '../styles/globals.scss'
+    import type { AppProps } from 'next/app'
+    import React from 'react'
+    import Head from 'next/head'
 
-      function MyApp({ Component, pageProps }: AppProps) {
-        return (
-          <React.Fragment>
-            <Head>
-              <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-              <title>我的Blog</title>
-            </Head>
-            <Component {...pageProps} />
-          </React.Fragment>
-        )
-      }
+    function MyApp({ Component, pageProps }: AppProps) {
+      return (
+        <React.Fragment>
+          <Head>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+            <title>我的Blog</title>
+          </Head>
+          <Component {...pageProps} />
+        </React.Fragment>
+      )
+    }
 
-      export default MyApp
-      ```
+    export default MyApp
+    ```
 
   - 局部 head（页面组件）
 
@@ -333,51 +333,53 @@ export default Detail
        ```
 
        这种看起来还不错，不过我还是更喜欢 CSS Modules 的方式
+
 - #### Absolute Imports and Module path aliases
 
-    用过webpack都会知道webpack中有一个路径别名alias，Next.js中也有，而且文档写的很清楚，这里就不赘述了[Absolute Imports and Module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases)
+  用过 webpack 都会知道 webpack 中有一个路径别名 alias，Next.js 中也有，而且文档写的很清楚，这里就不赘述了[Absolute Imports and Module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases)
 
 ### 七. 静态资源
 
-Next.js推荐将静态资源放在public中，然后就可以这样用：
+Next.js 推荐将静态资源放在 public 中，然后就可以这样用：
 
 `<link rel="icon" href="/favicon.ico" />`
 
-但是放在public中的资源不会受构建工具的处理，他会直接把public中的资源复制到最终的打包目录下面，所以像网站的icon这类基本不会变的资源适合放在public中，页面使用的一些经常变的资源就不适合了，原因有：
+但是放在 public 中的资源不会受构建工具的处理，他会直接把 public 中的资源复制到最终的打包目录下面，所以像网站的 icon 这类基本不会变的资源适合放在 public 中，页面使用的一些经常变的资源就不适合了，原因有：
 
 1. 资源文件名不能修改，会导致资源在客户端的更新不及时
 2. 不能使用构建工具进行优化，比如图片压缩
 
-所以那些经常变的资源需要放在其他目录中，然后要自己配置webpack进行处理：
+所以那些经常变的资源需要放在其他目录中，然后要自己配置 webpack 进行处理：
 
-1. 新建assets文件夹作为这些资源存放的目录
+1. 新建 assets 文件夹作为这些资源存放的目录
 2. 项目根目录新建`next.config.js`
 
-    ```
-    module.exports = {
-      webpack: (config, options) => {
-        // webpack 配置
-        return config
-      }
-    }
-    ```
-    这是[文档](https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config)，它这里的配置语法用的应该是[webpack-chain](https://github.com/neutrinojs/webpack-chain)
+   ```
+   module.exports = {
+     webpack: (config, options) => {
+       // webpack 配置
+       return config
+     }
+   }
+   ```
+
+   这是[文档](https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config)，它这里的配置语法用的应该是[webpack-chain](https://github.com/neutrinojs/webpack-chain)
 
 ### 八. Next.js API
 
-这里说的API指的就是平时在页面中请求的接口，下面来实现一个获取文章列表的接口：
+这里说的 API 指的就是平时在页面中请求的接口，下面来实现一个获取文章列表的接口：
 
 #### 1. 创建几篇文章
 
 ![](/madao.github.io/database/images/articles/node/next/image1.png)
 
-#### 2. 安装gray-matter用于将md文件解析成对象格式
+#### 2. 安装 gray-matter 用于将 md 文件解析成对象格式
 
 `yarn add gray-matter -D`
 
 #### 3. 在`pages/api`目录下创建`articles.tsx`
 
-注意Next.js中接口都要放在这个api目录下
+注意 Next.js 中接口都要放在这个 api 目录下
 
 ```
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
@@ -414,10 +416,9 @@ export default articles
 
 这就实现了一个获取文章列表的接口，只不过文章列表是读取的本地文件目录而不是从数据库中获取的
 
-
 ### 九. Next.js 中的三种渲染
 
-在Next.js可以使用三种方式对页面进行渲染：
+在 Next.js 可以使用三种方式对页面进行渲染：
 
 1. 客户端渲染
 2. 静态页面生成（SSG）
@@ -427,13 +428,14 @@ export default articles
 
 #### 1. 客户端渲染
 
-客户端渲染是最常见的一种方式，它的意思就是在浏览器上渲染页面，页面中的动态内容通过接口获取，获取到之后再通过JS生成DOM进行渲染。
+客户端渲染是最常见的一种方式，它的意思就是在浏览器上渲染页面，页面中的动态内容通过接口获取，获取到之后再通过 JS 生成 DOM 进行渲染。
 
 客户端渲染有两个缺点：
-- 白屏问题
-- 对SEO不友好
 
-客户端渲染所需要的数据通过AJAX获取，那么在数据没有到来的时候呈现给用户的就是白屏或者是一个loading，对SEO不友好指的是当爬虫爬到页面的时候，他是不会执行js去请求数据的，所以爬虫爬到的html中没有内容
+- 白屏问题
+- 对 SEO 不友好
+
+客户端渲染所需要的数据通过 AJAX 获取，那么在数据没有到来的时候呈现给用户的就是白屏或者是一个 loading，对 SEO 不友好指的是当爬虫爬到页面的时候，他是不会执行 js 去请求数据的，所以爬虫爬到的 html 中没有内容
 
 继续接上面的例子来举例：
 
@@ -479,13 +481,13 @@ const List: NextPage = () => {
 export default List
 ```
 
-这就是一个最简单的客户端渲染的方式，文章列表是通过AJAX请求获得的，所以一开始浏览器获取到的HTML是：
+这就是一个最简单的客户端渲染的方式，文章列表是通过 AJAX 请求获得的，所以一开始浏览器获取到的 HTML 是：
 
 ![](/madao.github.io/database/images/articles/node/next/image3.png)
 
 #### 2. 静态页面生成
 
-试想这样的场景，你的博客在每一个访问者看来内容都是一样的，一般不会出现根据访问者来呈现不同的内容，所以页面的内容没有必要等到客户端发起请求获取，可以在页面生成（构建）的时候直接把文章的内容填充到html中去，客户端拿到的html就是有内容的，对SEO也很友好，而且省下了请求时间，白屏的问题也会被优化。
+试想这样的场景，你的博客在每一个访问者看来内容都是一样的，一般不会出现根据访问者来呈现不同的内容，所以页面的内容没有必要等到客户端发起请求获取，可以在页面生成（构建）的时候直接把文章的内容填充到 html 中去，客户端拿到的 html 就是有内容的，对 SEO 也很友好，而且省下了请求时间，白屏的问题也会被优化。
 
 同样页面静态化也是有缺点的：
 
@@ -495,51 +497,51 @@ export default List
 优点就是上面说的：
 
 1. 缩短白屏时间，优化用户体验
-2. 便于SEO，搜索引擎的爬虫能获取到页面的完整内容
+2. 便于 SEO，搜索引擎的爬虫能获取到页面的完整内容
 
 静态化的方式很适合做个人博客
 
-接下来看看如何在Next.js中进行页面静态生成
+接下来看看如何在 Next.js 中进行页面静态生成
 
-1. 在当前页面组件导出一个`getStaticProps`函数，还是以List组件举例：
+1. 在当前页面组件导出一个`getStaticProps`函数，还是以 List 组件举例：
 
-    ```
-    import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next"
-    import React from "react"
-    import { getArticles } from 'pages/api/articles'
+   ```
+   import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next"
+   import React from "react"
+   import { getArticles } from 'pages/api/articles'
 
-    const List: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
-      return (
-        <React.Fragment>
-          {props.articles.length ? (
-            <ul>
-              { props.articles.map(article => (
-                <li key={article.id}>
-                  <h2>{article.title}</h2>
-                  <p>日期：{article.date}</p>
-                </li>
-              )) }
-            </ul>
-          ): <div>loading....</div>}
-        </React.Fragment>
-      )
-    }
+   const List: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+     return (
+       <React.Fragment>
+         {props.articles.length ? (
+           <ul>
+             { props.articles.map(article => (
+               <li key={article.id}>
+                 <h2>{article.title}</h2>
+                 <p>日期：{article.date}</p>
+               </li>
+             )) }
+           </ul>
+         ): <div>loading....</div>}
+       </React.Fragment>
+     )
+   }
 
-    export const getStaticProps: GetStaticProps<{
-      articles: Array<{ id: number; title: string; date: string; }>
-    }> = async () => {
-      const articles = await getArticles()
-      return {
-        props: {
-          articles
-        }
-      }
-    }
+   export const getStaticProps: GetStaticProps<{
+     articles: Array<{ id: number; title: string; date: string; }>
+   }> = async () => {
+     const articles = await getArticles()
+     return {
+       props: {
+         articles
+       }
+     }
+   }
 
-    export default List
-    ```
+   export default List
+   ```
 
-    之前`getArticles`方法没有导出，所以还要改下`pages/api/articles`里的代码，将`getArticles`导出
+   之前`getArticles`方法没有导出，所以还要改下`pages/api/articles`里的代码，将`getArticles`导出
 
 2. 执行`yarn build`
 3. 执行`yarn start`
@@ -548,56 +550,56 @@ export default List
 
 #### 3. 服务端渲染
 
-服务端渲染渲染解决了页面静态化的一个问题，就是可以把用户相关的内容静态化，也就是说请求到服务器后，服务器去获取数据，将数据填充到html中，直接返回含有完整内容的html，所以服务端渲染不是在页面构建的时候进行静态化，而是请求到来之后进行的静态化
+服务端渲染渲染解决了页面静态化的一个问题，就是可以把用户相关的内容静态化，也就是说请求到服务器后，服务器去获取数据，将数据填充到 html 中，直接返回含有完整内容的 html，所以服务端渲染不是在页面构建的时候进行静态化，而是请求到来之后进行的静态化
 
 如何实现呢：
 
 1. getServerSideProps
 
-    例子：
+   例子：
 
-    - List.tsx
+   - List.tsx
 
-      ```
-      import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from "next"
-      import React from "react"
-      import { getArticles } from 'pages/api/articles'
+     ```
+     import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from "next"
+     import React from "react"
+     import { getArticles } from 'pages/api/articles'
 
-      const List: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
-        return (
-          <React.Fragment>
-            {props.articles.length ? (
-              <ul>
-                { props.articles.map(article => (
-                  <li key={article.id}>
-                    <h2>{article.title}</h2>
-                    <p>日期：{article.date}</p>
-                  </li>
-                )) }
-                <li>请求参数是：{props.query}</li>
-              </ul>
-            ): <div>loading....</div>}
-          </React.Fragment>
-        )
-      }
+     const List: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
+       return (
+         <React.Fragment>
+           {props.articles.length ? (
+             <ul>
+               { props.articles.map(article => (
+                 <li key={article.id}>
+                   <h2>{article.title}</h2>
+                   <p>日期：{article.date}</p>
+                 </li>
+               )) }
+               <li>请求参数是：{props.query}</li>
+             </ul>
+           ): <div>loading....</div>}
+         </React.Fragment>
+       )
+     }
 
-      export const getServerSideProps: GetServerSideProps<{
-        articles: Array<{ id: number; title: string; date: string; }>
-        query: string;
-      }> = async (context) => {
-        const articles = await getArticles()
-        return {
-          props: {
-            articles,
-            query: JSON.stringify(context.query)
-          }
-        }
-      }
+     export const getServerSideProps: GetServerSideProps<{
+       articles: Array<{ id: number; title: string; date: string; }>
+       query: string;
+     }> = async (context) => {
+       const articles = await getArticles()
+       return {
+         props: {
+           articles,
+           query: JSON.stringify(context.query)
+         }
+       }
+     }
 
-      export default List
-      ```
+     export default List
+     ```
 
-      可以在getServerSideProps函数的context中获取到请求以及响应的相关信息，可以根据这些信息决定要请求的数据
+     可以在 getServerSideProps 函数的 context 中获取到请求以及响应的相关信息，可以根据这些信息决定要请求的数据
 
 2. yarn build
 3. yarn start
@@ -605,19 +607,19 @@ export default List
 
 服务端渲染的优点：
 
-1. 便于SEO
+1. 便于 SEO
 2. 缩短白屏时间，优化用户体验
 3. 可以将动态内容静态化（根据请求信息来决定页面内容）
 
 服务端渲染的缺点：
 
 1. 无法获取客户端的信息，比如：浏览器窗口大小
-2. 将请求和html文件动态生成放在了服务端，相当于服务端帮客户端做了这些工作，会加大服务端的压力，但是我还没完整的实现一个应用所以对服务端影响的大小不确定
+2. 将请求和 html 文件动态生成放在了服务端，相当于服务端帮客户端做了这些工作，会加大服务端的压力，但是我还没完整的实现一个应用所以对服务端影响的大小不确定
 
 ### 十. 动态路由
 
-还是用上面的例子说明，文章详情其实是同样的页面，只是根据不同的id来判断展示那篇文章，这种情况的预渲染可以用动态路由来实现
+还是用上面的例子说明，文章详情其实是同样的页面，只是根据不同的 id 来判断展示那篇文章，这种情况的预渲染可以用动态路由来实现
 
-动态路由需要注意的就是创建组件的时候，文件名要命名成`[id].tsx`格式，`[]`里面不一定是id，也可以是其他字符，它表示一个占位符，还要组件内需要`export` `getStaticPaths`函数，文档上的例子更清晰，这里就不举例了（主要是公司放假啦！！！！）
+动态路由需要注意的就是创建组件的时候，文件名要命名成`[id].tsx`格式，`[]`里面不一定是 id，也可以是其他字符，它表示一个占位符，还要组件内需要`export` `getStaticPaths`函数，文档上的例子更清晰，这里就不举例了（主要是公司放假啦！！！！）
 
 [Dynamic Routes](https://nextjs.org/learn/basics/dynamic-routes/dynamic-routes-details)
