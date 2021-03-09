@@ -327,10 +327,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          passwordDigest: string;
 
          @Column('timestamp')
-         createdAt: string;
+         createdAt:Date;
 
          @Column('timestamp')
-         updatedAt: string;
+         updatedAt: Date;
 
          @OneToMany(() => Blog, Blog => Blog.author)
          blogs: Blog[];
@@ -356,10 +356,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          content: string;
 
          @Column('timestamp')
-         createdAt: string;
+         createdAt:Date;
 
          @Column('timestamp')
-         updatedAt: string;
+         updatedAt: Date;
 
          @ManyToOne(() => User, user => user.blogs)
          author: User;
@@ -391,10 +391,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          passwordDigest: string;
 
          @Column('timestamp')
-         createdAt: string;
+         createdAt:Date;
 
          @Column('timestamp')
-         updatedAt: string;
+         updatedAt: Date;
 
          @OneToMany(() => Blog, Blog => Blog.author)
          blogs: Blog[];
@@ -423,10 +423,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          content: string;
 
          @Column('timestamp')
-         createdAt: string;
+         createdAt:Date;
 
          @Column('timestamp')
-         updatedAt: string;
+         updatedAt: Date;
 
          @ManyToOne(() => User, user => user.comments)
          user: User;
@@ -458,10 +458,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          content: string;
 
          @Column('timestamp')
-         createdAt: string;
+         createdAt:Date;
 
          @Column('timestamp')
-         updatedAt: string;
+         updatedAt: Date;
 
          @ManyToOne(() => User, user => user.blogs)
          author: User;
@@ -491,10 +491,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          content: string;
 
          @Column('timestamp')
-         createdAt: string;
+         createdAt:Date;
 
          @Column('timestamp')
-         updatedAt: string;
+         updatedAt: Date;
 
          @ManyToOne(() => User, user => user.comments)
          user: User;
