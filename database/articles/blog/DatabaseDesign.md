@@ -204,7 +204,7 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
    }
    ```
 
-    now()是 PostgreSQL 内置的时间函数，可以获取当前操作数据的时间
+   now()是 PostgreSQL 内置的时间函数，可以获取当前操作数据的时间
 
 4. 将 users 表迁移到数据库
 
@@ -334,6 +334,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
 
          @OneToMany(() => Blog, Blog => Blog.author)
          blogs: Blog[];
+
+         constructor(data: Partial<User>){
+          data && Object.assign(this, data)
+         }
        }
        ```
 
@@ -359,6 +363,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
 
          @ManyToOne(() => User, user => user.blogs)
          author: User;
+
+         constructor(data: Partial<Blog>){
+          data && Object.assign(this, data)
+         }
        }
        ```
 
@@ -393,6 +401,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
 
          @OneToMany(() => Comment, comment => comment.user)
          comments: Comment[];
+
+         constructor(data: Partial<User>){
+          data && Object.assign(this, data)
+         }
        }
        ```
 
@@ -418,6 +430,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
 
          @ManyToOne(() => User, user => user.comments)
          user: User;
+
+         constructor(data: Partial<Comment>){
+          data && Object.assign(this, data)
+         }
        }
        ```
 
@@ -452,6 +468,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
 
          @OneToMany(() => Comment, comment => comment.blog)
          comments: Comment[];
+
+         constructor(data: Partial<Blog>){
+          data && Object.assign(this, data)
+         }
        }
        ```
 
@@ -481,6 +501,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
 
          @ManyToOne(() => Blog, blog => blog.comments)
          blog: Blog;
+
+         constructor(data: Partial<Comment>){
+          data && Object.assign(this, data)
+         }
        }
        ```
 
