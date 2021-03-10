@@ -344,6 +344,12 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
      - src/entity/Blog.ts
 
        ```
+        import {
+          Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn,
+          JoinColumn,
+        } from 'typeorm';
+        import { User } from './User';
+
        @Entity('blogs')
        export class Blog {
          @PrimaryGeneratedColumn('increment')
@@ -361,7 +367,11 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          @Column('timestamp')
          updatedAt: Date;
 
+         @Column('integer')
+         authorId: number;
+
          @ManyToOne(() => User, user => user.blogs)
+         @JoinColumn({ name: 'authorId', referencedColumnName: 'id' })
          author: User;
 
          constructor(data: Partial<Blog>){
@@ -411,7 +421,7 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
      - src/entity/Comment.ts
 
        ```
-       import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+       import {Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn} from "typeorm";
        import { User } from "./User";
 
        @Entity('comments')
@@ -428,7 +438,11 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          @Column('timestamp')
          updatedAt: Date;
 
+         @Column('integer')
+         userId: number;
+
          @ManyToOne(() => User, user => user.comments)
+         @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
          user: User;
 
          constructor(data: Partial<Comment>){
@@ -442,7 +456,10 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
      - src/entity/Blog.ts
 
        ```
-       import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+       import {
+         Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn,
+         JoinColumn,
+       } from 'typeorm';
        import { Comment } from "./Comment";
        import { User } from "./User";
 
@@ -463,7 +480,11 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          @Column('timestamp')
          updatedAt: Date;
 
+         @Column('integer')
+         authorId: number;
+
          @ManyToOne(() => User, user => user.blogs)
+         @JoinColumn({ name: 'authorId', referencedColumnName: 'id' })
          author: User;
 
          @OneToMany(() => Comment, comment => comment.blog)
@@ -478,7 +499,7 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
      - src/entity/Comment.ts
 
        ```
-       import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+       import {Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn} from "typeorm";
        import { Blog } from "./Blog";
        import { User } from "./User";
 
@@ -496,10 +517,18 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
          @Column('timestamp')
          updatedAt: Date;
 
+         @Column('integer')
+         userId: number;
+
+         @Column('integer')
+         blogId: number;
+
          @ManyToOne(() => User, user => user.comments)
+         @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
          user: User;
 
          @ManyToOne(() => Blog, blog => blog.comments)
+         @JoinColumn({ name: 'blogId', referencedColumnName: 'id' })
          blog: Blog;
 
          constructor(data: Partial<Comment>){
@@ -545,3 +574,5 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
   ![](/madao.github.io/database/images/articles/blog/database_design/image1.png)
 
   这就是关联的好处，用户 id，博客 id，评论 id 这些写好的关联会自动的进行同步，图片中的 id 不是从 1 开始，是因为我测试了好几次，把之前的数据都删除了导致的。
+
+  [GitHub](https://github.com/GreedyWhale/diary-of-madao)
