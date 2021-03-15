@@ -82,6 +82,8 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
 
 #### 4. 统一 ts 文件的执行方式
 
+**重要提示**：下面方式是错误的解决方式，会导致后面的流程出现文件未编译的问题，我目前的做法是重新配置一套完整的webpack来编译typeORM相关的代码，具体方法参考：[搭建个人博客系列（三）- 注册](https://greedywhale.github.io/madao.github.io/#/article/blog/SignUp)
+
 1. `yarn add @babel/cli @babel/core @babel/preset-typescript @babel/plugin-proposal-decorators -D`
 2. 在项目根目录新建`.babelrc`
    ```
