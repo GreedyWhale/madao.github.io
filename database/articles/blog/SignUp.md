@@ -224,7 +224,7 @@
     if (!password.trim()) {
       return '密码不能为空';
     }
-    if (password.length <= 7) {
+    if (password.length < 7) {
       return '密码长度太短，至少需要7位';
     }
     return true;
