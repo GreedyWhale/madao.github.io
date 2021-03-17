@@ -14,7 +14,7 @@
   import { NextPage } from 'next';
   import React, { useCallback, useState } from 'react';
 
-  const TheInput: React.FC<{
+  const BaseInput: React.FC<{
     inputConfigs: {
       type: string;
       placeholder: string;
@@ -70,7 +70,7 @@
         <h1>注册</h1>
         <form onSubmit={onSubmit}>
           {inputList.map((config) => (
-            <TheInput {...config} key={config.id} />
+            <BaseInput {...config} key={config.id} />
           ))}
           <button type="submit">提交</button>
         </form>
