@@ -57,7 +57,7 @@ docker run -v "$PWD/blogDatabase":/var/lib/postgresql/data -p 5432:5432 -e POSTG
   3. `yarn start`
   4. 将`.js`改为`.tsx`，并消除文件报错
 - 支持 scss
-  1. `yarn add scss -D`
+  1. `yarn add sass -D`
   2. 将`.css`改为`.scss`
 - 提交当前修改到 github（重要）
 

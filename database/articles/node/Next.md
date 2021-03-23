@@ -97,7 +97,7 @@ yarn tsc --init
 Next.js 中支持 scss 很简单，只需要安装：
 
 ```
-yarn add scss -D
+yarn add sass -D
 ```
 
 然后将所有的`.css`后缀改为`.scss`即可。
